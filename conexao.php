@@ -8,6 +8,5 @@ if(!$con){
     echo "Não foi possível conectar";
 }
 else{
-    //echo "Conectado com sucesso";
 }
 ?>
