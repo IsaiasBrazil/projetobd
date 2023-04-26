@@ -1,0 +1,49 @@
+CLIENTE
+====================
+alt_cliente.php - funcionando
+cad_alt_cliente.php - funcionando
+del_cliente.php - funcionando
+inc_cliente.php - funcionando
+lista_cliente.php - funcionando
+====================
+
+
+VENDEDOR
+====================
+alt_vendedor.php - funcionando
+cad_alt_vendedor.php - funcionando
+del_vendedor.php - funcionando
+inc_vendedor.php - funcionando
+lista_vendedor.php - funcionando
+====================
+
+
+CATEGORIA
+====================
+alt_categoria.php - funcionando
+cad_alt_categoria.php - funcionando
+del_categoria.php - funcionando
+inc_categoria.php - funcionando
+lista_categoria.php - funcionando
+====================
+
+
+PRODUTO - obs1: funciona se tiver alguma categoria de produto para cadastrar
+====================
+alt_produto.php - funcionando
+cad_alt_produto.php - funcionando
+del_produto.php - funcionando
+inc_produto.php - funcionando
+lista_produto.php - funcionando
+obs2: na lista_produto.php, tem que tirar o "fk_categoria_id" do gridgenerico.php
+====================
+
+
+CATEGORIA
+====================
+alt_categoria.php - funcionando
+cad_alt_categoria.php - funcionando
+del_categoria.php - funcionando
+inc_categoria.php - funcionando
+lista_categoria.php - funcionando
+====================

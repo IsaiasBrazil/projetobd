@@ -1,0 +1,1 @@
+<?php function mostrar(){?> <table style='background-color: yellow;'>sadfgdfgdf</table> <?php  ;}?>
