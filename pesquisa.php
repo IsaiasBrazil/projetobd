@@ -89,5 +89,5 @@ function grid($result, $tipo)
         echo "<button style='width:127px;' onclick=\"sumir('" . $nome . "','" . $nomecampo . "');window.location.href='cad_alt_venda.php?vendedor=" . $vendedor . '&' . "cliente=" . $cliente . "';\" >Fechar</button>";
         ?>
     </p>
-    <?php return $nome;
+    <?php return $cod;
 } ?>
