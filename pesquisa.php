@@ -70,19 +70,24 @@ function grid($result, $tipo)
                 if ($nomecampo == 'produto') {
                     $produto = $nome;
                     echo "<td><a href=\"cad_alt_venda.php?vendedor=$vendedor&cliente=$cliente&produto=$produto\"\">Selecionar produto</a></td>";
-                    echo "<td><a href=\"cad_alt_venda.php?vendedor=$vendedor&cliente=$cliente\" onclick=\"sumir('" . $nome . "','" . $nomecampo . "');\">Fechar</a></td>";
-               
+
                 } else {
                     $produto = isset($_GET['produto']) ? $_GET['produto'] : "";
                     echo "<td><a href=\"cad_alt_venda.php?vendedor=$vendedor&cliente=$cliente&produto=$produto\" onclick=\"sumir('" . $nome . "','" . $nomecampo . "');\">Selecionar</a></td>";
                 }
-               
-                            
+
+
                 ?>
             </tr>
+
             <?php
         }
         ?>
     </table>
+    <p style="text-align: right; margin-right: 2px;">
+        <?php
+        echo "<button style='width:127px;' onclick=\"sumir('" . $nome . "','" . $nomecampo . "');window.location.href='cad_alt_venda.php?vendedor=" . $vendedor . '&' . "cliente=" . $cliente . "';\" >Fechar</button>";
+        ?>
+    </p>
     <?php return $nome;
 } ?>

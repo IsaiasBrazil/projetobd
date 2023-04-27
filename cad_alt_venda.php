@@ -67,8 +67,14 @@ if(!isset($_SESSION['produto'])){
                     </h1>
                     </p>
                 </td>
-                <td id="selecao" style="background-color: white;" rowspan="2">
-                    <div  style="position: relative; top: 0;">
+                <td id="selecao" style="background-color: lightstellblue;" rowspan="2">
+                <table>
+                    <tbody>
+                       <td>
+                        oi
+                       </td> 
+                    </tbody>
+                </table>
                         <?php
                         function pesquisar($botao, $nome_tabela,$metodo){
                                     if (isset($_POST[$botao])) {
@@ -97,8 +103,7 @@ if(!isset($_SESSION['produto'])){
                                 pesquisar('botao_pesquisa_vendedor', 'vendedor', 'metodo_pesquisa_vendedor');
                                 pesquisar('botao_pesquisa_produto', 'produto', 'metodo_pesquisa_produto');
                             ?>
-                    </div>
-                </td>
+                    </td>
             </tr>
             <tr>
                 <td>
@@ -153,6 +158,15 @@ if(!isset($_SESSION['produto'])){
                 </td>
 
             </tr>
+            <!-- <tr>
+            <?php
+            for($i=0;$i<10;$i++){
+                $esp =2 -$i;
+                echo "<td colspan={$esp}>oi</td>";
+            }
+
+            ?>
+            </tr> -->
         </tbody>
 </body>
 

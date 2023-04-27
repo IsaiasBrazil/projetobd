@@ -98,7 +98,7 @@ if (isset($_GET['cod'])) {
                     </form>
                 </td>
             </tr>
+      
         </tbody>
 </body>
-
 </html>
