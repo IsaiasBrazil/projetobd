@@ -49,5 +49,3 @@ CREATE TABLE itens_venda (
     quant_vendida INTEGER,
     PRIMARY KEY(fk_produtos_cod,fk_vendas_numero)
 );
-
-INSERT INTO categoria (descricao) VALUES ('TV');
