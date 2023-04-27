@@ -3,7 +3,6 @@
     $tabelas = array('produto');
 
     function gerar_relatorios($lista_tabelas) {
-        $qt_resultados_por_pagina = 40;
         $nome_arq_relatorio;
         require('conexao.php');
 
@@ -29,10 +28,6 @@
 
                 $i = 0;
                 while ($linha = mysqli_fetch_assoc($resu)) {
-                    // if ($i % $qt_resultados_por_pagina == 0 && $i != 0) {
-                    //     $pdf->AddPage();
-                    // }
-
                     $pdf->Cell(15, 6, $linha['cod'], 1, 0, 'C');
                     $pdf->Cell(110, 6, $linha['nome'], 1, 0, 'C');
                     $pdf->Cell(40, 6, $linha['preco'], 1, 0, 'C');
