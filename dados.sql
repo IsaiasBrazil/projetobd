@@ -1,0 +1,57 @@
+INSERT INTO categoria (descricao) VALUES ('Placa de vídeo');
+INSERT INTO categoria (descricao) VALUES ('Processador');
+INSERT INTO categoria (descricao) VALUES ('Monitor');
+INSERT INTO categoria (descricao) VALUES ('TV');
+
+INSERT INTO cliente (nome, cpf, telefone, email, limite_cred, estado, cidade, endereco) VALUES ('Calebe Márcio Yuri Moraes', '903.898.881-84', '(69)98298-9900', 'calebe_moraes@jonasmartinez.com', 4607, 'RO', 'Ariquemes', 'Rua Maringá');
+INSERT INTO cliente (nome, cpf, telefone, email, limite_cred, estado, cidade, endereco) VALUES ('Lúcia Bruna Ribeiro', '591.431.862-97', '(38)99728-2660', 'lucia.bruna.ribeiro@engeco.com.br', 1477, 'MG', 'Montes Claros', 'Rua C');
+INSERT INTO cliente (nome, cpf, telefone, email, limite_cred, estado, cidade, endereco) VALUES ('Giovanni Renan Ramos', '202.603.555-50', '(47)99698-1931', 'giovanni-ramos96@vbrasildigital.net', 2584, 'SC', 'Blumenau', 'Rua Gustav Tribess');
+INSERT INTO cliente (nome, cpf, telefone, email, limite_cred, estado, cidade, endereco) VALUES ('Davi Benedito Moreira', '410.695.692-67', '(67)99228-6981', 'davi_benedito_moreira@contjulioroberto.com.br', 5520, 'MS', 'Três Lagoas', 'Alameda 9');
+INSERT INTO cliente (nome, cpf, telefone, email, limite_cred, estado, cidade, endereco) VALUES ('Maria Sophia Carolina Costa', '578.167.764-03', '(68)99333-3409', 'maria.sophia.costa@unifox.com.br', 3143, 'AC', 'Rio Branco', 'Estrada do Calafate');
+INSERT INTO cliente (nome, cpf, telefone, email, limite_cred, estado, cidade, endereco) VALUES ('Carolina Natália Rodrigues', '025.198.620-92', '(82)98254-6157', 'carolinanataliarodrigues@oliveiraesouza.adv.br', 7912, 'AL', 'Maceió', '5ª Travessa Otacílio Holanda');
+INSERT INTO cliente (nome, cpf, telefone, email, limite_cred, estado, cidade, endereco) VALUES ('Eduarda Raimunda Daiane Corte Real', '911.953.267-93', '(86)99158-4853', 'eduarda_raimunda_cortereal@sinelcom.com.br', 3553, 'PI', 'Parnaíba', 'Quadra 33');
+INSERT INTO cliente (nome, cpf, telefone, email, limite_cred, estado, cidade, endereco) VALUES ('Cauã Raimundo César Moura', '251.106.306-90', '(65)99249-8011', 'cauaraimundomoura@gustavoscoelho.com.br', 7801, 'MT', 'Várzea Grande', 'Rua Urubupunga');
+INSERT INTO cliente (nome, cpf, telefone, email, limite_cred, estado, cidade, endereco) VALUES ('Pietro Ryan Fogaça', '910.103.208-90', '(86)99953-1631', 'pietro_fogaca@bessa.net.br', 1896, 'MA', 'Timon', 'Rua Jambo');
+INSERT INTO cliente (nome, cpf, telefone, email, limite_cred, estado, cidade, endereco) VALUES ('Cauê Enzo Mateus Cavalcanti', '303.362.800-17', '(95)99446-2928', 'caue_enzo_cavalcanti@recantoalmeida.com.br', 2596, 'RR', 'Boa Vista', 'Rua Coronel-PM Márcio Santiago');
+INSERT INTO cliente (nome, cpf, telefone, email, limite_cred, estado, cidade, endereco) VALUES ('Fernando César Rezende', '492.267.310-55', '(67)99743-5616', 'fernandocesarrezende@guiamaritimo.com.br', 7144, 'MS', 'Campo Grande', 'Rua Doutor Sabino Farias');
+INSERT INTO cliente (nome, cpf, telefone, email, limite_cred, estado, cidade, endereco) VALUES ('Kaique Thales Osvaldo da Rosa', '848.990.295-00', '(85)98289-1091', 'kaique.thales.darosa@enox.com.br', 9719, 'CE', 'Fortaleza', 'Rua Santa Mônica');
+INSERT INTO cliente (nome, cpf, telefone, email, limite_cred, estado, cidade, endereco) VALUES ('Henrique Isaac Oliveira', '098.230.001-82', '(79)99360-1976', 'henrique.isaac.oliveira@graficajardim.com.br', 9190, 'SE', 'Aracaju', 'Vila Angélica');
+INSERT INTO cliente (nome, cpf, telefone, email, limite_cred, estado, cidade, endereco) VALUES ('Henry Ryan Silveira', '514.300.354-71', '(98)98913-2865', 'henry_ryan_silveira@freitas.net.br', 2025, 'MA', 'São Luís', 'Travessa 14 do Engenho');
+INSERT INTO cliente (nome, cpf, telefone, email, limite_cred, estado, cidade, endereco) VALUES ('Ricardo Gabriel Vinicius Assis', '921.441.054-21', '(79)98104-5224', 'ricardo.gabriel.assis@henrimar.com.br', 3428, 'SE', 'Aracaju', 'Rua Napoleão Teles de Oliveira');
+INSERT INTO cliente (nome, cpf, telefone, email, limite_cred, estado, cidade, endereco) VALUES ('Marina Isabelle da Luz', '632.638.696-98', '(27)99670-0722', 'marinaisabelledaluz@vilasites.com.br', 9601, 'ES', 'Serra', 'Beco Santa Luzia');
+INSERT INTO cliente (nome, cpf, telefone, email, limite_cred, estado, cidade, endereco) VALUES ('Emanuelly Pietra Raimunda Aparício', '009.244.076-20', '(83)98846-4105', 'emanuelly-aparicio72@email.com', 7970, 'PB', 'João Pessoa', 'Rua Coronel Luiz Inácio');
+INSERT INTO cliente (nome, cpf, telefone, email, limite_cred, estado, cidade, endereco) VALUES ('Aline Maya Elza Vieira', '104.860.404-70', '(61)98484-9948', 'aline_maya_vieira@rodomen.com.br', 2764, 'DF', 'Brasília', 'Quadra CLS 112 Bloco B');
+INSERT INTO cliente (nome, cpf, telefone, email, limite_cred, estado, cidade, endereco) VALUES ('Thiago Guilherme Silva', '139.156.575-49', '(51)99641-5749', 'thiagoguilhermesilva@gripoantonin.com', 1646, 'RS', 'São Leopoldo', 'Travessa Bom Princípio');
+INSERT INTO cliente (nome, cpf, telefone, email, limite_cred, estado, cidade, endereco) VALUES ('Regina Gabrielly Drumond', '200.554.155-98', '(95)98137-1543', 'regina_gabrielly_drumond@flexchange.com.br', 4741, 'RR', 'Boa Vista', 'Avenida Brasil');
+INSERT INTO cliente (nome, cpf, telefone, email, limite_cred, estado, cidade, endereco) VALUES ('Leonardo Sebastião da Mota', '003.724.213-00', '(77)99725-6178', 'leonardo-damota80@duoarq.com', 8529, 'BA', 'Barreiras', 'Rua Sidnei Mármore');
+INSERT INTO cliente (nome, cpf, telefone, email, limite_cred, estado, cidade, endereco) VALUES ('Isabelly Isabela Isis Novaes', '619.121.399-95', '(43)99654-4052', 'isabelly_isabela_novaes@yahoo.co.uk', 2724, 'PR', 'Cambé', 'Rua Miguel A. Costa Viscaino');
+INSERT INTO cliente (nome, cpf, telefone, email, limite_cred, estado, cidade, endereco) VALUES ('Roberto Enrico Castro', '025.364.932-37', '(11)99253-5809', 'roberto_enrico_castro@schaeffler.com', 3620, 'SP', 'São Paulo', 'Travessa João Batista Cortes');
+INSERT INTO cliente (nome, cpf, telefone, email, limite_cred, estado, cidade, endereco) VALUES ('Aline Fernanda Carolina Nogueira', '444.296.209-03', '(82)98225-9975', 'aline.fernanda.nogueira@inpa.gov.br', 7946, 'AL', 'Arapiraca', 'Avenida Minervina Francisca da Conceição');
+INSERT INTO cliente (nome, cpf, telefone, email, limite_cred, estado, cidade, endereco) VALUES ('Luna Milena Ferreira', '905.311.410-63', '(86)98603-6329', 'luna-ferreira71@latapack.com.br', 4010, 'PI', 'Parnaíba', 'Rua Marocas Bitencourt Lopes');
+INSERT INTO cliente (nome, cpf, telefone, email, limite_cred, estado, cidade, endereco) VALUES ('Diogo Enzo Bryan Rocha', '894.601.752-01', '(69)98342-2190', 'diogoenzorocha@machiv.com.br', 1155, 'RO', 'Porto Velho', 'Avenida Farquar');
+INSERT INTO cliente (nome, cpf, telefone, email, limite_cred, estado, cidade, endereco) VALUES ('Antônia Helena Simone Nascimento', '217.522.497-04', '(12)99897-5346', 'antonia-nascimento83@maptec.com.br', 9328, 'SP', 'São José dos Campos', 'Rua Vantuilde José Brandão');
+INSERT INTO cliente (nome, cpf, telefone, email, limite_cred, estado, cidade, endereco) VALUES ('Marli Gabriela Campos', '241.496.810-90', '(86)99795-9399', 'marli_gabriela_campos@gmeil.com', 7157, 'PI', 'Teresina', 'Conjunto Residencial Manoel Evangelista I');
+INSERT INTO cliente (nome, cpf, telefone, email, limite_cred, estado, cidade, endereco) VALUES ('Eloá Jéssica Almeida', '622.743.358-69', '(73)98755-2419', 'eloa_jessica_almeida@retrosfessa.com.br', 5459, 'BA', 'Itabuna', 'Rua K');
+INSERT INTO cliente (nome, cpf, telefone, email, limite_cred, estado, cidade, endereco) VALUES ('Kauê Manoel Dias', '056.578.630-03', '(32)99589-8212', 'kaue-dias81@amoreencantos.com', 7945, 'MG', 'Juiz de Fora', 'Rua Antônio Lana Sette');
+
+INSERT INTO produto (nome, preco, qtd_estoque, unidade_medida, fk_categoria_id) VALUES ('RTX 3060 12GB', 2200, 15, 'me', 1);
+INSERT INTO produto (nome, preco, qtd_estoque, unidade_medida, fk_categoria_id) VALUES ('RTX 3070', 3300, 10, 'me', 1);
+INSERT INTO produto (nome, preco, qtd_estoque, unidade_medida, fk_categoria_id) VALUES ('RTX 3070 TI', 3700, 20, 'me', 1);
+INSERT INTO produto (nome, preco, qtd_estoque, unidade_medida, fk_categoria_id) VALUES ('RTX 3080 10GB', 4800, 5, 'me', 1);
+INSERT INTO produto (nome, preco, qtd_estoque, unidade_medida, fk_categoria_id) VALUES ('RTX 3080 12GB', 5300, 10, 'me', 1);
+INSERT INTO produto (nome, preco, qtd_estoque, unidade_medida, fk_categoria_id) VALUES ('RTX 3080 TI', 5500, 3, 'me', 1);
+INSERT INTO produto (nome, preco, qtd_estoque, unidade_medida, fk_categoria_id) VALUES ('12400F', 1200, 800, 'me', 2);
+INSERT INTO produto (nome, preco, qtd_estoque, unidade_medida, fk_categoria_id) VALUES ('12400', 1300, 50, 'me', 2);
+INSERT INTO produto (nome, preco, qtd_estoque, unidade_medida, fk_categoria_id) VALUES ('12600', 1600, 300, 'me', 2);
+INSERT INTO produto (nome, preco, qtd_estoque, unidade_medida, fk_categoria_id) VALUES ('12600K', 1800, 500, 'me', 2);
+INSERT INTO produto (nome, preco, qtd_estoque, unidade_medida, fk_categoria_id) VALUES ('12600KF', 1700, 100, 'me', 2);
+
+INSERT INTO produto (nome, preco, qtd_estoque, unidade_medida, fk_categoria_id) VALUES ('Monitor LG - 26WQ500', 800, 1000, 'po', 3);
+INSERT INTO produto (nome, preco, qtd_estoque, unidade_medida, fk_categoria_id) VALUES ('Monitor LG - 24MK430H', 700, 2000, 'po', 3);
+INSERT INTO produto (nome, preco, qtd_estoque, unidade_medida, fk_categoria_id) VALUES ('Monitor LG - 27MP400-B', 850, 500, 'po', 3);
+INSERT INTO produto (nome, preco, qtd_estoque, unidade_medida, fk_categoria_id) VALUES ('Monitor Gamer Husky Tempest 34', 2000, 320, 'po', 3);
+
+INSERT INTO produto (nome, preco, qtd_estoque, unidade_medida, fk_categoria_id) VALUES ('Smart TV HD LED 32” Samsung', 1177, 1500, 'po', 4);
+INSERT INTO produto (nome, preco, qtd_estoque, unidade_medida, fk_categoria_id) VALUES ('Smart TV 50” Crystal 4K Samsung', 2421, 300, 'po', 4);
+INSERT INTO produto (nome, preco, qtd_estoque, unidade_medida, fk_categoria_id) VALUES ('Smart TV 43” Full HD LED TCL ', 1804, 25, 'po', 4);
+INSERT INTO produto (nome, preco, qtd_estoque, unidade_medida, fk_categoria_id) VALUES ('Smart TV 32” HD LED TCL S615 VA', 1139, 2, 'po', 4);
