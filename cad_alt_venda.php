@@ -157,6 +157,22 @@ if (!isset($_SESSION['produto'])) {
                     </td>
                 </tr>
                 <tr>
+                    <td>data da venda</td>
+                    <td>
+                        <input id="data" type="date">
+                        <script>
+                            elementoData = new Date;
+                            elementoData.setHours(new Date().getHours() - 3);
+                            var hoje = elementoData.toISOString().split('T')[0];
+                            document.querySelector('#data').value = hoje;
+                        </script>
+                        </input>
+                    </td>
+                    <td>
+                        
+                    </td>
+                </tr>
+                <tr>
                     <td>
                         <label>Selecione o produto</label><br>
                     </td>
@@ -185,11 +201,12 @@ if (!isset($_SESSION['produto'])) {
                     </td>
                 </tr>
 
+
             </tbody>
             <tbody id="produtos" name="produtos">
                 <tr>
                     <td>
-                    
+
                     </td>
                 </tr>
             </tbody>
