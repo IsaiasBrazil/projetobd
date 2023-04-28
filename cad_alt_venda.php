@@ -7,7 +7,8 @@ $prazo_entrega = "";
 $cond_pagto = "";
 $cod_cliente;
 $cod_vendedor;
-
+include_once('Model/venda.php');
+include_once("Model/item_venda.php");
 
 if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
@@ -25,6 +26,7 @@ if (isset($_GET['cod'])) {
     $cond_pagto = $row['cond_pagto'];
     unset($_GET['cod']);
 }
+
 if (!isset($_SESSION['cliente'])) {
     $_SESSION['cliente'] = "";
 }
@@ -36,6 +38,13 @@ if (!isset($_SESSION['produto'])) {
     $_SESSION['produto'] = "";
 }
 
+if (!isset($_SESSION['qtd'])) {
+    $_SESSION['qtd'] = "1";
+}
+
+if (!isset($_SESSION['itens_venda'])) {
+    $_SESSION['itens_venda'] = array();
+}
 
 ?>
 <!DOCtype html>
@@ -108,10 +117,8 @@ if (!isset($_SESSION['produto'])) {
                         }
                         ?>
 
-                        <label <?php if (isset($_GET['cliente'])) if ($_GET['cliente'] == "")
-                            unset($_GET['cliente']);
-                        echo isset($_GET['cliente']) ? "style='color: red';" : "style='color: black';" ?>
-                            id="lblcliente"><?= isset($_GET['cliente']) ? $_GET['cliente'] : "Selecione o cliente" ?>
+                        <label <?php echo isset($_SESSION['cliente']) ? "style='color: red';" : "style='color: black';" ?>
+                            id="lblcliente"><?= isset($_SESSION['cliente'])&&(!$_SESSION['cliente'])?$_SESSION['cliente']." selecionado" : "Selecione o cliente" ?>
                         </label>
                     </td>
                     <td>
@@ -156,10 +163,13 @@ if (!isset($_SESSION['produto'])) {
                         <button name="botao_pesquisa_vendedor">Pesquisar</button><br>
                     </td>
                 </tr>
+                <tr> 
+                    <td colspan="3" style="height:6px"></td>
+                </tr>
                 <tr>
                     <td>data da venda</td>
                     <td>
-                        <input id="data" type="date">
+                        <input id="data" type="date" onchange="alert(this.value)">
                         <script>
                             elementoData = new Date;
                             elementoData.setHours(new Date().getHours() - 3);
@@ -169,18 +179,35 @@ if (!isset($_SESSION['produto'])) {
                         </input>
                     </td>
                     <td>
-                        
                     </td>
+                </tr>
+                <tr> 
+                    <td colspan="3" style="height:6px"></td>
+                </tr>
+                <tr>
+                    <td>Prazo de entrega</td>
+                    <td colspan="2">
+                        <input style="width:80%" id="prazo_entrega" type="text" placeholder="Exemplo: Entregar em x dias...">
+                        </input>
+                    </td>
+                </tr>
+                <tr> 
+                    <td colspan="3" style="height:6px"></td>
                 </tr>
                 <tr>
                     <td>
-                        <label>Selecione o produto</label><br>
+                        <label>Qtd</label>
                     </td>
                     <td></td>
-                    <td></td>
+                    <td>
+                        <label>Selecione o produto</label>
+                    </td>
                 </tr>
                 <tr>
-                    <td>
+                <td>
+                        <input type="number" id="qtd" name="qtd" onchange="this.style.width=(qtd.value.toString().length*10+20).toString()+'px';" value="<?= isset($_SESSION['qtd'])?$_SESSION['qtd']:"0"?>" min="1"></input>
+                    </td>
+                <td>
                         <select name="metodo_pesquisa_produto">
                             <option value="por_nome">Por nome</option>
                             <option value="por_codigo">Por código</option>
@@ -188,29 +215,25 @@ if (!isset($_SESSION['produto'])) {
                     </td>
                     <td>
                         <input type="text" name="produto" id="produto">
-                    </td>
-                    <td>
                         <button name="botao_pesquisa_produto">Pesquisar</button><br>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <label id="lblproduto" style="color:red">
-                            <?= isset($_GET['produto']) && ($_GET['produto'] != "") ? "[" . $_GET['produto'] . "] adicionado!" : "" ?>
+                            <?php 
+                                echo isset($_GET['produto']) && ($_GET['produto'] != "") ? $_SESSION['qtd']."[" . $_GET['produto'] . "] adicionado!" : "" ;
+                            ?>
                         </label>
                     </td>
                 </tr>
-
-
             </tbody>
             <tbody id="produtos" name="produtos">
                 <tr>
                     <td>
-
                     </td>
                 </tr>
             </tbody>
     </form>
 </body>
-
 </html>

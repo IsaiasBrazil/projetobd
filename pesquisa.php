@@ -7,6 +7,7 @@ function grid($result, $tipo)
     $fields = mysqli_fetch_fields($result);
     global $cod;
     global $nome;
+
     ?>
     <p>
     <h2>
@@ -69,11 +70,17 @@ function grid($result, $tipo)
                 }
                 if ($nomecampo == 'produto') {
                     $produto = $nome;
-                    echo "<td><a href=\"cad_alt_venda.php?vendedor=$vendedor&cliente=$cliente&produto=$produto\"\">Selecionar produto</a></td>";
+                    $_SESSION['qtd'] = isset($_GET['qtd'])?$_GET['qtd']:null;
+                    $qtd = $_SESSION['qtd'];
+                    echo "<td><a href=\"cad_alt_venda.php?vendedor=$vendedor&cliente=$cliente&produto=$produto&qtd=$qtd\"\">Selecionar produto</a></td>";
 
                 } else {
                     $produto = isset($_GET['produto']) ? $_GET['produto'] : "";
                     echo "<td><a href=\"cad_alt_venda.php?vendedor=$vendedor&cliente=$cliente&produto=$produto\" onclick=\"sumir('" . $nome . "','" . $nomecampo . "');\">Selecionar</a></td>";
+                }
+                if(isset($_SESSION['cliente'])){
+                    unset($_SESSION['cliente']);
+                    $_SESSION['cliente'] = $cliente;
                 }
 
 
