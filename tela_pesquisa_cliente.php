@@ -33,23 +33,11 @@
             </tr>
         </table>
         <?php
-            function pesquisar_cliente($input_cliente, $metodo) {
-                if (isset($_POST['botao_pesquisa'])) {
-                    include_once('conexao.php');
-                    $metodo_pesquisa = $_POST[$metodo];
-                    $identificacao_cliente = $_POST[$input_cliente];
-                    //$result;
+            function mostrar_dados_do_bd($lista_dados) {
+                $qt_resultados = mysqli_num_rows($lista_dados);
 
-                    if ($metodo_pesquisa == 'por_codigo') {
-                        $query = "SELECT * FROM cliente WHERE cod = $identificacao_cliente";
-                        $result = mysqli_query($con, $query) or die(mysqli_error($con));
-                    }
-                    elseif ($metodo_pesquisa == 'por_nome') {
-                        $query = "SELECT * FROM cliente WHERE nome like '%$identificacao_cliente%'";
-                        $result = mysqli_query($con, $query) or die(mysqli_error($con));
-                    }
-
-                    while ($linha = mysqli_fetch_assoc($result)) {
+                if ($qt_resultados > 0) {
+                    while ($linha = mysqli_fetch_assoc($lista_dados)) {
                         echo "<p class='estilo_padrao'>Código: ".$linha['cod']."<br>";
                         echo "Nome: ".$linha['nome']."<br>";
                         echo "Endereço: ".$linha['endereco']."<br>";
@@ -59,6 +47,37 @@
                         echo "E-mail: ".$linha['email']."<br>";
                         echo "CPF: ".$linha['cpf']."<br>";
                         echo "Estado: ".$linha['estado']."<p/><hr>";
+                    }
+                }
+                else {
+                    echo "<p style='color: rgb(210, 31, 60); font-size: 30px; font-weight: bold;'>Cliente(s) não encontrado(s)!</p>";
+                }
+            }
+
+            function pesquisar_cliente($input_cliente, $metodo) {
+                if (isset($_POST['botao_pesquisa'])) {
+                    $metodo_pesquisa = $_POST[$metodo];
+                    $identificacao_cliente = $_POST[$input_cliente];
+                    include_once('conexao.php');
+
+                    if (empty($identificacao_cliente)) {
+                        echo "<p style='color: rgb(218, 165, 32); font-weight: bold; font-size: 30px;'>Por favor, insira um código ou nome para pesquisar um cliente.</p>";
+                    }
+                    elseif (!empty($identificacao_cliente) && $metodo_pesquisa == 'por_codigo' && is_numeric($identificacao_cliente)) {
+                        $query = "SELECT * FROM cliente WHERE cod = $identificacao_cliente";
+                        $result = mysqli_query($con, $query) or die(mysqli_error($con));
+                        mostrar_dados_do_bd($result);
+                    }
+                    elseif (!empty($identificacao_cliente) && $metodo_pesquisa == 'por_codigo' && !is_numeric($identificacao_cliente)) {
+                        echo "<p style='color: rgb(152, 103, 197); font-weight: bold; font-size: 30px;'>Foi digitado um nome ao invés de um código, insira a informação novamente.</p>";
+                    }
+                    elseif (!empty($identificacao_cliente) && $metodo_pesquisa == 'por_nome' && is_numeric($identificacao_cliente)) {
+                        echo "<p style='color: rgb(0, 206, 209); font-weight: bold; font-size: 30px;'>Foi digitado um código ao invés de um nome, insira a informação novamente.</p>";
+                    }
+                    elseif (!empty($identificacao_cliente) && $metodo_pesquisa == 'por_nome' && !is_numeric($identificacao_cliente)) {
+                        $query = "SELECT * FROM cliente WHERE nome like '%$identificacao_cliente%'";
+                        $result = mysqli_query($con, $query) or die(mysqli_error($con));
+                        mostrar_dados_do_bd($result);
                     }
                 }
             }
