@@ -35,6 +35,7 @@
         <?php
             function mostrar_dados_do_bd($lista_dados) {
                 $qt_resultados = mysqli_num_rows($lista_dados);
+                $metodo_pesquisa = $_POST['metodo_pesquisa_cliente'];
 
                 if ($qt_resultados > 0) {
                     while ($linha = mysqli_fetch_assoc($lista_dados)) {
@@ -46,10 +47,13 @@
                         echo "Cidade: ".$linha['cidade']."<br>";
                         echo "E-mail: ".$linha['email']."<br>";
                         echo "CPF: ".$linha['cpf']."<br>";
-                        echo "Estado: ".$linha['estado']."<p/><hr>";
+                        echo "Estado: ".$linha['estado']."</p><hr>";
                     }
                 }
-                else {
+                elseif ($metodo_pesquisa == 'por_codigo') {
+                    echo "<p style='color: rgb(210, 31, 60); font-size: 30px; font-weight: bold;'>Cliente não encontrado!</p>";
+                }
+                elseif ($metodo_pesquisa == 'por_nome') {
                     echo "<p style='color: rgb(210, 31, 60); font-size: 30px; font-weight: bold;'>Cliente(s) não encontrado(s)!</p>";
                 }
             }
