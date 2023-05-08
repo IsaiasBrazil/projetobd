@@ -26,6 +26,7 @@
                         <option value="por_codigo">Por código</option>
                         <option value="por_nome">Por nome</option>
                         <option value="por_categoria_cod">Por categoria (código)</option>
+                        <option value="por_categoria_desc">Por categoria (descrição)</option>
                     </select>
                     <input type="text" name="produto" id="produto" class="estilo_padrao">
                     <button name="botao_pesquisa" class="estilo_padrao">Pesquisar</button>
@@ -56,6 +57,9 @@
                 }
                 elseif ($metodo_pesquisa == 'por_categoria_cod') {
                     echo "<p style='color: rgb(210, 31, 60); font-size: 30px; font-weight: bold;'>Produto não encontrado!</p>";
+                }
+                elseif ($metodo_pesquisa == 'por_categoria_desc') {
+                    echo "<p style='color: rgb(210, 31, 60); font-size: 30px; font-weight: bold;'>Produto(s) não encontrado(s)!</p>";
                 }
             }
 
@@ -91,6 +95,14 @@
                     }
                     elseif (!empty($identificacao_produto) && $metodo_pesquisa == 'por_categoria_cod' && !is_numeric($identificacao_produto)) {
                         echo "<p style='color: rgb(176, 101, 0); font-weight: bold; font-size: 30px;'>Foi digitado um nome ao invés de um código de categoria, insira a informação novamente.</p>";
+                    }
+                    elseif (!empty($identificacao_produto) && $metodo_pesquisa == 'por_categoria_desc' && is_numeric($identificacao_produto)) {
+                        echo "<p style='color: rgb(255, 0, 127); font-weight: bold; font-size: 30px;'>Foi digitado um código de categoria ao invés de uma descrição, insira a informação novamente.</p>";
+                    }
+                    elseif (!empty($identificacao_produto) && $metodo_pesquisa == 'por_categoria_desc' && !is_numeric($identificacao_produto)) {
+                        $query = "SELECT p.cod, p.nome, p.preco, p.qtd_estoque, p.unidade_medida, p.fk_categoria_id FROM produto p INNER JOIN categoria c WHERE p.fk_categoria_id = c.cod AND c.descricao like '%$identificacao_produto%'";
+                        $result = mysqli_query($con, $query) or die(mysqli_error($con));
+                        mostrar_dados_do_bd($result);
                     }
                 }
             }
