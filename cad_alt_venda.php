@@ -77,7 +77,7 @@ if (!isset($_SESSION['itens_venda'])) {
                         </p>
                     </td>
 
-                    <td id="selecao" style="background-color: lightstellblue;" rowspan="7">
+                    
                         <?php
                         function pesquisar($botao, $nome_tabela, $metodo)
                         {
@@ -93,7 +93,7 @@ if (!isset($_SESSION['itens_venda'])) {
                                     include_once("pesquisa.php");
                                     $codigo = grid($result, strtoupper("$nome_tabela"));
                                 } elseif ($metodo_pesquisa == 'por_codigo') {
-                                    $query = "SELECT cod,nome FROM $nome_tabela WHERE cod like '%$dadodigitado%'";
+                                    $query = "SELECT cod,nome FROM $nome_tabela WHERE cod = $dadodigitado";
                                     $result = mysqli_query($con, $query);
                                     include_once("pesquisa.php");
                                     $codigo = grid($result, strtoupper("$nome_tabela"));
@@ -106,7 +106,7 @@ if (!isset($_SESSION['itens_venda'])) {
                         pesquisar('botao_pesquisa_vendedor', 'vendedor', 'metodo_pesquisa_vendedor');
                         pesquisar('botao_pesquisa_produto', 'produto', 'metodo_pesquisa_produto');
                         ?>
-                    </td>
+                
                 </tr>
 
                 <!-- Código relativo a parte do cliente -->
@@ -239,17 +239,15 @@ if (!isset($_SESSION['itens_venda'])) {
                 
                 <tr>
                     <td>
-                        <label>Qtd:</label>
+                        <label>Tipo:</label>
                     </td>
-                    <td></td>
+                    
                     <td>
-                        <label>Selecione o produto</label>
+                        <label>Selecione o produto:</label>
                     </td>
                 </tr>
                 <tr>
-                <td>
-                        <input type="number" id="qtd" name="qtd" onchange="this.style.width=(qtd.value.toString().length*10+20).toString()+'px';" value="<?= isset($_SESSION['qtd'])?$_SESSION['qtd']:"0"?>" min="1"></input>
-                    </td>
+               
 
 
                 
