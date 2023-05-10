@@ -41,6 +41,22 @@ if (isset($_GET['cod'])) {
 <head>
     <meta charset="UTF-8">
     <title> <?= $tipo ?> de clientes </title>
+    <script>
+        function mascara_telefone(elem) {
+            if (!elem.value) return elem.value = "";
+            elem.value = elem.value.replace(/\D/g,'')
+            elem.value = elem.value.replace(/(\d{2})(\d)/,"($1)$2")
+            elem.value = elem.value.replace(/(\d)(\d{4})$/,"$1-$2")
+        }
+        
+        function mascara_cpf(elem) {
+            if (!elem.value) return elem.value = "";
+            elem.value = elem.value.replace(/\D/g,'')
+            elem.value = elem.value.replace(/(\d{3})(\d)/, "$1.$2")
+            elem.value = elem.value.replace(/(\d{3})(\d)/, "$1.$2")
+            elem.value = elem.value.replace(/(\d{3})(\d{1,2})$/, "$1-$2")
+           }   
+    </script>
 </head>
 
 <body>
@@ -66,17 +82,12 @@ if (isset($_GET['cod'])) {
                     }
                     ?>
                     <form action='<?= $action ?>' method="POST">
-                        <p style="margin-top:10px;"> Nome:<input style="border-width: 3px;margin-left: 21px;"
-                                type="text" value='<?=$nome?>' name="nome" id="nome" size="80" maxlength="100" required>
+                        <p style="margin-top:10px;"> Nome:<input style="border-width: 3px;margin-left: 21px;" type="text" value='<?=$nome?>' name="nome" id="nome" size="80" maxlength="100" required>
                         </p>
-                        <P> CPF:<input value='<?=$cpf?>' style="border-width: 3px; margin-left: 32px;" type="text" name="cpf" size="14"
-                                maxlength="14" required></P>
-                        <P> Telefone:<input value='<?=$telefone?>' style="border-width: 3px;margin-left: 5px;" type="text" name="telefone"
-                                size="14" maxlength="14" required></P>
-                        <P> Email:<input value='<?=$email?>' style="border-width: 3px;margin-left: 23px;" type="email" name="email"
-                                size="14" maxlength="100" required></P>
-                        <P> Limite:<input value='<?=$limite?>' style="border-width: 3px;margin-left: 19px;" type="text" placeholder="0.00"
-                                name="limite" size="14" required></P>
+                        <P> CPF:<input value='<?=$cpf?>' style="border-width: 3px; margin-left: 32px;" type="text" name="cpf" size="14" minlength="14" maxlength="14" placeholder="xxx.xxx.xxx-xx" onkeyup="mascara_cpf(this)" required></P>
+                        <P> Telefone:<input value='<?=$telefone?>' onkeyup="mascara_telefone(this)" style="border-width: 3px;margin-left: 5px;" type="tel" name="telefone" size="14" minlength="14" maxlength="14" placeholder="(xx)xxxxx-xxxx" required></P>
+                        <P> Email:<input value='<?=$email?>' style="border-width: 3px;margin-left: 23px;" type="email" name="email" size="14" maxlength="100" required></P>
+                        <P> Limite:<input value='<?=$limite?>' style="border-width: 3px;margin-left: 19px;" type="text" placeholder="R$ 0.00" name="limite" size="14" required></P>
                         Estado:
                         <select style="border-width: 3px;margin-left: 14px;" name="estado" id="estado">
                             <?php
@@ -98,7 +109,6 @@ if (isset($_GET['cod'])) {
                     </form>
                 </td>
             </tr>
-      
         </tbody>
 </body>
 </html>
