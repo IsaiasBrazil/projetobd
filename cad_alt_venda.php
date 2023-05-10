@@ -246,11 +246,7 @@ if (!isset($_SESSION['itens_venda'])) {
                         <label>Selecione o produto:</label>
                     </td>
                 </tr>
-                <tr>
-               
-
-
-                
+                <tr>         
                 <td>
                         <select name="metodo_pesquisa_produto">
                             <option value="por_nome">Por nome</option>

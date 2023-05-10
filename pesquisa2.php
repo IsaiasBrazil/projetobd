@@ -1,22 +1,21 @@
 <?php
+include_once("Model/item_venda.php");
 if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
 }
+
 function grid($result, $tipo)
 {
     $fields = mysqli_fetch_fields($result);
     global $cod;
     global $nome;
-    $tamanho = mysqli_num_rows($result);
     ?>
-    <td id="selecao" style="background-color: lightstellblue;" rowspan='15'>
     <p>
     <h2>
         LISTA DE
         <?= $tipo ?>
     </h2>
     </p>
-    <div style="overflow: auto; height: 300px;width = 100%" >
     <table border="3px">
         <tr>
             <?php
@@ -26,7 +25,6 @@ function grid($result, $tipo)
                     <?php echo $field->name; ?>
                 </th>
                 <?php
-            
             }
             if ($tipo == 'PRODUTO') { ?>
                 <th>
@@ -34,23 +32,17 @@ function grid($result, $tipo)
                 </th>
                 <?php
             }
-            
             ?>
-
             <th>
                 <?php echo "opções"; ?>
             </th>
         </tr>
         <?php
-        $tamanho = -2;
         while ($row = mysqli_fetch_assoc($result)) {
-            $tamanho++;
             ?>
-            <tr rowspan=<?=$tamanho ?> >
+            <tr>
                 <?php
                 foreach ($fields as $field) {
-
-                    
                     if ($field->name == "cod") {
 
                         $cod = $row[$field->name];
@@ -77,8 +69,6 @@ function grid($result, $tipo)
                     </td>
                     <?php
                 }
-
-
                 $nomecampo = $field->table;
                 if ($nomecampo == 'cliente') {
                     $cliente = $nome;
@@ -92,23 +82,17 @@ function grid($result, $tipo)
                 }
                 if ($nomecampo == 'produto') {
                     $produto = $nome;
-                    $_SESSION['qtd'] = isset($_GET['qtd'])?$_GET['qtd']:null;
-                    $qtd = $_SESSION['qtd'];
-                    echo "<td><a href=\"cad_alt_venda.php?vendedor=$vendedor&cliente=$cliente&produto=$produto&qtd=$qtd\"\">Selecionar produto</a></td>";
+                    echo "<td><a name='adic_produto' href=\"cad_alt_venda.php?produto=$produto\"\">Selecionar produto</a></td>";
 
                 } else {
-                    $produto = isset($_GET['produto']) ? $_GET['produto'] : "";
-                    echo "<td><a href=\"cad_alt_venda.php?vendedor=$vendedor&cliente=$cliente&produto=$produto\" onclick=\"sumir('" . $nome . "','" . $nomecampo . "');\">Selecionar</a></td>";
+                    echo "<td><a href=\"cad_alt_venda.php\" onclick=\"fecharTela();\">Selecionar</a></td>";
                 }
-                if(isset($_SESSION['cliente'])){
+                if (isset($_SESSION['cliente'])) {
                     unset($_SESSION['cliente']);
                     $_SESSION['cliente'] = $cliente;
                 }
-
-
                 ?>
             </tr>
-
             <?php
         }
         ?>
@@ -118,7 +102,5 @@ function grid($result, $tipo)
         echo "<button style='width:127px;' onclick=\"sumir('" . $nome . "','" . $nomecampo . "');window.location.href='cad_alt_venda.php?vendedor=" . $vendedor . '&' . "cliente=" . $cliente . "';\" >Fechar</button>";
         ?>
     </p>
-    </div>
-    </td>
     <?php return $cod;
 } ?>
