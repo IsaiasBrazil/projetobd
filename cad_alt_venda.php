@@ -78,6 +78,7 @@ if (!isset($_SESSION['itens_venda'])) {
                     </td>
 
                     
+                    
                         <?php
                         function pesquisar($botao, $nome_tabela, $metodo)
                         {
