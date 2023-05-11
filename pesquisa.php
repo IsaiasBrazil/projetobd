@@ -39,7 +39,7 @@ function grid($result, $tipo)
                     ?>
 
                     <th>
-                        <?php echo "opções"; ?>
+9                        <?php echo "opções"; ?>
                     </th>
                 </tr>
                 <?php
@@ -95,6 +95,7 @@ function grid($result, $tipo)
                                     <input type="hidden" name="vendedor" value="<?= $vendedor ?>" />
                                     <input type="hidden" name="cliente" value="<?= $cliente ?>" />
                                     <input type="hidden" name="produto" value="<?= $produto ?>" />
+                                    <script>alert('<?=$produto?>');</script>
                             </td>
                             <td>
                                 <input type='submit' value='Selecionar produto'>
