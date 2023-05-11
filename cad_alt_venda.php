@@ -39,7 +39,7 @@ if (!isset($_SESSION['produto'])) {
 }
 
 if (!isset($_SESSION['qtd'])) {
-    $_SESSION['qtd'] = "1";
+    $_SESSION['qtd'] = $_POST['qtd'];
 }
 
 if (!isset($_SESSION['itens_venda'])) {
@@ -263,9 +263,13 @@ if (!isset($_SESSION['itens_venda'])) {
                     <td>
                         <label id="lblproduto" style="color:red">
                             <?php 
-                                echo isset($_GET['produto']) && ($_GET['produto'] != "") 
-                                ? $_SESSION['qtd']."[".$_GET['produto']."] adicionado!" 
-                                : "";
+                            if( isset($_POST['produto']) && isset($_POST['qtd'])){
+                                $qtd = $_POST['qtd'];
+                                $produto = $_POST['produto'];
+                                echo  $qtd."[".$produto."] adicionado!" ;
+                             }else{
+                                echo "";
+                             }
                             ?>
                         </label>
                     </td>
