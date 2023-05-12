@@ -263,9 +263,9 @@ if (!isset($_SESSION['itens_venda'])) {
                     <td>
                         <label id="lblproduto" style="color:red">
                             <?php 
-                            if( isset($_POST['produto']) && isset($_POST['qtd'])){
+                            if( isset($_POST['prod']) && isset($_POST['qtd'])){
                                 $qtd = $_POST['qtd'];
-                                $produto = $_POST['produto'];
+                                $produto = $_POST['prod'];
                                 echo  $qtd."[".$produto."] adicionado!" ;
                              }else{
                                 echo "";

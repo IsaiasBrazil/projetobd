@@ -84,7 +84,7 @@ function grid($result, $tipo)
                         }
 
                         if ($nomecampo == 'produto') {
-                            $produto = $nome;
+                            $prod = $nome;
                         }
 
                         if($tipo=='PRODUTO'){
@@ -94,8 +94,8 @@ function grid($result, $tipo)
                                     <input type="number" id="qtd" name="qtd" value="1" min="1">
                                     <input type="hidden" name="vendedor" value="<?= $vendedor ?>" />
                                     <input type="hidden" name="cliente" value="<?= $cliente ?>" />
-                                    <input type="hidden" name="produto" value="<?= $produto ?>" />
-                                    <script>alert('<?=$produto?>');</script>
+                                    <input type="hidden" name="prod" value="<?= $prod?>" />
+                                    <!-- <script>alert('<?=$prod?>');</script> -->
                             </td>
                             <td>
                                 <input type='submit' value='Selecionar produto'>
@@ -105,8 +105,8 @@ function grid($result, $tipo)
                         } else {
                             echo "<script>alert('caiu no else linha 112');</script>";
                             
-                            $produto = isset($_GET['produto']) ? $_GET['produto'] : "";
-                            echo "<td><a href=\"cad_alt_venda.php?vendedor=$vendedor&cliente=$cliente&produto=$produto\" onclick=\"sumir('" . $nome . "','" . $nomecampo . "');\">Selecionar</a></td>";
+                            $prod = isset($_GET['produto']) ? $_GET['produto'] : "";
+                            echo "<td><a href=\"cad_alt_venda.php?vendedor=$vendedor&cliente=$cliente&produto=$prod\" onclick=\"sumir('" . $nome . "','" . $nomecampo . "');\">Selecionar</a></td>";
                         }
                         if (isset($_SESSION['cliente'])) {
                             unset($_SESSION['cliente']);
