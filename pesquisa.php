@@ -103,7 +103,7 @@ function grid($result, $tipo)
                             </form>
                             <?php
                         } else {
-                            echo "<script>alert('caiu no else linha 112');</script>";
+                          
                             
                             $prod = isset($_GET['produto']) ? $_GET['produto'] : "";
                             echo "<td><a href=\"cad_alt_venda.php?vendedor=$vendedor&cliente=$cliente&produto=$prod\" onclick=\"sumir('" . $nome . "','" . $nomecampo . "');\">Selecionar</a></td>";

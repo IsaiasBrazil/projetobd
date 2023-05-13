@@ -80,7 +80,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 
 
     <div id="divtela"
-        style="background-color:yellow; position:relative; z-index: -1;margin-top: -75px;width:100%; height:500px;">
+        style="background-color:yellow; position:relative; z-index: -1;margin-top: -75px;width:100%; height:800px;">
         <iframe name="tela" id="tela" scrolling="auto" frameborder="0" width="100%" height="100%" allowfullscreen>
             Conteudo
         </iframe>
