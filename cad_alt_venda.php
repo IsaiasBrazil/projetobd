@@ -222,7 +222,7 @@ if (!isset($_SESSION['qtd'])) {
                 <tr>
                     <td>Prazo de entrega:</td>
                     <td colspan="2">
-                        <input style="width:80%" id="prazo_entrega" type="text"
+                        <input style="width:97%" id="prazo_entrega" type="text"
                             placeholder="Exemplo: Entregar em x dias...">
                         </input>
                     </td>
@@ -238,7 +238,7 @@ if (!isset($_SESSION['qtd'])) {
                         <label>Tipo:</label>
                     </td>
 
-                    <td>
+                    <td colspan="2">
                         <label>Selecione o produto:</label>
                     </td>
                 </tr>
@@ -251,72 +251,79 @@ if (!isset($_SESSION['qtd'])) {
                     </td>
                     <td>
                         <input type="text" name="produto" id="produto">
+                    </td>
+                    <td>
                         <button name="botao_pesquisa_produto">Pesquisar</button>
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td colspan="3">
                         <label id="lblproduto" style="color:red">
                             <?php
-                            if (isset($_POST['prod']) && isset($_POST['qtd'])&&isset($_POST['prod_codigo'])) {
+                            if (isset($_POST['prod']) && isset($_POST['qtd']) && isset($_POST['prod_codigo'])) {
                                 $qtd = $_POST['qtd'];
                                 $produto = $_POST['prod'];
                                 $codigo = $_POST['prod_codigo'];
                                 echo $qtd . " [" . $produto . "] adicionado!";
                             } else {
-                                echo "";
+                                echo "&nbsp;";
                             }
                             ?>
                         </label>
                     </td>
                 </tr>
-
                 <tr>
                     <td colspan="3">
                         <div id="scroll_produtos" style="height:200px; overflow:auto;width:100%">
-
-                            <table style="background-color:white;width:100%">
+                            <table style="background-color:white;">
                                 <thead>
-                                    <th colspan="3">
-                                        Lista de produtos
-                                    </th>
-                                    <th></th>
+                                    <tr style="background-color:black;color:white;">
+                                        <th colspan="3">
+                                            LISTA DE PRODUTOS
+                                        </th>
+                                    </tr>
+                                    <tr>
 
+                                    </tr>
+                                    <tr style="background-color:lightgrey;">
+                                        <th>Descrição: </th>
+                                        <th>Quantidade: </th>
+                                        <th>Cod produto: </th>
+                                    </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td>Descrição: </td>
-                                        <td >Quantidade: </td>
-                                        
-                                        <td >Cod produto: </td>
-                                    </tr>
-                                    <?php
 
-                                    if (isset($codigo) && isset($produto) && isset($qtd)) {
-                                        if (!isset($_SESSION['itens_venda'])) {
-                                            $_SESSION['itens_venda'] = array();
+                                        <?php
+
+                                        if (isset($codigo) && isset($produto) && isset($qtd)) {
+                                            if (!isset($_SESSION['itens_venda'])) {
+                                                $_SESSION['itens_venda'] = array();
+                                            }
+                                            $itemvenda = array($produto, intval($qtd), intval($codigo));
+                                            $temp = $_SESSION['itens_venda'];
+                                            $encontrado = false;
+                                            foreach ($temp as $key => $prod) {
+                                                if ($prod[2] == $codigo) {
+                                                    $_SESSION['itens_venda'][$key][1] = intval($qtd) + $_SESSION['itens_venda'][$key][1];
+                                                    $encontrado = true;
+                                                    break;
+                                                }
+                                            }
+                                            if (!$encontrado)
+                                                array_push($_SESSION['itens_venda'], $itemvenda);
                                         }
-                                        $itemvenda = array($produto, intval($qtd),intval($codigo));
-                                        $temp = $_SESSION['itens_venda'];
-                                        $encontrado = false;
-                                        foreach ($temp as $key => $prod) {
-                                            if ($prod[2] == $codigo) {
-                                                $_SESSION['itens_venda'][$key][1] = intval($qtd) + $_SESSION['itens_venda'][$key][1];
-                                                $encontrado = true;
-                                                break;
+                                        if (isset($_SESSION['itens_venda'])) {
+                                            $color = "yellow";
+                                            foreach ($_SESSION['itens_venda'] as $item) {
+                                                $color = $color == "yellow" ? "lightgreen" : "yellow";
+                                                echo "<tr style=\"background-color:$color\">";
+                                                echo '<td>' . $item[0] . '</td>' . '<td>' . $item[1] . '</td>' . '<td>' . $item[2] . '</td>';
+                                                echo '</tr>';
                                             }
                                         }
-                                        if (!$encontrado)
-                                            array_push($_SESSION['itens_venda'], $itemvenda);
-                                    }
-                                    if (isset($_SESSION['itens_venda'])) {
-                                        foreach ($_SESSION['itens_venda'] as $item) {
-                                            echo '<tr>';
-                                            echo '<td>' . $item[0] . '</td>' . '<td>' . $item[1] . '</td>'. '<td>' . $item[2] . '</td>';
-                                            echo '</tr>';
-                                        }
-                                    }
-                                    ?>
+                                        ?>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -327,11 +334,11 @@ if (!isset($_SESSION['qtd'])) {
                 </tr>
             </tbody>
 
-            
+
         </table>
 
         <form action="logout.php">
-                <input type="submit" value="limpar tudo" id="botaoLimpar" style="margin-left: 25%;">
+            <input type="submit" value="limpar tudo" id="botaoLimpar" style="margin-left: 25%;">
         </form>
 
 
