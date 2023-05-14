@@ -275,7 +275,7 @@ if (!isset($_SESSION['qtd'])) {
                 <tr>
                     <td colspan="3">
                         <div id="scroll_produtos" style="height:200px; overflow:auto;width:100%">
-                            <table style="background-color:white;">
+                            <table id="tabela_produtos" style="background-color:white;">
                                 <thead>
                                     <tr style="background-color:black;color:white;">
                                         <th colspan="3">
@@ -328,7 +328,10 @@ if (!isset($_SESSION['qtd'])) {
                             </table>
                         </div>
                         <script>
-                            document.getElementById('scroll_produtos').scrollTop = 999;
+                            const scrollProdutos = document.getElementById('scroll_produtos');
+                            max = scrollProdutos.scrollHeight;
+                            alert(max);
+                            scrollProdutos.scrollTop = max;
                         </script>
                     </td>
                 </tr>
@@ -340,8 +343,6 @@ if (!isset($_SESSION['qtd'])) {
         <form action="logout.php">
             <input type="submit" value="limpar tudo" id="botaoLimpar" style="margin-left: 25%;">
         </form>
-
-
 
 </body>
 
