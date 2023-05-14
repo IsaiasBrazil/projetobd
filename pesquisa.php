@@ -91,11 +91,11 @@ function grid($result, $tipo)
                             ?>
                             <td>
                                 <form method="POST">
-                                    <input type="number" id="qtd" name="qtd" value="1" min="1">
+                                    <input type="number" id="qtd" name="qtd" value="1" min="1" onchange="verificaDisponibilidade(this);">
                                     <input type="hidden" name="vendedor" value="<?= $vendedor ?>" />
                                     <input type="hidden" name="cliente" value="<?= $cliente ?>" />
                                     <input type="hidden" name="prod" value="<?= $prod?>" />
-                                    <!-- <script>alert('<?=$prod?>');</script> -->
+                                    <input type="hidden" name="prod_codigo" value="<?=$cod?>" />
                             </td>
                             <td>
                                 <input type='submit' value='Selecionar produto'>

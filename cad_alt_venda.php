@@ -8,13 +8,13 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 
 $tipo = "Cadastro";
 $action = "inc_venda.php";
-$cod = "";
+//$cod = "";
 $data = "";
 $prazo_entrega = "";
 $cond_pagto = "";
 $cod_cliente;
 $cod_vendedor;
-$cod;
+$codigo;
 $produto;
 $qtd;
 
@@ -84,6 +84,7 @@ if (!isset($_SESSION['qtd'])) {
                     function pesquisar($botao, $nome_tabela, $metodo)
                     {
                         if (isset($_POST[$botao])) {
+                            global $codigo;
                             $dadodigitado = $_POST[$nome_tabela];
                             $metodo_pesquisa = $_POST[$metodo];
                             include_once('conexao.php');
@@ -98,6 +99,7 @@ if (!isset($_SESSION['qtd'])) {
                                 include_once("pesquisa.php");
                                 $codigo = grid($result, strtoupper("$nome_tabela"));
                             }
+                            mysqli_close($con);
 
                         }
 
@@ -256,9 +258,10 @@ if (!isset($_SESSION['qtd'])) {
                     <td>
                         <label id="lblproduto" style="color:red">
                             <?php
-                            if (isset($_POST['prod']) && isset($_POST['qtd'])) {
+                            if (isset($_POST['prod']) && isset($_POST['qtd'])&&isset($_POST['prod_codigo'])) {
                                 $qtd = $_POST['qtd'];
                                 $produto = $_POST['prod'];
+                                $codigo = $_POST['prod_codigo'];
                                 echo $qtd . " [" . $produto . "] adicionado!";
                             } else {
                                 echo "";
@@ -283,19 +286,21 @@ if (!isset($_SESSION['qtd'])) {
                                 <tbody>
                                     <tr>
                                         <td>Descrição: </td>
-                                        <td colspan="2">Quantidade: </td>
+                                        <td >Quantidade: </td>
+                                        
+                                        <td >Cod produto: </td>
                                     </tr>
                                     <?php
 
-                                    if (isset($cod) && isset($produto) && isset($qtd)) {
+                                    if (isset($codigo) && isset($produto) && isset($qtd)) {
                                         if (!isset($_SESSION['itens_venda'])) {
                                             $_SESSION['itens_venda'] = array();
                                         }
-                                        $itemvenda = array($produto, intval($qtd));
+                                        $itemvenda = array($produto, intval($qtd),intval($codigo));
                                         $temp = $_SESSION['itens_venda'];
                                         $encontrado = false;
                                         foreach ($temp as $key => $prod) {
-                                            if ($prod[0] == $produto) {
+                                            if ($prod[2] == $codigo) {
                                                 $_SESSION['itens_venda'][$key][1] = intval($qtd) + $_SESSION['itens_venda'][$key][1];
                                                 $encontrado = true;
                                                 break;
@@ -307,7 +312,7 @@ if (!isset($_SESSION['qtd'])) {
                                     if (isset($_SESSION['itens_venda'])) {
                                         foreach ($_SESSION['itens_venda'] as $item) {
                                             echo '<tr>';
-                                            echo '<td>' . $item[0] . '</td>' . '<td>' . $item[1] . '</td>';
+                                            echo '<td>' . $item[0] . '</td>' . '<td>' . $item[1] . '</td>'. '<td>' . $item[2] . '</td>';
                                             echo '</tr>';
                                         }
                                     }
