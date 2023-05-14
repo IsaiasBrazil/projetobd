@@ -273,9 +273,9 @@ if (!isset($_SESSION['qtd'])) {
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="3">
-                        <div id="scroll_produtos" style="height:200px; overflow:auto;width:100%">
-                            <table id="tabela_produtos" style="background-color:white;">
+                    <td style="width: auto;" colspan="3">
+                        <div id="scroll_produtos" style="overflow:auto;height:300px" >
+                            <table width="auto" id="tabela_produtos" style="background-color:white;">
                                 <thead>
                                     <tr style="background-color:black;color:white;">
                                         <th colspan="3">
@@ -283,7 +283,7 @@ if (!isset($_SESSION['qtd'])) {
                                         </th>
                                     </tr>
                                     <tr>
-
+                                        <td colspan="3"></td>
                                     </tr>
                                     <tr style="background-color:lightgrey;">
                                         <th>Descrição: </th>
@@ -334,14 +334,19 @@ if (!isset($_SESSION['qtd'])) {
                         </script>
                     </td>
                 </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <form action="logout.php">
+                            <input type="submit" value="limpar tudo" id="botaoLimpar">
+                        </form>
+                    </td>
+                </tr>
             </tbody>
 
 
         </table>
-
-        <form action="logout.php">
-            <input type="submit" value="limpar tudo" id="botaoLimpar" style="margin-left: 25%;">
-        </form>
 
 </body>
 
