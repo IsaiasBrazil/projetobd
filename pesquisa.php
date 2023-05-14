@@ -10,15 +10,26 @@ function grid($result, $tipo)
     global $qtd;
     $tamanho = mysqli_num_rows($result);
     ?>
-    <td id="selecao" style="background-color: lightstellblue;" rowspan='15'>
-        <p>
-        <h2>
-            LISTA DE
-            <?= $tipo ?>
-        </h2>
-        </p>
-        <div style="overflow: auto; height: 300px;width = 100%">
-            <table border="3px">
+    <style>
+        .tabela_branca {
+            border-collapse: collapse;
+
+        }
+
+        .tabela_branca td,
+        th {
+            border: 3px solid grey;
+            background-color: lightstellblue;
+            //border-collapse: collapse;
+        }
+    </style>
+    <td id="selecao" rowspan='15' width="500px">
+        <div style="overflow-y: auto; background-color: lightstellblue;height: 500px;width: 100%;">
+            <h2 style="text-align: center;">
+                SELEÇÃO DE
+                <?= $tipo ?>
+            </h2>
+            <table class="tabela_branca">
                 <tr>
                     <?php
                     foreach ($fields as $field) {
@@ -39,7 +50,8 @@ function grid($result, $tipo)
                     ?>
 
                     <th>
-9                        <?php echo "opções"; ?>
+                        9
+                        <?php echo "opções"; ?>
                     </th>
                 </tr>
                 <?php
@@ -71,9 +83,9 @@ function grid($result, $tipo)
                         $nomecampo = $field->table;
                         if ($nomecampo == 'cliente') {
                             $cliente = $nome;
-                        
+
                         } else {
-                       
+
                             $cliente = isset($_GET['cliente']) ? $_GET['cliente'] : "";
                         }
 
@@ -87,15 +99,16 @@ function grid($result, $tipo)
                             $prod = $nome;
                         }
 
-                        if($tipo=='PRODUTO'){
+                        if ($tipo == 'PRODUTO') {
                             ?>
                             <td>
                                 <form method="POST">
-                                    <input type="number" id="qtd" name="qtd" value="1" min="1" onchange="verificaDisponibilidade(this);">
+                                    <input type="number" id="qtd" name="qtd" value="1" min="1"
+                                        onchange="verificaDisponibilidade(this);">
                                     <input type="hidden" name="vendedor" value="<?= $vendedor ?>" />
                                     <input type="hidden" name="cliente" value="<?= $cliente ?>" />
-                                    <input type="hidden" name="prod" value="<?= $prod?>" />
-                                    <input type="hidden" name="prod_codigo" value="<?=$cod?>" />
+                                    <input type="hidden" name="prod" value="<?= $prod ?>" />
+                                    <input type="hidden" name="prod_codigo" value="<?= $cod ?>" />
                             </td>
                             <td>
                                 <input type='submit' value='Selecionar produto'>
@@ -103,8 +116,8 @@ function grid($result, $tipo)
                             </form>
                             <?php
                         } else {
-                          
-                            
+
+
                             $prod = isset($_GET['produto']) ? $_GET['produto'] : "";
                             echo "<td><a href=\"cad_alt_venda.php?vendedor=$vendedor&cliente=$cliente&produto=$prod\" onclick=\"sumir('" . $nome . "','" . $nomecampo . "');\">Selecionar</a></td>";
                         }
@@ -126,6 +139,7 @@ function grid($result, $tipo)
                 echo "<button style='width:127px;' onclick=\"sumir('" . $nome . "','" . $nomecampo . "');window.location.href='cad_alt_venda.php?vendedor=" . $vendedor . '&' . "cliente=" . $cliente . "';\" >Fechar</button>";
                 ?>
             </p>
+
         </div>
     </td>
     <?php return $cod;

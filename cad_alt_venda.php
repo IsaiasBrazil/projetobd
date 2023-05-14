@@ -73,13 +73,13 @@ if (!isset($_SESSION['qtd'])) {
         <table id="tabela" style="background-color: lightsteelblue; border:1px solid black">
             <tbody>
                 <tr>
-                    <td colspan="3" style="border:1px solid black">
-                        <p>
+                    <th colspan="4" style="border:1px solid black">
+                        <!-- <p> -->
                         <h1>
                             <?= $tipo ?> de vendas
                         </h1>
-                        </p>
-                    </td>
+                        <!-- </p>-->
+                    </th>
                     <?php
                     function pesquisar($botao, $nome_tabela, $metodo)
                     {
@@ -330,7 +330,6 @@ if (!isset($_SESSION['qtd'])) {
                         <script>
                             const scrollProdutos = document.getElementById('scroll_produtos');
                             max = scrollProdutos.scrollHeight;
-                            alert(max);
                             scrollProdutos.scrollTop = max;
                         </script>
                     </td>
