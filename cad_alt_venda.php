@@ -257,16 +257,20 @@ if (!isset($_SESSION['qtd'])) {
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="3">
+                    <td id="mensa" colspan="3">
                         <label id="lblproduto" style="color:red">
-                            <?php
-                            if (isset($_POST['prod']) && isset($_POST['qtd']) && isset($_POST['prod_codigo'])) {
+                            <?php   
+                           if(isset($_POST['prod']) && isset($_POST['qtd']) && isset($_POST['prod_codigo'])) {
                                 $qtd = $_POST['qtd'];
                                 $produto = $_POST['prod'];
                                 $codigo = $_POST['prod_codigo'];
-                                echo $qtd . " [" . $produto . "] adicionado!";
-                            } else {
-                                echo "&nbsp;";
+                                $mensa = $qtd . " [" . $produto . "] adicionado!";
+                                echo "$mensa";
+                                echo "<script>document.getElementById('mensa').innerHTML='$mensa';</script>";
+                            } elseif (isset($_GET['mensa'])) {
+                                $mensa = $_GET['mensa']." excluído!";
+                                echo "<script>document.getElementById('mensa').innerHTML='$mensa';</script>";
+                                unset($_GET['mensa']);
                             }
                             ?>
                         </label>
@@ -274,7 +278,7 @@ if (!isset($_SESSION['qtd'])) {
                 </tr>
                 <tr>
                     <td style="width: auto;" colspan="3">
-                        <div id="scroll_produtos" style="overflow:auto;height:300px" >
+                        <div id="scroll_produtos" style="overflow:auto;height:300px">
                             <table width="auto" id="tabela_produtos" style="background-color:white;">
                                 <thead>
                                     <tr style="background-color:black;color:white;">
@@ -315,10 +319,11 @@ if (!isset($_SESSION['qtd'])) {
                                         }
                                         if (isset($_SESSION['itens_venda'])) {
                                             $color = "yellow";
-                                            foreach ($_SESSION['itens_venda'] as $item) {
+                                            foreach ($_SESSION['itens_venda'] as $key => &$item) {
                                                 $color = $color == "yellow" ? "lightgreen" : "yellow";
                                                 echo "<tr style=\"background-color:$color\">";
                                                 echo '<td>' . $item[0] . '</td>' . '<td>' . $item[1] . '</td>' . '<td>' . $item[2] . '</td>';
+                                                echo "<td><a href='del_produto_venda.php?key=$key' target='tela'>excluir</a></td>";
                                                 echo '</tr>';
                                             }
                                         }
