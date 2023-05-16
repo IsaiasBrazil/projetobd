@@ -2,9 +2,7 @@
 if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
 }
-
-$mensa = $_SESSION['itens_venda'][$_GET['key']][0];
-//echo "<script>alert('$mensa');</script>";
+$_SESSION['mensa']=$_SESSION['itens_venda'][$_GET['key']][0];
 unset($_SESSION['itens_venda'][$_GET['key']]);
-header("Location:cad_alt_venda.php?mensa=".$mensa);
+header("Location:cad_alt_venda.php");
 ?>

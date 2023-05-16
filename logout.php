@@ -1,6 +1,10 @@
 <?php
-session_start();
+if (session_status() !== PHP_SESSION_ACTIVE) {
+    session_start();
+}
+unset($_SESSION['itens_venda']);
 session_destroy();
-header('Location: ' . $_SERVER['HTTP_REFERER']);
-exit;
+session_start();
+header('Location: cad_alt_venda.php');
+//. $_SERVER['HTTP_REFERER']
 ?>

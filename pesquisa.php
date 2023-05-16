@@ -23,8 +23,8 @@ function grid($result, $tipo)
             //border-collapse: collapse;
         }
     </style>
-    <td id="selecao" rowspan='15' width="500px">
-        <div style="overflow-y: auto; background-color: lightstellblue;height: 500px;width: 100%;">
+    <th id="selecao" rowspan='15' width="500px">
+        <div style="overflow-y: auto; background-color: lightstellblue;height: 500px;width: 100%;margin:0">
             <h2 style="text-align: center;">
                 SELEÇÃO DE
                 <?= $tipo ?>
@@ -50,7 +50,6 @@ function grid($result, $tipo)
                     ?>
 
                     <th>
-                        9
                         <?php echo "opções"; ?>
                     </th>
                 </tr>
@@ -102,7 +101,7 @@ function grid($result, $tipo)
                         if ($tipo == 'PRODUTO') {
                             ?>
                             <td>
-                                <form method="POST">
+                                <form method="POST" action="#">
                                     <input type="number" id="qtd" name="qtd" value="1" min="1"
                                         onchange="verificaDisponibilidade(this);">
                                     <input type="hidden" name="vendedor" value="<?= $vendedor ?>" />
@@ -116,8 +115,6 @@ function grid($result, $tipo)
                             </form>
                             <?php
                         } else {
-
-
                             $prod = isset($_GET['produto']) ? $_GET['produto'] : "";
                             echo "<td><a href=\"cad_alt_venda.php?vendedor=$vendedor&cliente=$cliente&produto=$prod\" onclick=\"sumir('" . $nome . "','" . $nomecampo . "');\">Selecionar</a></td>";
                         }
@@ -127,9 +124,12 @@ function grid($result, $tipo)
                         }
 
 
+                        if (isset($_SESSION['mensa'])) {
+                            unset($_SESSION['mensa']);
+                        }
+
                         ?>
                     </tr>
-
                     <?php
                 }
                 ?>
@@ -141,6 +141,6 @@ function grid($result, $tipo)
             </p>
 
         </div>
-    </td>
+    </th>
     <?php return $cod;
 } ?>

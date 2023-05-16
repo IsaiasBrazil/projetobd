@@ -22,7 +22,7 @@ if (isset($_GET['cod'])) {
     $cod = $_GET['cod'];
     $action = "alt_venda.php?cod=" . $_GET['cod'];
     $tipo = "Alteração";
-    include_once("conexao.php");
+    require_once("conexao.php");
     $query = "SELECT * FROM venda where cod=$cod";
     $result = mysqli_query($con, $query);
     $row = mysqli_fetch_assoc($result);
@@ -61,8 +61,9 @@ if (!isset($_SESSION['qtd'])) {
 
     <script>
         function sumir(nome, tabela) {
-            const s = document.getElementById('selecao');
+            s = document.getElementById('selecao');
             s.style.visibility = 'hidden';
+            s = null;
         }
     </script>
 
@@ -79,35 +80,35 @@ if (!isset($_SESSION['qtd'])) {
                             <?= $tipo ?> de vendas
                         </h1>
                         <!-- </p>-->
-                    </th>
-                    <?php
-                    function pesquisar($botao, $nome_tabela, $metodo)
-                    {
-                        if (isset($_POST[$botao])) {
-                            global $codigo;
-                            $dadodigitado = $_POST[$nome_tabela];
-                            $metodo_pesquisa = $_POST[$metodo];
-                            include_once('conexao.php');
-                            if ($metodo_pesquisa == 'por_nome') {
-                                $query = "SELECT cod,nome FROM $nome_tabela WHERE nome like '%$dadodigitado%'";
-                                $result = mysqli_query($con, $query);
-                                include_once("pesquisa.php");
-                                $codigo = grid($result, strtoupper("$nome_tabela"));
-                            } elseif ($metodo_pesquisa == 'por_codigo') {
-                                $query = "SELECT cod,nome FROM $nome_tabela WHERE cod = $dadodigitado";
-                                $result = mysqli_query($con, $query);
-                                include_once("pesquisa.php");
-                                $codigo = grid($result, strtoupper("$nome_tabela"));
+
+                        <?php
+                        function pesquisar($botao, $nome_tabela, $metodo)
+                        {
+                            if (isset($_POST[$botao])) {
+                                global $codigo;
+                                $dadodigitado = $_POST[$nome_tabela];
+                                $metodo_pesquisa = $_POST[$metodo];
+                                require_once('conexao.php');
+                                if ($metodo_pesquisa == 'por_nome') {
+                                    $query = "SELECT cod,nome FROM $nome_tabela WHERE nome like '%$dadodigitado%'";
+                                    $result = mysqli_query($con, $query);
+                                    require_once("pesquisa.php");
+                                    $codigo = grid($result, strtoupper("$nome_tabela"));
+                                } elseif ($metodo_pesquisa == 'por_codigo') {
+                                    $query = "SELECT cod,nome FROM $nome_tabela WHERE cod = $dadodigitado";
+                                    $result = mysqli_query($con, $query);
+                                    require_once("pesquisa.php");
+                                    $codigo = grid($result, strtoupper("$nome_tabela"));
+                                }
+                                mysqli_close($con);
                             }
-                            mysqli_close($con);
 
                         }
-
-                    }
-                    pesquisar('botao_pesquisa_cliente', 'cliente', 'metodo_pesquisa_cliente');
-                    pesquisar('botao_pesquisa_vendedor', 'vendedor', 'metodo_pesquisa_vendedor');
-                    pesquisar('botao_pesquisa_produto', 'produto', 'metodo_pesquisa_produto');
-                    ?>
+                        pesquisar('botao_pesquisa_cliente', 'cliente', 'metodo_pesquisa_cliente');
+                        pesquisar('botao_pesquisa_vendedor', 'vendedor', 'metodo_pesquisa_vendedor');
+                        pesquisar('botao_pesquisa_produto', 'produto', 'metodo_pesquisa_produto');
+                        ?>
+                    </th>
                 </tr>
                 <!-- Código relativo a parte do cliente -->
                 <tr>
@@ -160,13 +161,16 @@ if (!isset($_SESSION['qtd'])) {
                 <tr>
                     <td colspan="3">
                         <label <?php
-                        if (isset($_GET['vendedor']))
-                            if ($_GET['vendedor'] == "")
+                        if (isset($_GET['vendedor'])) {
+                            if ($_GET['vendedor'] == "") {
                                 unset($_GET['vendedor']);
-                        echo (isset($_GET['vendedor'])
-                            ? "style='color: red';"
-                            : "style='color: black';")
-                            ?>>
+                            } else {
+                                echo "style='color: red';";
+                            }
+                        } else {
+                            echo "style='color: black';";
+                        }
+                        ?>>
                             <?=
                                 isset($_GET['vendedor'])
                                 ? $_GET['vendedor'] . " selecionado(a)"
@@ -257,20 +261,27 @@ if (!isset($_SESSION['qtd'])) {
                     </td>
                 </tr>
                 <tr>
-                    <td id="mensa" colspan="3">
+                    <td colspan="3" style="color:red">
                         <label id="lblproduto" style="color:red">
-                            <?php   
-                           if(isset($_POST['prod']) && isset($_POST['qtd']) && isset($_POST['prod_codigo'])) {
+                            <?php
+                            if (isset($_POST['prod']) && isset($_POST['qtd']) && isset($_POST['prod_codigo'])) {
                                 $qtd = $_POST['qtd'];
                                 $produto = $_POST['prod'];
                                 $codigo = $_POST['prod_codigo'];
+                                unset($_POST['qtd']);
+                                unset($_POST['prod']);
+                                unset($_POST['prod_codigo']);
                                 $mensa = $qtd . " [" . $produto . "] adicionado!";
-                                echo "$mensa";
-                                echo "<script>document.getElementById('mensa').innerHTML='$mensa';</script>";
-                            } elseif (isset($_GET['mensa'])) {
-                                $mensa = $_GET['mensa']." excluído!";
-                                echo "<script>document.getElementById('mensa').innerHTML='$mensa';</script>";
+                                echo $mensa;
+                                $mensa = null;
                                 unset($_GET['mensa']);
+                            } elseif (isset($_SESSION['mensa'])) {
+                                $mensa = $_SESSION['mensa'] . " excluído!";
+                                echo $mensa;
+                                unset($_SESSION['mensa']);
+                                $mensa = null;
+                            } else {
+                                echo "&nbsp;";
                             }
                             ?>
                         </label>
@@ -282,7 +293,7 @@ if (!isset($_SESSION['qtd'])) {
                             <table width="auto" id="tabela_produtos" style="background-color:white;">
                                 <thead>
                                     <tr style="background-color:black;color:white;">
-                                        <th colspan="3">
+                                        <th colspan="4">
                                             LISTA DE PRODUTOS
                                         </th>
                                     </tr>
@@ -293,13 +304,13 @@ if (!isset($_SESSION['qtd'])) {
                                         <th>Descrição: </th>
                                         <th>Quantidade: </th>
                                         <th>Cod produto: </th>
+                                        <th>Opção: </th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
 
                                         <?php
-
                                         if (isset($codigo) && isset($produto) && isset($qtd)) {
                                             if (!isset($_SESSION['itens_venda'])) {
                                                 $_SESSION['itens_venda'] = array();
@@ -314,6 +325,7 @@ if (!isset($_SESSION['qtd'])) {
                                                     break;
                                                 }
                                             }
+                                            $temp = null;
                                             if (!$encontrado)
                                                 array_push($_SESSION['itens_venda'], $itemvenda);
                                         }
@@ -326,6 +338,8 @@ if (!isset($_SESSION['qtd'])) {
                                                 echo "<td><a href='del_produto_venda.php?key=$key' target='tela'>excluir</a></td>";
                                                 echo '</tr>';
                                             }
+                                        } else {
+                                            echo "<td>else</td>";
                                         }
                                         ?>
                                     </tr>
@@ -339,20 +353,9 @@ if (!isset($_SESSION['qtd'])) {
                         </script>
                     </td>
                 </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        <form action="logout.php">
-                            <input type="submit" value="limpar tudo" id="botaoLimpar">
-                        </form>
-                    </td>
-                </tr>
+
             </tbody>
-
-
         </table>
-
 </body>
 
 </html>
