@@ -30,7 +30,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
             href="#">Categorias</a>&Tab;
         <a onmouseover="document.getElementById('menuProdutos').style.visibility='visible';divtela.style.zIndex=-1;divmenu.style.zIndex = 1;"
             onmouseout="document.getElementById('menuProdutos').style.visibility='hidden';" href="#">Produtos</a>
-        <a href="cad_alt_venda.php" target="tela" onclick="console.log('clicou')">Vender</a>
+        <a href="cad_alt_venda.php" target="tela">Vender</a>
     </div>
 
     <div onmouseout="this.style.visibility='hidden';" onmouseover="this.style.visibility='visible';" id="menuClientes"
