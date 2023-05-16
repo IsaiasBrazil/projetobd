@@ -23,12 +23,13 @@ function grid($result, $tipo)
             //border-collapse: collapse;
         }
     </style>
-    <th id="selecao" rowspan='15' width="500px">
-        <div style="overflow-y: auto; background-color: lightstellblue;height: 500px;width: 100%;margin:0">
-            <h2 style="text-align: center;">
-                SELEÇÃO DE
-                <?= $tipo ?>
-            </h2>
+    <th id="selecao" rowspan='15' style="width:auto;">
+        <h2 style="text-align: center;">
+            SELEÇÃO DE
+            <?= $tipo ?>
+        </h2>
+        <div style="overflow-y: auto; background-color: lightstellblue;height: 500px;width: auto;">
+
             <table class="tabela_branca">
                 <tr>
                     <?php
@@ -114,6 +115,7 @@ function grid($result, $tipo)
                             </td>
                             </form>
                             <?php
+                            unset($_POST);
                         } else {
                             $prod = isset($_GET['produto']) ? $_GET['produto'] : "";
                             echo "<td><a href=\"cad_alt_venda.php?vendedor=$vendedor&cliente=$cliente&produto=$prod\" onclick=\"sumir('" . $nome . "','" . $nomecampo . "');\">Selecionar</a></td>";
@@ -123,11 +125,9 @@ function grid($result, $tipo)
                             $_SESSION['cliente'] = $cliente;
                         }
 
-
                         if (isset($_SESSION['mensa'])) {
                             unset($_SESSION['mensa']);
                         }
-
                         ?>
                     </tr>
                     <?php

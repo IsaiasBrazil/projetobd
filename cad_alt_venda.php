@@ -88,6 +88,7 @@ if (!isset($_SESSION['qtd'])) {
                                 global $codigo;
                                 $dadodigitado = $_POST[$nome_tabela];
                                 $metodo_pesquisa = $_POST[$metodo];
+                                unset($_POST[$botao]);
                                 require_once('conexao.php');
                                 if ($metodo_pesquisa == 'por_nome') {
                                     $query = "SELECT cod,nome FROM $nome_tabela WHERE nome like '%$dadodigitado%'";
@@ -339,7 +340,7 @@ if (!isset($_SESSION['qtd'])) {
                                                 echo '</tr>';
                                             }
                                         } else {
-                                            echo "<td>else</td>";
+                                            echo "";
                                         }
                                         ?>
                                     </tr>
@@ -353,7 +354,15 @@ if (!isset($_SESSION['qtd'])) {
                         </script>
                     </td>
                 </tr>
-
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <form action="logout.php">
+                            <input type="submit" value="limpar tudo" id="botaoLimpar">
+                        </form>
+                    </td>
+                </tr>
             </tbody>
         </table>
 </body>
