@@ -5,10 +5,8 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
 }
 
-
 $tipo = "Cadastro";
 $action = "inc_venda.php";
-//$cod = "";
 $data = "";
 $prazo_entrega;
 $cond_pagto = "";
@@ -48,6 +46,11 @@ if (!isset($_SESSION['qtd'])) {
         $_SESSION['qtd'] = $_POST['qtd'];
 }
 
+
+if (!isset($_SESSION['prazo_entrega'])) {
+    if (isset($_POST['prazo_entrega']))
+        $_SESSION['prazo_entrega'] = $_POST['prazo_entrega'];
+}
 
 ?>
 <!DOCtype html>
