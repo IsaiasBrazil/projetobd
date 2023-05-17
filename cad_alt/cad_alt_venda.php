@@ -10,7 +10,7 @@ $tipo = "Cadastro";
 $action = "inc_venda.php";
 //$cod = "";
 $data = "";
-$prazo_entrega = "";
+$prazo_entrega;
 $cond_pagto = "";
 $cod_cliente;
 $cod_vendedor;
@@ -70,7 +70,7 @@ if (!isset($_SESSION['qtd'])) {
 </head>
 
 <body>
-    <form method="post">
+    <form method="post" action="controle_form.php">
         <table id="tabela" style="background-color: lightsteelblue; border:1px solid black">
             <tbody>
 
@@ -104,7 +104,7 @@ if (!isset($_SESSION['qtd'])) {
                                 mysqli_close($con);
                             }
                             
-                        echo "<script>alert('".$codigo."');</script>";
+                        // echo "<script>alert('".$codigo."');</script>";
                             return $codigo;
                         }
                         $_SESSION['cod_cliente'] = pesquisar('botao_pesquisa_cliente', 'cliente', 'metodo_pesquisa_cliente');
@@ -208,7 +208,7 @@ if (!isset($_SESSION['qtd'])) {
                 <tr>
                     <td>Data da venda:</td>
                     <td colspan="2">
-                        <input name="data" id="data" type="date" onchange="alert(this.value)">
+                        <input name="data" id="data" type="date">
                         <script>
                             elementoData = new Date;
                             elementoData.setHours(new Date().getHours() - 3);
@@ -229,7 +229,7 @@ if (!isset($_SESSION['qtd'])) {
                 <tr>
                     <td>Prazo de entrega:</td>
                     <td colspan="2">
-                        <input style="width:97%" id="prazo_entrega" name="prazo_entrega" type="text"
+                        <input style="width:97%" id="prazo_entrega" name="prazo_entrega" type="text" value=<?=$prazo_entrega?>
                             placeholder="Exemplo: Entregar em x dias...">
                         </input>
                     </td>
@@ -374,7 +374,7 @@ if (!isset($_SESSION['qtd'])) {
                     <td></td>
                     <td>
                         <form action="../logout.php">
-                            <input type="submit" value="limpar tudo">
+                            <input name="btnlimpar" type="submit" value="limpar tudo">
                         </form>
                     </td>
                     <td>
@@ -383,7 +383,7 @@ if (!isset($_SESSION['qtd'])) {
 
                         <?php
                         if (isset($_POST['btnfinalizar'])) {
-                            echo "<script>alert('alert');</script>";
+                            // echo "<script>alert('alert');</script>";
                             require_once("../finalizar_venda.php");
                         }
                         ?>
