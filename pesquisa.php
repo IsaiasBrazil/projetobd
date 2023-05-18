@@ -25,16 +25,6 @@ function pesquisar($botao, $nome_tabela, $metodo)
     }
     return $codigo;
 }
-<<<<<<< HEAD
-=======
-
-if(isset($_POST['prazo_entrega'])) {
-    //var_dump($_POST['prazo_entrega']);
-    $_SESSION['prazo_entrega'] = $_POST['prazo_entrega'];
-}
-
-
->>>>>>> eb88d630f8c7e50f346d7b7274c81caaeaf16e05
 function grid($result, $tipo)
 {
     $fields = mysqli_fetch_fields($result);
