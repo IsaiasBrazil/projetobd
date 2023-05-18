@@ -66,7 +66,7 @@ function grid($result, $tipo)
         }
         ?>
     </table>
-    <a href="cad_alt_<?=$field->table?>.php">Voltar</a></td>
+    <a href="<?=$_SERVER['HTTP_REFERER']?>">Voltar</a></td>
            
 <?php 
 return $cod;

@@ -9,7 +9,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         header("Location:cad_alt/cad_alt_venda.php");
     } elseif (isset($_POST['btnfinalizar'])) {
        
-        header('Location:inc_venda.php');
+        header('Location:inc/inc_venda.php'); 
+        
     } else {
         //os dados do post vão ser recarregados no formulário abaixo para que possam ser retransmitidos
         echo '<form id="formularioRetransmissao" action="cad_alt/cad_alt_venda.php" method="post">';
