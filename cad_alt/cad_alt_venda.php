@@ -80,8 +80,18 @@ if (!isset($_SESSION['qtd'])) {
                         }
 
                         require_once('../pesquisa.php');
-                        $_SESSION['cod_cliente'] = pesquisar('botao_pesquisa_cliente', 'cliente', 'metodo_pesquisa_cliente');
-                        $_SESSION['cod_vendedor'] = pesquisar('botao_pesquisa_vendedor', 'vendedor', 'metodo_pesquisa_vendedor');
+                        pesquisar('botao_pesquisa_cliente', 'cliente', 'metodo_pesquisa_cliente');
+                        pesquisar('botao_pesquisa_vendedor', 'vendedor', 'metodo_pesquisa_vendedor');
+                        if (isset($_GET['cod_cliente']))
+                            if ($_GET['cod_cliente'] == "")
+                                unset($_GET['cod_cliente']);
+                            else
+                                $_SESSION['cod_cliente'] = $_GET['cod_cliente'];
+                        if (isset($_GET['cod_vendedor']))
+                            if ($_GET['cod_vendedor'] == "")
+                                unset($_GET['cod_vendedor']);
+                            else
+                                $_SESSION['cod_vendedor'] = $_GET['cod_vendedor'];                
                         file_put_contents('log.txt', $_SESSION['cod_cliente'] . PHP_EOL, FILE_APPEND);
                         file_put_contents('log.txt', $_SESSION['cod_vendedor'] . PHP_EOL, FILE_APPEND);
                         pesquisar('botao_pesquisa_produto', 'produto', 'metodo_pesquisa_produto');

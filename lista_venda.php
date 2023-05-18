@@ -12,4 +12,5 @@ include_once("conexao.php");
 $query = "SELECT * FROM venda";
 $result = mysqli_query($con, $query);
 include_once("gridgenerico.php");
-grid($result, "VENDAS");
+$_SESSION['cod_vendas']=grid($result, "VENDAS");
+?>

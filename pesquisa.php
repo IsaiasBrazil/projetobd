@@ -28,9 +28,10 @@ function grid($result, $tipo)
 {
     $fields = mysqli_fetch_fields($result);
     global $cod;
-    $cod=-1;
     global $nome;
     global $qtd;
+    global $cod_cliente;
+    global $cod_vendedor;
     ?>
     <style>
         .tabela_branca {
@@ -94,14 +95,15 @@ function grid($result, $tipo)
                         $nomecampo = $field->table;
                         if ($nomecampo == 'cliente') {
                             $cliente = $nome;
+                            $cod_cliente = $cod;
 
                         } else {
-
                             $cliente = isset($_GET['cliente']) ? $_GET['cliente'] : "";
                         }
 
                         if ($nomecampo == 'vendedor') {
                             $vendedor = $nome;
+                            $cod_vendedor = $cod;
                         } else {
                             $vendedor = isset($_GET['vendedor']) ? $_GET['vendedor'] : "";
                         }
@@ -127,10 +129,10 @@ function grid($result, $tipo)
                             </td>
                             </form>
                             <?php
-                            unset($_POST);
+                            //unset($_POST);
                         } else {
                             $prod = isset($_GET['produto']) ? $_GET['produto'] : "";
-                            echo "<td><a href=\"cad_alt_venda.php?vendedor=$vendedor&cliente=$cliente&produto=$prod&cod_cliente=$cod\" onclick=\"sumir('" . $nome . "','" . $nomecampo . "');\">Selecionar</a></td>";
+                            echo "<td><a href=\"cad_alt_venda.php?vendedor=$vendedor&cliente=$cliente&cod_vendedor=$cod_vendedor&cod_cliente=$cod_cliente\" onclick=\"sumir('" . $nome . "','" . $nomecampo . "');\">Selecionar</a></td>";
                         }
 
                         if (isset($_SESSION['mensa'])) {
