@@ -1,6 +1,6 @@
 <?php
 $tipo = "Cadastro";
-$action = "inc_vendedor.php";
+$action = "../inc/inc_vendedor.php";
 $cod = "";
 $nome = "";
 $endereco = "";
@@ -19,8 +19,8 @@ if (isset($_GET['cod'])) {
     $cod = $_GET['cod'];
     $action = "alt_vendedor.php?cod=" . $_GET['cod'];
     $tipo = "Alteração";
-    include_once("conexao.php");
-    $query = "SELECT * FROM vendedor where cod=$cod";
+    include_once("../conexao.php");
+    $query = "SELECT * FROM vendedor where cod = $cod";
     $result = mysqli_query($con, $query);
     $row = mysqli_fetch_assoc($result);
     $nome = $row['nome'];
@@ -88,7 +88,7 @@ if (isset($_GET['cod'])) {
                         <p> <input style="border-width: 3px;margin-left: 0px;" type="submit" value="Enviar">
                             <input style="border-width: 3px;margin-left: 10px;" type="reset" value="Limpar">
                             <button  type="button" style="border-width: 3px;margin-left: 10px;"
-                                onclick="window.location.href='index.php'">Ir para Home</button>
+                                onclick="window.location.href='../index.php'">Ir para Home</button>
                         </p>
                     </form>
                 </td>

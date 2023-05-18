@@ -1,6 +1,6 @@
 <?php
 $tipo = "Cadastro";
-$action = "inc_produto.php";
+$action = "../inc/inc_produto.php";
 $cod = "";
 $nome = "";
 $preco = "";
@@ -15,7 +15,7 @@ if (isset($_GET['cod'])) {
     $cod = $_GET['cod'];
     $action = "alt_produto.php?cod=" . $_GET['cod'];
     $tipo = "Alteração";
-    include_once("conexao.php");
+    include_once("../conexao.php");
     $query = "SELECT * FROM produto where cod=$cod";
     $result = mysqli_query($con, $query);
     $row = mysqli_fetch_assoc($result);
@@ -69,7 +69,7 @@ if (isset($_GET['cod'])) {
                         <p> Categoria: 
                             <select name="fk_categoria_id" id="fk_categoria_id">
                                 <?php 
-                                    include_once("conexao.php");
+                                    include_once("../conexao.php");
                                     $query = "SELECT * FROM categoria";
                                     $result = mysqli_query($con, $query);
                                     foreach ($result as $elem) {

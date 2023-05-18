@@ -1,6 +1,6 @@
 <?php
 $tipo = "Cadastro";
-$action = "inc_categoria.php";
+$action = "../inc/inc_categoria.php";
 $cod = "";
 $descricao = "";
 
@@ -11,7 +11,7 @@ if (isset($_GET['cod'])) {
     $cod = $_GET['cod'];
     $action = "alt_categoria.php?cod=" . $_GET['cod'];
     $tipo = "Alteração";
-    include_once("conexao.php");
+    include_once("../conexao.php");
     $query = "SELECT * FROM categoria where cod=$cod";
     $result = mysqli_query($con, $query);
     $row = mysqli_fetch_assoc($result);
