@@ -118,7 +118,7 @@ function grid($result, $tipo)
                             unset($_POST);
                         } else {
                             $prod = isset($_GET['produto']) ? $_GET['produto'] : "";
-                            echo "<td><a href=\"cad_alt_venda.php?vendedor=$vendedor&cliente=$cliente&produto=$prod\" onclick=\"sumir('" . $nome . "','" . $nomecampo . "');\">Selecionar</a></td>";
+                            echo "<td><a href=\"cad_alt/cad_alt_venda.php?vendedor=$vendedor&cliente=$cliente&produto=$prod\" onclick=\"sumir('" . $nome . "','" . $nomecampo . "');\">Selecionar</a></td>";
                         }
                         if (isset($_SESSION['cliente'])) {
                             unset($_SESSION['cliente']);
@@ -136,7 +136,7 @@ function grid($result, $tipo)
             </table>
             <p style="text-align: right; margin-right: 2px;">
                 <?php
-                echo "<button style='width:127px;' onclick=\"sumir('" . $nome . "','" . $nomecampo . "');window.location.href='cad_alt_venda.php?vendedor=" . $vendedor . '&' . "cliente=" . $cliente . "';\" >Fechar</button>";
+                echo "<button style='width:127px;' onclick=\"sumir('" . $nome . "','" . $nomecampo . "');window.location.href='cad_alt/cad_alt_venda.php?vendedor=" . $vendedor . '&' . "cliente=" . $cliente . "';\" >Fechar</button>";
                 ?>
             </p>
 
