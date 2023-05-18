@@ -7,7 +7,7 @@ $cod = $_GET["cod"];
 
 include('conexao.php');
 
-$query = "DELETE FROM venda WHERE cod = $cod";
+$query = "DELETE FROM venda WHERE numero = $cod";
 
 $resu = mysqli_query($con, $query);
 

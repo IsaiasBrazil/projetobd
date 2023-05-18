@@ -2,7 +2,6 @@
 function grid($result, $tipo)
 {
     $fields = mysqli_fetch_fields($result);
-  
     ?>
     <p>
         <h3>
@@ -14,6 +13,7 @@ function grid($result, $tipo)
             <?php
             foreach ($fields as $field) {
                 $nomecampo = $field->name;
+                $nometabela = $field->table;
                     //aqui substitui alguns nomes de campo do bd como exemplo fk_categoria_id para código de categoria
                     if($nomecampo=="fk_categoria_id") $nomecampo = "código de categoria";
                     if($nomecampo=="qtd_estoque") $nomecampo = "quantidade em estoque";
@@ -26,15 +26,11 @@ function grid($result, $tipo)
                 </th>
                 <?php
             }
-            ?>
+            if($nometabela!=='venda')
+                echo "  <th>opções</th>";
             
-            <th>
-                    <?php echo "opções"; ?>
-            </th>
-            <th>
-                    <?php echo "opções"; ?>
-            </th>
-
+            echo "<th>opções</th>";
+            ?>
         </tr>
         <?php
         while ($row = mysqli_fetch_assoc($result)) {
@@ -57,7 +53,7 @@ function grid($result, $tipo)
                     </td>
                     <?php
                 }
-                    $nometabela = $field->table;
+                    if($nometabela!=='venda')
                     echo "<td><a href='cad_alt_".$nometabela.".php?cod=$cod'>Alterar</a></td>";
                     echo " <td><a href='del_".$nometabela.".php?cod=$cod'>Excluir</a></td>";
                 ?>
