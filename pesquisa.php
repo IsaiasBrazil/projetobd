@@ -140,7 +140,7 @@ function grid($result, $tipo)
             </table>
             <p style="text-align: right; margin-right: 2px;">
                 <?php
-                echo "<button style='width:127px;' onclick=\"sumir('" . $nome . "','" . $nomecampo . "');window.location.href='cad_alt_venda.php?vendedor=" . $vendedor . '&' . "cliente=" . $cliente . "';\" >Fechar</button>";
+                echo "<button style='width:127px;' onclick=\"sumir('" . $nome . "','" . $nomecampo . "');window.location.href='cad_alt_venda.php';\" >Fechar</button>";
                 ?>
             </p>
 
