@@ -151,5 +151,8 @@ function grid($result, $tipo)
 if (isset($_POST['data'])) {
     $_SESSION['data'] = $_POST['data'];
 }
+if (isset($_POST['cond_pagto'])) {
+    $_SESSION['cond_pagto'] = $_POST['cond_pagto'];
+}
 
 ?>

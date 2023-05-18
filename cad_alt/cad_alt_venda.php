@@ -191,24 +191,24 @@ if (!isset($_SESSION['qtd'])) {
 
                     <td>Data da venda:</td>
                     <?php
-                        if (!isset($_SESSION['data'])) {
-                            $_SESSION['data'] = '';
-                            if (isset($_POST['data'])) {
+                    if (!isset($_SESSION['data'])) {
+                        $_SESSION['data'] = '';
+                        if (isset($_POST['data'])) {
                             $_SESSION['data'] = $_POST['data'];
                             echo $_SESSION['data'];
                         }
                     }
-                        ?>
+                    ?>
                     <td colspan="2">
-                        <input name="data" id="data" type="date" value=<?=$_SESSION['data']?>>
+                        <input name="data" id="data" type="date" value=<?= $_SESSION['data'] ?>>
                         <script>
-                            if(document.querySelector('#data').value==""){
+                            if (document.querySelector('#data').value == "") {
                                 elementoData = new Date;
                                 elementoData.setHours(new Date().getHours() - 3);
                                 var hoje = elementoData.toISOString().split('T')[0];
                                 document.querySelector('#data').value = hoje;
                             }
-                            </script>
+                        </script>
                         </input>
                     </td>
                 </tr>
@@ -238,11 +238,20 @@ if (!isset($_SESSION['qtd'])) {
                         <label>Forma de pagamento:</label>
                     </td>
                     <td colspan="2">
+                        <?php
+                        if (!isset($_SESSION['cond_pagto'])) {
+                            $_SESSION['cond_pagto'] = '';
+                            if (isset($_POST['cond_pagto'])) {
+                                $_SESSION['cond_pagto'] = $_POST['cond_pagto'];
+                            }
+                        }
+                        ?>
+
                         <select name="cond_pagto" id="">
-                            <option value="cartao">Cartão de crédito</option>
-                            <option value="pix">Pix</option>
-                            <option value="boleto">Boleto</option>
-                            <option value="dinheiro">Dinheiro</option>
+                            <option value="cartao" <?= ($_SESSION['cond_pagto'] == 'cartao') ? 'selected' : '' ?>>Cartão de crédito</option>
+                            <option value="pix" <?= ($_SESSION['cond_pagto'] == 'pix') ? 'selected' : '' ?>>Pix</option>
+                            <option value="boleto" <?= ($_SESSION['cond_pagto'] == 'boleto') ? 'selected' : '' ?>>Boleto</option>
+                            <option value="dinheiro" <?= ($_SESSION['cond_pagto'] == 'dinheiro') ? 'selected' : '' ?>>Dinheiro</option>
                         </select>
                     </td>
                 </tr>
