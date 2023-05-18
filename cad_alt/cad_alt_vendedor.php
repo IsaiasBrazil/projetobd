@@ -73,7 +73,7 @@ if (isset($_GET['cod'])) {
                         Estado:
                         <select style="border-width: 3px;margin-left: 14px;" name="estado" id="estado">
                             <?php
-                            $cidades = file_get_contents("estados-cidades.json");
+                            $cidades = file_get_contents("../estados-cidades.json");
                             $decode = json_decode($cidades, TRUE);
                             foreach ($decode["estados"] as $valor) {
                                 $selected = $valor["sigla"]==$estado?"selected":"";
