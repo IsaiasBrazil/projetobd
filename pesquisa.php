@@ -106,6 +106,7 @@ function grid($result, $tipo)
                             $prod = $nome;
                         }
 
+                       
                         if ($tipo == 'PRODUTO') {
                             ?>
                             <td>
@@ -126,10 +127,6 @@ function grid($result, $tipo)
                         } else {
                             $prod = isset($_GET['produto']) ? $_GET['produto'] : "";
                             echo "<td><a href=\"cad_alt_venda.php?vendedor=$vendedor&cliente=$cliente&produto=$prod\" onclick=\"sumir('" . $nome . "','" . $nomecampo . "');\">Selecionar</a></td>";
-                        }
-                        if (isset($_SESSION['cliente'])) {
-                            unset($_SESSION['cliente']);
-                            $_SESSION['cliente'] = $cliente;
                         }
 
                         if (isset($_SESSION['mensa'])) {

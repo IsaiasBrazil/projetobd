@@ -15,15 +15,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         header('Location:finalizar_venda.php');
     } else {
         
-        echo '<form id="retransmissionForm" action="cad_alt/cad_alt_venda.php" method="post">';
+        echo '<form id="formularioRetransmissao" action="cad_alt/cad_alt_venda.php" method="post">';
         foreach ($_POST as $chave => $valor) {
             echo '<input type="hidden" name="' . htmlspecialchars($chave) . '" value="' . htmlspecialchars($valor) . '">';
         }
         echo '</form>';
-        echo '<script>document.getElementById("retransmissionForm").submit();</script>';
-        $urlDestino = 'cad_alt/cad_alt_venda.php?' . http_build_query($_POST);
-        //header('Location:' . $urlDestino);
+        echo '<script>document.getElementById("formularioRetransmissao").submit();</script>';
     }
-    //exit();
 }
 ?>

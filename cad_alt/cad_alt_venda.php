@@ -29,12 +29,7 @@ if (isset($_GET['cod'])) {
     unset($_GET['cod']);
 }
 
-if (!isset($_SESSION['cliente'])) {
-    $_SESSION['cliente'] = "";
-}
-if (!isset($_SESSION['vendedor'])) {
-    $_SESSION['vendedor'] = "";
-}
+
 
 if (!isset($_SESSION['produto'])) {
     $_SESSION['produto'] = "";
@@ -85,10 +80,10 @@ if (!isset($_SESSION['qtd'])) {
                         if (isset($_POST['prazo_entrega'])) {
                             $_SESSION['prazo_entrega'] = $_POST['prazo_entrega'];
                         }
-                        
+
                         // foreach($_POST as $post){
                         //     echo "<script>alert('" .$post. "');</script>";
-                
+                        
                         // }
                         require_once('../pesquisa.php');
                         $_SESSION['cod_cliente'] = pesquisar('botao_pesquisa_cliente', 'cliente', 'metodo_pesquisa_cliente');
@@ -111,13 +106,15 @@ if (!isset($_SESSION['qtd'])) {
                         if (isset($_GET['cliente']))
                             if ($_GET['cliente'] == "")
                                 unset($_GET['cliente']);
-                        echo (isset($_GET['cliente'])
+                            else
+                                $_SESSION['cliente'] = $_GET['cliente'];
+                        echo (isset($_SESSION['cliente'])
                             ? "style='color: red';"
                             : "style='color: black';")
                             ?> id="lblcliente">
                             <?=
-                                isset($_GET['cliente'])
-                                ? $_GET['cliente'] . " selecionado(a)"
+                                isset($_SESSION['cliente'])
+                                ? $_SESSION['cliente'] . " selecionado(a)"
                                 : "Selecione o cliente"
                                 ?>
                         </label>
@@ -152,15 +149,18 @@ if (!isset($_SESSION['qtd'])) {
                             if ($_GET['vendedor'] == "") {
                                 unset($_GET['vendedor']);
                             } else {
-                                echo "style='color: red';";
+                                $_SESSION['vendedor'] = $_GET['vendedor'];
+                               
                             }
-                        } else {
-                            echo "style='color: black';";
-                        }
+                        } 
+                        if (isset($_SESSION['vendedor']))
+                        echo "style='color: red';";
+                        else
+                        echo "style='color: black';";
                         ?>>
                             <?=
-                                isset($_GET['vendedor'])
-                                ? $_GET['vendedor'] . " selecionado(a)"
+                                isset($_SESSION['vendedor'])
+                                ? $_SESSION['vendedor'] . " selecionado(a)"
                                 : "Selecione o vendedor"
                                 ?>
                         </label>
@@ -214,7 +214,7 @@ if (!isset($_SESSION['qtd'])) {
                     <td>Prazo de entrega:</td>
                     <td colspan="2">
                         <input style="width:97%" id="prazo_entrega" name="prazo_entrega" type="text"
-                            value=<?=$_SESSION['prazo_entrega'];?> placeholder="Exemplo: Entregar em x dias...">
+                            value=<?= $_SESSION['prazo_entrega']; ?> placeholder="Exemplo: Entregar em x dias...">
                         </input>
                     </td>
                 </tr>
