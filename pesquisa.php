@@ -147,4 +147,9 @@ function grid($result, $tipo)
         </div>
     </th>
     <?php return $cod;
-} ?>
+} 
+if (isset($_POST['data'])) {
+    $_SESSION['data'] = $_POST['data'];
+}
+
+?>

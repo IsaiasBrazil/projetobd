@@ -40,8 +40,6 @@ if (!isset($_SESSION['qtd'])) {
         $_SESSION['qtd'] = $_POST['qtd'];
 }
 
-
-
 ?>
 <!DOCtype html>
 <html>
@@ -74,7 +72,7 @@ if (!isset($_SESSION['qtd'])) {
 
                         <?php
                         if (!isset($_SESSION['prazo_entrega'])) {
-                            $_SESSION['prazo_entrega'] = 'inicial';
+                            $_SESSION['prazo_entrega'] = '';
                         }
 
                         if (isset($_POST['prazo_entrega'])) {
@@ -150,13 +148,13 @@ if (!isset($_SESSION['qtd'])) {
                                 unset($_GET['vendedor']);
                             } else {
                                 $_SESSION['vendedor'] = $_GET['vendedor'];
-                               
+
                             }
-                        } 
+                        }
                         if (isset($_SESSION['vendedor']))
-                        echo "style='color: red';";
+                            echo "style='color: red';";
                         else
-                        echo "style='color: black';";
+                            echo "style='color: black';";
                         ?>>
                             <?=
                                 isset($_SESSION['vendedor'])
@@ -190,15 +188,27 @@ if (!isset($_SESSION['qtd'])) {
 
                 <!-- Código relativo a parte da data da venda -->
                 <tr>
+
                     <td>Data da venda:</td>
+                    <?php
+                        if (!isset($_SESSION['data'])) {
+                            $_SESSION['data'] = '';
+                            if (isset($_POST['data'])) {
+                            $_SESSION['data'] = $_POST['data'];
+                            echo $_SESSION['data'];
+                        }
+                    }
+                        ?>
                     <td colspan="2">
-                        <input name="data" id="data" type="date">
+                        <input name="data" id="data" type="date" value=<?=$_SESSION['data']?>>
                         <script>
-                            elementoData = new Date;
-                            elementoData.setHours(new Date().getHours() - 3);
-                            var hoje = elementoData.toISOString().split('T')[0];
-                            document.querySelector('#data').value = hoje;
-                        </script>
+                            if(document.querySelector('#data').value==""){
+                                elementoData = new Date;
+                                elementoData.setHours(new Date().getHours() - 3);
+                                var hoje = elementoData.toISOString().split('T')[0];
+                                document.querySelector('#data').value = hoje;
+                            }
+                            </script>
                         </input>
                     </td>
                 </tr>
