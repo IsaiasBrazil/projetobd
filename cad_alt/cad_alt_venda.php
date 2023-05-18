@@ -50,6 +50,7 @@ if (!isset($_SESSION['qtd'])) {
 ?>
 <!DOCtype html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>
@@ -67,49 +68,29 @@ if (!isset($_SESSION['qtd'])) {
 </head>
 
 <body>
-    <form method="POST">
+    <form method="POST" action="../controle_form.php">
         <table id="tabela" style="background-color: lightsteelblue; border:1px solid black">
             <tbody>
-
                 <tr>
                     <th colspan="4" style="border:1px solid black">
                         <h1>
                             <?= $tipo ?> de vendas
                         </h1>
-      
+
                         <?php
                         if (!isset($_SESSION['prazo_entrega'])) {
                             $_SESSION['prazo_entrega'] = 'inicial';
                         }
-                        
-                        if(isset($_POST['prazo_entrega'])) {
+
+                        if (isset($_POST['prazo_entrega'])) {
                             $_SESSION['prazo_entrega'] = $_POST['prazo_entrega'];
                         }
-                        function pesquisar($botao, $nome_tabela, $metodo)
-                        {
-                            global $codigo;
-                            if (isset($_POST[$botao])) {
-                                $dadodigitado = $_POST[$nome_tabela];
-                                $metodo_pesquisa = $_POST[$metodo];
-                                unset($_POST[$botao]);
-                                require_once('../conexao.php');
-                                if ($metodo_pesquisa == 'por_nome') {
-                                    $query = "SELECT cod,nome FROM $nome_tabela WHERE nome like '%$dadodigitado%'";
-                                    $result = mysqli_query($con, $query);
-                                    require_once("../pesquisa.php");
-                                    $codigo = grid($result, strtoupper("$nome_tabela"));
-                                } elseif ($metodo_pesquisa == 'por_codigo') {
-                                    $query = "SELECT cod,nome FROM $nome_tabela WHERE cod = $dadodigitado";
-                                    $result = mysqli_query($con, $query);
-                                    require_once("../pesquisa.php");
-                                    $codigo = grid($result, strtoupper("$nome_tabela"));
-                                }
-                                mysqli_close($con);
-                            }
-
-                            // echo "<script>alert('".$codigo."');</script>";
-                            return $codigo;
-                        }
+                        
+                        // foreach($_POST as $post){
+                        //     echo "<script>alert('" .$post. "');</script>";
+                
+                        // }
+                        require_once('../pesquisa.php');
                         $_SESSION['cod_cliente'] = pesquisar('botao_pesquisa_cliente', 'cliente', 'metodo_pesquisa_cliente');
                         $_SESSION['cod_vendedor'] = pesquisar('botao_pesquisa_vendedor', 'vendedor', 'metodo_pesquisa_vendedor');
                         pesquisar('botao_pesquisa_produto', 'produto', 'metodo_pesquisa_produto');
@@ -233,7 +214,7 @@ if (!isset($_SESSION['qtd'])) {
                     <td>Prazo de entrega:</td>
                     <td colspan="2">
                         <input style="width:97%" id="prazo_entrega" name="prazo_entrega" type="text"
-                            value=<?=$_SESSION['prazo_entrega'];?> placeholder="Exemplo: Entregar em x dias...">
+                            value=<?= $_SESSION['prazo_entrega']; ?> placeholder="Exemplo: Entregar em x dias...">
                         </input>
                     </td>
                 </tr>
@@ -376,9 +357,7 @@ if (!isset($_SESSION['qtd'])) {
                 <tr>
                     <td></td>
                     <td>
-                        <form action="../logout.php">
-                            <input name="btnlimpar" type="submit" value="limpar tudo">
-                        </form>
+                        <input name="btnlimpar" type="submit" value="limpar tudo">
                     </td>
                     <td>
                         <button name="btnfinalizar" value="finalizar">Finalizar venda</button>

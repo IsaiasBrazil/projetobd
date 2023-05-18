@@ -2,16 +2,29 @@
 if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
 }
-if (!isset($_SESSION['prazo_entrega'])) {
-    $_SESSION['prazo_entrega'] = 'inicial';
+
+function pesquisar($botao, $nome_tabela, $metodo)
+{
+    global $codigo;
+    if (isset($_POST[$botao])) {
+        $dadodigitado = $_POST[$nome_tabela];
+        $metodo_pesquisa = $_POST[$metodo];
+        unset($_POST[$botao]);
+        require_once('../conexao.php');
+        if ($metodo_pesquisa == 'por_nome') {
+            $query = "SELECT cod,nome FROM $nome_tabela WHERE nome like '%$dadodigitado%'";
+            $result = mysqli_query($con, $query);
+            
+            $codigo = grid($result, strtoupper("$nome_tabela"));
+        } elseif ($metodo_pesquisa == 'por_codigo') {
+            $query = "SELECT cod,nome FROM $nome_tabela WHERE cod = $dadodigitado";
+            $result = mysqli_query($con, $query);
+            $codigo = grid($result, strtoupper("$nome_tabela"));
+        }
+        mysqli_close($con);
+    }
+    return $codigo;
 }
-
-if(isset($_POST['prazo_entrega'])) {
-    var_dump($_POST['prazo_entrega']);
-    $_SESSION['prazo_entrega'] = $_POST['prazo_entrega'];
-}
-
-
 function grid($result, $tipo)
 {
     $fields = mysqli_fetch_fields($result);
@@ -96,7 +109,7 @@ function grid($result, $tipo)
                         if ($tipo == 'PRODUTO') {
                             ?>
                             <td>
-                                <form method="POST" action="#">
+                                <form method="POST">
                                     <input type="number" id="qtd" name="qtd" value="1" min="1"
                                         onchange="verificaDisponibilidade(this);">
                                     <input type="hidden" name="vendedor" value="<?= $vendedor ?>" />
