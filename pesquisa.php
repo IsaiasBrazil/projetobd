@@ -2,13 +2,22 @@
 if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
 }
+if (!isset($_SESSION['prazo_entrega'])) {
+    $_SESSION['prazo_entrega'] = 'inicial';
+}
+
+if(isset($_POST['prazo_entrega'])) {
+    var_dump($_POST['prazo_entrega']);
+    $_SESSION['prazo_entrega'] = $_POST['prazo_entrega'];
+}
+
+
 function grid($result, $tipo)
 {
     $fields = mysqli_fetch_fields($result);
     global $cod;
     global $nome;
     global $qtd;
-    $tamanho = mysqli_num_rows($result);
     ?>
     <style>
         .tabela_branca {
@@ -34,32 +43,18 @@ function grid($result, $tipo)
                 <tr>
                     <?php
                     foreach ($fields as $field) {
-                        ?>
-                        <th>
-                            <?php echo $field->name; ?>
-                        </th>
-                        <?php
-
+                        echo "<th>{$field->name}</th>";
                     }
-                    if ($tipo == 'PRODUTO') { ?>
-                        <th>
-                            <?php echo "quantidade"; ?>
-                        </th>
-                        <?php
+                    if ($tipo == 'PRODUTO') {
+                        echo "<th>quantidade</th>";
                     }
-
+                    echo "<th>opções</th>";
                     ?>
-
-                    <th>
-                        <?php echo "opções"; ?>
-                    </th>
                 </tr>
                 <?php
-                $tamanho = -2;
                 while ($row = mysqli_fetch_assoc($result)) {
-                    $tamanho++;
                     ?>
-                    <tr rowspan=<?= $tamanho ?>>
+                    <tr>
                         <?php
                         foreach ($fields as $field) {
 
@@ -74,8 +69,7 @@ function grid($result, $tipo)
                             }
                             ?>
                             <td>
-                                <input size="<?php echo strlen($row[$field->name]); ?>" type="text"
-                                    value="<?php echo $row[$field->name]; ?>">
+                                <input size="<?= strlen($row[$field->name]); ?>" type="text" value="<?= $row[$field->name]; ?>">
                             </td>
                             <?php
                         }
@@ -118,7 +112,7 @@ function grid($result, $tipo)
                             unset($_POST);
                         } else {
                             $prod = isset($_GET['produto']) ? $_GET['produto'] : "";
-                            echo "<td><a href=\"cad_alt/cad_alt_venda.php?vendedor=$vendedor&cliente=$cliente&produto=$prod\" onclick=\"sumir('" . $nome . "','" . $nomecampo . "');\">Selecionar</a></td>";
+                            echo "<td><a href=\"cad_alt_venda.php?vendedor=$vendedor&cliente=$cliente&produto=$prod\" onclick=\"sumir('" . $nome . "','" . $nomecampo . "');\">Selecionar</a></td>";
                         }
                         if (isset($_SESSION['cliente'])) {
                             unset($_SESSION['cliente']);
@@ -136,7 +130,7 @@ function grid($result, $tipo)
             </table>
             <p style="text-align: right; margin-right: 2px;">
                 <?php
-                echo "<button style='width:127px;' onclick=\"sumir('" . $nome . "','" . $nomecampo . "');window.location.href='cad_alt/cad_alt_venda.php?vendedor=" . $vendedor . '&' . "cliente=" . $cliente . "';\" >Fechar</button>";
+                echo "<button style='width:127px;' onclick=\"sumir('" . $nome . "','" . $nomecampo . "');window.location.href='cad_alt_venda.php?vendedor=" . $vendedor . '&' . "cliente=" . $cliente . "';\" >Fechar</button>";
                 ?>
             </p>
 

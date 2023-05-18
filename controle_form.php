@@ -4,7 +4,11 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 }
 if($_SERVER["REQUEST_METHOD"]==="POST"){
     if (isset($_POST['btnlimpar'])){
-        header('Location:'."../logout.php");
+        foreach ($_SESSION['itens_venda'] as $key => &$item) {
+            unset($_SESSION['itens_venda'][$key]);
+        }
+      //  header('Location: cad_alt/cad_alt_venda.php');
     }
-    exit();
+   // exit();
 }
+?>
