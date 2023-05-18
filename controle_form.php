@@ -4,17 +4,14 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 }
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (isset($_POST['btnlimpar'])) {
-        foreach ($_SESSION['itens_venda'] as $key => &$item) {
-            unset($_SESSION['itens_venda'][$key]);
-        }
-        header('Location:logout.php');
+        session_destroy();
+        session_start();
+        header("Location:cad_alt/cad_alt_venda.php");
     } elseif (isset($_POST['btnfinalizar'])) {
-        foreach ($_SESSION['itens_venda'] as $key => &$item) {
-            unset($_SESSION['itens_venda'][$key]);
-        }
+       
         header('Location:finalizar_venda.php');
     } else {
-        
+        //os dados do post vão ser recarregados no formulário abaixo para que possam ser retransmitidos
         echo '<form id="formularioRetransmissao" action="cad_alt/cad_alt_venda.php" method="post">';
         foreach ($_POST as $chave => $valor) {
             echo '<input type="hidden" name="' . htmlspecialchars($chave) . '" value="' . htmlspecialchars($valor) . '">';
@@ -22,5 +19,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         echo '</form>';
         echo '<script>document.getElementById("formularioRetransmissao").submit();</script>';
     }
+    exit();
 }
 ?>
