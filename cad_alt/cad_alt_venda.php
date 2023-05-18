@@ -79,13 +79,11 @@ if (!isset($_SESSION['qtd'])) {
                             $_SESSION['prazo_entrega'] = $_POST['prazo_entrega'];
                         }
 
-                        // foreach($_POST as $post){
-                        //     echo "<script>alert('" .$post. "');</script>";
-                        
-                        // }
                         require_once('../pesquisa.php');
                         $_SESSION['cod_cliente'] = pesquisar('botao_pesquisa_cliente', 'cliente', 'metodo_pesquisa_cliente');
                         $_SESSION['cod_vendedor'] = pesquisar('botao_pesquisa_vendedor', 'vendedor', 'metodo_pesquisa_vendedor');
+                        file_put_contents('log.txt', $_SESSION['cod_cliente'] . PHP_EOL, FILE_APPEND);
+                        file_put_contents('log.txt', $_SESSION['cod_vendedor'] . PHP_EOL, FILE_APPEND);
                         pesquisar('botao_pesquisa_produto', 'produto', 'metodo_pesquisa_produto');
                         ?>
                     </th>
@@ -380,13 +378,6 @@ if (!isset($_SESSION['qtd'])) {
                     </td>
                     <td>
                         <button name="btnfinalizar" value="finalizar">Finalizar venda</button>
-
-                        <?php
-                        if (isset($_POST['btnfinalizar'])) {
-                            // echo "<script>alert('alert');</script>";
-                            require_once("../finalizar_venda.php");
-                        }
-                        ?>
                     </td>
                 </tr>
             </tbody>

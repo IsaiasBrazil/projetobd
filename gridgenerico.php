@@ -48,6 +48,9 @@ function grid($result, $tipo)
                     if ($nomecampo == "cod") {
                         $cod = $valor;
                     }
+                    if ($nomecampo == "numero") {
+                        $cod = $valor;
+                    }
                     ?>
                     <td>
                         <input size="<?php echo strlen($nomecampo)+1; ?>" type="text" value="<?= $valor ?>">
@@ -65,4 +68,7 @@ function grid($result, $tipo)
     </table>
     <a href="cad_alt_<?=$field->table?>.php">Voltar</a></td>
            
-<?php } ?>
+<?php 
+return $cod;
+} 
+?>

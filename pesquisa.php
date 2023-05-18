@@ -14,7 +14,6 @@ function pesquisar($botao, $nome_tabela, $metodo)
         if ($metodo_pesquisa == 'por_nome') {
             $query = "SELECT cod,nome FROM $nome_tabela WHERE nome like '%$dadodigitado%'";
             $result = mysqli_query($con, $query);
-            
             $codigo = grid($result, strtoupper("$nome_tabela"));
         } elseif ($metodo_pesquisa == 'por_codigo') {
             $query = "SELECT cod,nome FROM $nome_tabela WHERE cod = $dadodigitado";
@@ -29,6 +28,7 @@ function grid($result, $tipo)
 {
     $fields = mysqli_fetch_fields($result);
     global $cod;
+    $cod=-1;
     global $nome;
     global $qtd;
     ?>
@@ -69,12 +69,16 @@ function grid($result, $tipo)
                     ?>
                     <tr>
                         <?php
-                        foreach ($fields as $field) {
-
+                        foreach ($fields as $field) {                            
+                            if ($field->name == "numero") {
+                                $cod = $row[$field->name];
+                                $cod = $row['numero'];
+                            }
                             if ($field->name == "cod") {
                                 $cod = $row[$field->name];
                                 $cod = $row['cod'];
                             }
+
 
                             if ($field->name == "nome") {
                                 $nome = $row[$field->name];
@@ -126,7 +130,7 @@ function grid($result, $tipo)
                             unset($_POST);
                         } else {
                             $prod = isset($_GET['produto']) ? $_GET['produto'] : "";
-                            echo "<td><a href=\"cad_alt_venda.php?vendedor=$vendedor&cliente=$cliente&produto=$prod\" onclick=\"sumir('" . $nome . "','" . $nomecampo . "');\">Selecionar</a></td>";
+                            echo "<td><a href=\"cad_alt_venda.php?vendedor=$vendedor&cliente=$cliente&produto=$prod&cod_cliente=$cod\" onclick=\"sumir('" . $nome . "','" . $nomecampo . "');\">Selecionar</a></td>";
                         }
 
                         if (isset($_SESSION['mensa'])) {
@@ -146,7 +150,9 @@ function grid($result, $tipo)
 
         </div>
     </th>
-    <?php return $cod;
+    <?php 
+      file_put_contents('log.txt', $cod . PHP_EOL, FILE_APPEND);             
+    return $cod;
 } 
 if (isset($_POST['data'])) {
     $_SESSION['data'] = $_POST['data'];
