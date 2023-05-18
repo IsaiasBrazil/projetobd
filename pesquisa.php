@@ -7,7 +7,7 @@ if (!isset($_SESSION['prazo_entrega'])) {
 }
 
 if(isset($_POST['prazo_entrega'])) {
-    var_dump($_POST['prazo_entrega']);
+    //var_dump($_POST['prazo_entrega']);
     $_SESSION['prazo_entrega'] = $_POST['prazo_entrega'];
 }
 
