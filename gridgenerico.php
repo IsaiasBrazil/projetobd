@@ -27,7 +27,7 @@ function grid($result, $tipo)
                 </th>
                 <?php
             }
-            if($nometabela!=='venda')
+            // if($nometabela!=='venda')
                 echo "  <th>opções</th>";
             
             echo "<th>opções</th>";
@@ -55,8 +55,10 @@ function grid($result, $tipo)
                     <?php
                 }
                     if($nometabela!=='venda')
-                    echo "<td><a href='cad_alt_".$nometabela.".php?cod=$cod'>Alterar</a></td>";
-                    echo " <td><a href='del_".$nometabela.".php?cod=$cod'>Excluir</a></td>";
+                    echo "<td><a href='../cad_alt/cad_alt_".$nometabela.".php?cod=$cod'>Alterar</a></td>";
+                    else
+                    echo "<td><a href='../lista/lista_produto.php?cod=$cod'>Listar produtos da venda</a></td>";
+                    echo " <td><a href='../del_".$nometabela.".php?cod=$cod'>Excluir</a></td>";
                 ?>
             </tr>
             <?php

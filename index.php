@@ -71,11 +71,11 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
         style="visibility: hidden; z-index: 1;background-color: white;width :75px; margin-top:-74px;margin-left: 208px;">
         <a target="tela" style="background-color:white" href="cad_alt/cad_alt_produto.php">Cadastrar</a>
         <br>
-        <a target="tela" style="background-color:white" href="lista_produto.php">Alterar </a>
+        <a target="tela" style="background-color:white" href="lista/lista_produto.php">Alterar </a>
         <br>
-        <a target="tela" style="background-color:white" href="lista_produto.php">Excluir </a>
+        <a target="tela" style="background-color:white" href="lista/lista_produto.php">Excluir </a>
         <br>
-        <a target="tela" style="background-color:white" href="lista_produto.php">Consultar</a>
+        <a target="tela" style="background-color:white" href="lista/lista_produto.php">Consultar</a>
     </div>
 
 
