@@ -8,7 +8,33 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 
 <head>
     <title>LOJA FATEC ADS NOITE</title>
+    <style>
+        .left-box {
+            background-color: white;
+            margin-bottom: 10px;
+            float: left;
+            visibility: hidden;
+            z-index: 1;
+        }
 
+        .left-box-visible {
+            background-color: lightblue;
+            visibility: visible;
+            position: relative;
+            z-index: 1;
+            float: left;
+            width: fit-content;
+            margin-right: 20px;
+        }
+
+        .box {
+            width: 100%;
+            height: 20px;
+            background-color: lightblue;
+            margin-bottom: 0px;
+            clear: left;
+        }
+    </style>
 
 </head>
 
@@ -18,24 +44,36 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
         style="background-color: lightblue;width: 100%;text-align: center;height:20px;font-weight: bold;font-size: 20px;">
         ATIVIDADE LOJA
     </div>
-    <div id="divmenu" style="background-color: lightblue;">
-        <a onmouseover="document.getElementById('menuClientes').style.visibility='visible';divtela.style.zIndex=-1;divmenu.style.zIndex = 1;"
-            onmouseout="document.getElementById('menuClientes').style.visibility='hidden';" href="#">Clientes</a>&Tab;
-        <a onmouseover="document.getElementById('menuVendedores').style.visibility='visible';divtela.style.zIndex=-1;divmenu.style.zIndex = 1;"
-            onmouseout="document.getElementById('menuVendedores').style.visibility='hidden';"
-            href="#">Vendedores</a>&Tab;
+    <div id="divmenu" class="box">
+        <div class="left-box-visible">
+            <a onmouseover="document.getElementById('menuClientes').style.visibility='visible';divtela.style.zIndex=-1;divmenu.style.zIndex = 1;"
+                onmouseout="document.getElementById('menuClientes').style.visibility='hidden';" href="#">Clientes</a>
+            </div>
+        <div class="left-box-visible">
 
-        <a onmouseover="document.getElementById('menuCategorias').style.visibility='visible';divtela.style.zIndex=-1;divmenu.style.zIndex = 1;"
-            onmouseout="document.getElementById('menuCategorias').style.visibility='hidden';"
-            href="#">Categorias</a>&Tab;
-        <a onmouseover="document.getElementById('menuProdutos').style.visibility='visible';divtela.style.zIndex=-1;divmenu.style.zIndex = 1;"
-            onmouseout="document.getElementById('menuProdutos').style.visibility='hidden';" href="#">Produtos</a>
-        <a href="cad_alt/cad_alt_venda.php" target="tela">Vender</a>
-        <a href="lista/lista_venda.php" target="tela">Listar vendas</a>
+            <a onmouseover="document.getElementById('menuVendedores').style.visibility='visible';divtela.style.zIndex=-1;divmenu.style.zIndex = 1;"
+                onmouseout="document.getElementById('menuVendedores').style.visibility='hidden';"
+                href="#">Vendedores</a>&Tab;
+        </div>
+        <div class="left-box-visible">
+
+            <a onmouseover="document.getElementById('menuCategorias').style.visibility='visible';divtela.style.zIndex=-1;divmenu.style.zIndex = 1;"
+                onmouseout="document.getElementById('menuCategorias').style.visibility='hidden';"
+                href="#">Categorias</a>&Tab;
+        </div>
+        <div class="left-box-visible">
+            <a onmouseover="document.getElementById('menuProdutos').style.visibility='visible';divtela.style.zIndex=-1;divmenu.style.zIndex = 1;"
+                onmouseout="document.getElementById('menuProdutos').style.visibility='hidden';" href="#">Produtos</a>&Tab;
+        </div>
+        <div class="left-box-visible">
+
+            <a onmouseover="document.getElementById('menuVendas').style.visibility='visible';divtela.style.zIndex=-1;divmenu.style.zIndex = 1;"
+                onmouseout="document.getElementById('menuVendas').style.visibility='hidden';" href="#">Vendas</a>
+        </div>
     </div>
 
-    <div onmouseout="this.style.visibility='hidden';" onmouseover="this.style.visibility='visible';" id="menuClientes"
-        style="visibility: hidden; z-index: 1;background-color: white;width :75px;margin:initial">
+    <div class="left-box" onmouseout="this.style.visibility='hidden';" onmouseover="this.style.visibility='visible';"
+        id="menuClientes">
         <a target="tela" style="background-color:white" href="cad_alt/cad_alt_cliente.php">Cadastrar</a>
         <br>
         <a target="tela" style="background-color:white" href="lista/lista_cliente.php">Alterar </a>
@@ -47,7 +85,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 
 
     <div onmouseout="this.style.visibility='hidden';" onmouseover="this.style.visibility='visible';" id="menuVendedores"
-        style="visibility: hidden; z-index: 1;background-color: white;width :75px; margin-top:-74px;margin-left: 57px; ">
+        class="left-box">
         <a target="tela" style="background-color:white" href="cad_alt/cad_alt_vendedor.php">Cadastrar</a>
         <br>
         <a target="tela" style="background-color:white" href="lista/lista_vendedor.php">Alterar </a>
@@ -58,7 +96,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
     </div>
 
     <div onmouseout="this.style.visibility='hidden';" onmouseover="this.style.visibility='visible';" id="menuCategorias"
-        style="visibility: hidden; z-index: 1;background-color: white;width :75px; margin-top:-74px;margin-left: 135px;">
+        class="left-box">
         <a target="tela" style="background-color:white" href="cad_alt/cad_alt_categoria.php">Cadastrar</a>
         <br>
         <a target="tela" style="background-color:white" href="lista/lista_categoria.php">Alterar </a>
@@ -69,7 +107,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
     </div>
 
     <div onmouseout="this.style.visibility='hidden';" onmouseover="this.style.visibility='visible';" id="menuProdutos"
-        style="visibility: hidden; z-index: 1;background-color: white;width :75px; margin-top:-74px;margin-left: 208px;">
+        class="left-box">
         <a target="tela" style="background-color:white" href="cad_alt/cad_alt_produto.php">Cadastrar</a>
         <br>
         <a target="tela" style="background-color:white" href="lista/lista_produto.php">Alterar </a>
@@ -78,6 +116,15 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
         <br>
         <a target="tela" style="background-color:white" href="lista/lista_produto.php">Consultar</a>
     </div>
+    <div onmouseout="this.style.visibility='hidden';" onmouseover="this.style.visibility='visible';" id="menuVendas"
+        class="left-box">
+        <a href="cad_alt/cad_alt_venda.php" target="tela">Vender</a>
+        <br>
+        <a href="lista/lista_venda.php" target="tela">Listar vendas</a>
+
+    </div>
+
+
 
 
     <div id="divtela"
