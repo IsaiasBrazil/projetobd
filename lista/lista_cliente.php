@@ -7,9 +7,6 @@
     if (session_status() !== PHP_SESSION_ACTIVE) {
         session_start();
     }
-
-
-
     include_once("../conexao.php");
     $query = "SELECT * FROM cliente";
     $result = mysqli_query($con, $query);

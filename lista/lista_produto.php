@@ -1,3 +1,8 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
 <?php
 if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
@@ -14,5 +19,13 @@ else
 $query = "SELECT * FROM produto";
 $result = mysqli_query($con, $query);
 include_once("../gridgenerico.php");
+?>
+<body>
+<?php    
 grid($result, "PRODUTOS");
+?>
+</body>
+</html>
+<?php
+exit();
 ?>

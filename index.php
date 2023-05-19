@@ -31,17 +31,18 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
         <a onmouseover="document.getElementById('menuProdutos').style.visibility='visible';divtela.style.zIndex=-1;divmenu.style.zIndex = 1;"
             onmouseout="document.getElementById('menuProdutos').style.visibility='hidden';" href="#">Produtos</a>
         <a href="cad_alt/cad_alt_venda.php" target="tela">Vender</a>
+        <a href="lista/lista_venda.php" target="tela">Listar vendas</a>
     </div>
 
     <div onmouseout="this.style.visibility='hidden';" onmouseover="this.style.visibility='visible';" id="menuClientes"
         style="visibility: hidden; z-index: 1;background-color: white;width :75px;margin:initial">
         <a target="tela" style="background-color:white" href="cad_alt/cad_alt_cliente.php">Cadastrar</a>
         <br>
-        <a target="tela" style="background-color:white" href="lista_cliente.php">Alterar </a>
+        <a target="tela" style="background-color:white" href="lista/lista_cliente.php">Alterar </a>
         <br>
-        <a target="tela" style="background-color:white" href="lista_cliente.php">Excluir </a>
+        <a target="tela" style="background-color:white" href="lista/lista_cliente.php">Excluir </a>
         <br>
-        <a target="tela" style="background-color:white" href="lista_cliente.php">Consultar</a>
+        <a target="tela" style="background-color:white" href="lista/lista_cliente.php">Consultar</a>
     </div>
 
 
@@ -49,22 +50,22 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
         style="visibility: hidden; z-index: 1;background-color: white;width :75px; margin-top:-74px;margin-left: 57px; ">
         <a target="tela" style="background-color:white" href="cad_alt/cad_alt_vendedor.php">Cadastrar</a>
         <br>
-        <a target="tela" style="background-color:white" href="lista_vendedor.php">Alterar </a>
+        <a target="tela" style="background-color:white" href="lista/lista_vendedor.php">Alterar </a>
         <br>
-        <a target="tela" style="background-color:white" href="lista_vendedor.php">Excluir </a>
+        <a target="tela" style="background-color:white" href="lista/lista_vendedor.php">Excluir </a>
         <br>
-        <a target="tela" style="background-color:white" href="lista_vendedor.php">Consultar</a>
+        <a target="tela" style="background-color:white" href="lista/lista_vendedor.php">Consultar</a>
     </div>
 
     <div onmouseout="this.style.visibility='hidden';" onmouseover="this.style.visibility='visible';" id="menuCategorias"
         style="visibility: hidden; z-index: 1;background-color: white;width :75px; margin-top:-74px;margin-left: 135px;">
         <a target="tela" style="background-color:white" href="cad_alt/cad_alt_categoria.php">Cadastrar</a>
         <br>
-        <a target="tela" style="background-color:white" href="lista_categoria.php">Alterar </a>
+        <a target="tela" style="background-color:white" href="lista/lista_categoria.php">Alterar </a>
         <br>
-        <a target="tela" style="background-color:white" href="lista_categoria.php">Excluir </a>
+        <a target="tela" style="background-color:white" href="lista/lista_categoria.php">Excluir </a>
         <br>
-        <a target="tela" style="background-color:white" href="lista_categoria.php">Consultar</a>
+        <a target="tela" style="background-color:white" href="lista/lista_categoria.php">Consultar</a>
     </div>
 
     <div onmouseout="this.style.visibility='hidden';" onmouseover="this.style.visibility='visible';" id="menuProdutos"

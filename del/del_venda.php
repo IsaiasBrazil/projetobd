@@ -30,6 +30,6 @@ if (mysqli_affected_rows($con)) {
     
 }
 mysqli_close($con);
-header('Location: ../cad_alt/cad_alt_venda.php');
+header('Location: ../lista/lista_venda.php');
 exit();
 ?>
