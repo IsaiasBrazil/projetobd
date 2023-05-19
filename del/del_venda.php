@@ -5,7 +5,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 
 $cod = $_GET["cod"];
 
-include('conexao.php');
+include('../conexao.php');
 
 $query = "DELETE FROM venda WHERE numero = $cod";
 
@@ -30,6 +30,6 @@ if (mysqli_affected_rows($con)) {
     
 }
 mysqli_close($con);
-header('Location:cad_alt/cad_alt_venda.php');
+header('Location: ../cad_alt/cad_alt_venda.php');
 exit();
 ?>

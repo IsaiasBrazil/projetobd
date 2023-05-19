@@ -55,8 +55,8 @@ function grid($result, $tipo)
                     <?php
                 }
                     if($nometabela!=='venda')
-                    echo "<td><a href='cad_alt_".$nometabela.".php?cod=$cod'>Alterar</a></td>";
-                    echo " <td><a href='del_".$nometabela.".php?cod=$cod'>Excluir</a></td>";
+                    echo "<td><a href='../cad_alt/cad_alt_".$nometabela.".php?cod=$cod'>Alterar</a></td>";
+                    echo " <td><a href='../del/del_".$nometabela.".php?cod=$cod'>Excluir</a></td>";
                 ?>
             </tr>
             <?php

@@ -13,7 +13,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 }
 if (isset($_GET['cod'])) {
     $cod = $_GET['cod'];
-    $action = "alt_produto.php?cod=" . $_GET['cod'];
+    $action = "../alt_produto.php?cod=" . $_GET['cod'];
     $tipo = "Alteração";
     include_once("../conexao.php");
     $query = "SELECT * FROM produto where cod=$cod";
