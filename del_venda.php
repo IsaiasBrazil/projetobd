@@ -13,9 +13,23 @@ $resu = mysqli_query($con, $query);
 
 if (mysqli_affected_rows($con)) {
     $_SESSION['msg'] = "<p style='color:blue;'> Venda excluída com sucesso!</p>";
-    header('Location: lista_venda.php');
+    
 } else {
     $_SESSION['msg'] = "<p style='color:red;'> Erro ao excluir venda!</p>";
-    header('Location: lista_venda.php');
+    
+}
+
+$query = "DELETE FROM itens_venda WHERE fk_vendas_numero = $cod";
+$resu = mysqli_query($con, $query);
+
+if (mysqli_affected_rows($con)) {
+    $_SESSION['msg'] = $_SESSION['msg']."<br><p style='color:blue;'> produto excluído com sucesso!</p>";
+    
+} else {
+    $_SESSION['msg'] = $_SESSION['msg']."<br><p style='color:red;'> Erro ao excluir produto!</p>";
+    
 }
 mysqli_close($con);
+header('Location:cad_alt/cad_alt_venda.php');
+exit();
+?>

@@ -1,6 +1,7 @@
 <?php
 function grid($result, $tipo)
 {
+    global $cod;
     $fields = mysqli_fetch_fields($result);
     ?>
     <p>
