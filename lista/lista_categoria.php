@@ -8,8 +8,8 @@ if (isset($_SESSION['msg'])) {
     unset($_SESSION['msg']);
 }
 
-include_once("conexao.php");
-$query = "SELECT * FROM vendedor";
+include_once("../conexao.php");
+$query = "SELECT * FROM categoria";
 $result = mysqli_query($con, $query);
-include_once("gridgenerico.php");
-grid($result, "VENDEDORES");
+include_once("../gridgenerico.php");
+grid($result, "CATEGORIAS");

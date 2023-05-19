@@ -7,7 +7,7 @@
 if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
 }
-include_once("conexao.php");
+include_once("../conexao.php");
 $query = "SELECT * FROM venda";
 $result = mysqli_query($con, $query);
 ?>
@@ -18,7 +18,7 @@ $result = mysqli_query($con, $query);
         echo $_SESSION['msg'];
         unset($_SESSION['msg']);
     };
-    require_once("gridgenerico.php");
+    require_once("../gridgenerico.php");
     grid($result,"VENDAS");
     ?>
 

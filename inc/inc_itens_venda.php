@@ -19,6 +19,6 @@ else {
 }
 }
 mysqli_close($con);
-header("Location: ../lista_venda.php");
+header("Location: ../lista/lista_venda.php");
 exit();
 ?>

@@ -5,10 +5,10 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 
 
 
-include_once("conexao.php");
+include_once("../conexao.php");
 $query = "SELECT * FROM cliente";
 $result = mysqli_query($con, $query);
-include_once("gridgenerico.php");
+include_once("../gridgenerico.php");
 grid($result, "CLIENTES");
 
 

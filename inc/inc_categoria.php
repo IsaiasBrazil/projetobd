@@ -14,11 +14,11 @@ $resu = mysqli_query($con, $query);
 
 if (mysqli_insert_id($con)) {
     $_SESSION['msg'] = "<p style='color:blue;'> Categoria cadastrada com sucesso!!</p>";
-    header("Location: ../lista_categoria.php");
+    header("Location: ../lista/lista_categoria.php");
 }
 else {
     $_SESSION['msg'] = "<p style='color:red;'> Categoria não foi cadastrada!</p>";
-    header("Location: ../lista_categoria.php");
+    header("Location: ../lista/lista_categoria.php");
 }
 mysqli_close($con);
 ?>

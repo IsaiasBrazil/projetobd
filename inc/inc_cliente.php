@@ -21,9 +21,9 @@ $resu = mysqli_query($con, $query);
 
 if (mysqli_insert_id($con)) {
     $_SESSION['msg'] = "<p style='color:blue;'> Cliente cadastrado com sucesso!</p>";
-    header('Location: ../lista_cliente.php');
+    header('Location: ../lista/lista_cliente.php');
 } else {
     $_SESSION['msg'] = "<p style='color:red;'> Erro ao cadastrar cliente!</p>";
-    header('Location: ../lista_cliente.php');
+    header('Location: ../lista/lista_cliente.php');
 }
 mysqli_close($con);

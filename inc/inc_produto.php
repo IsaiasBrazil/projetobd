@@ -18,11 +18,11 @@ $resu = mysqli_query($con, $query);
 
 if (mysqli_insert_id($con)) {
     $_SESSION['msg'] = "<p style='color:blue;'> Produto cadastrado com sucesso!!</p>";
-    header("Location: ../lista_produto.php");
+    header("Location: ../lista/lista_produto.php");
 }
 else {
     $_SESSION['msg'] = "<p style='color:red;'> Produto não foi cadastrado!</p>";
-    header("Location: ../lista_produto.php");
+    header("Location: ../lista/lista_produto.php");
 }
 mysqli_close($con);
 ?>
