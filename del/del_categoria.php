@@ -5,7 +5,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 
 $cod = $_GET["cod"];
 
-include('conexao.php');
+include('../conexao.php');
 
 $query = "DELETE FROM categoria WHERE cod = $cod";
 
@@ -13,9 +13,9 @@ $resu = mysqli_query($con, $query);
 
 if (mysqli_affected_rows($con)) {
     $_SESSION['msg'] = "<p style='color:blue;'> Categoria excluída com sucesso!</p>";
-    header('Location: lista_categoria.php');
+    header('Location: ../lista/lista_categoria.php');
 } else {
     $_SESSION['msg'] = "<p style='color:red;'> Erro ao excluir categoria!</p>";
-    header('Location: lista_categoria.php');
+    header('Location: ../lista/lista_categoria.php');
 }
 mysqli_close($con);

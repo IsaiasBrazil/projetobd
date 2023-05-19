@@ -21,9 +21,9 @@ $resu = mysqli_query($con, $query);
 
 if (mysqli_affected_rows($con)) {
     $_SESSION['msg'] = "<p style='color:blue;font-weight:bold;font-size:20px'> Cliente alterado com sucesso!</p>";
-    header('Location: lista_cliente.php');
+    header('Location: ../lista/lista_cliente.php');
 } else {
     $_SESSION['msg'] = "<p style='color:red;font-weight:bold;font-size:20px'> Erro ao alterar cliente!</p>";
-    header('Location: lista_cliente.php');
+    header('Location: ../lista/lista_cliente.php');
 }
 mysqli_close($con);

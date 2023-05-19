@@ -19,9 +19,9 @@ $resu = mysqli_query($con, $query);
 
 if (mysqli_affected_rows($con)) {
     $_SESSION['msg'] = "<p style='color:blue;'> Produto alterado com sucesso!</p>";
-    header('Location: lista_produto.php');
+    header('Location: ../lista/lista_produto.php');
 } else {
     $_SESSION['msg'] = "<p style='color:red;'> Erro ao alterar produto!</p>";
-    header('Location: lista_produto.php');
+    header('Location: ../lista/lista_produto.php');
 }
 mysqli_close($con);

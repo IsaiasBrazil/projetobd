@@ -18,7 +18,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 if (isset($_GET['cod'])) {
     $botaoreset = "desfazer";
     $cod = $_GET['cod'];
-    $action = "alt_cliente.php?cod=" . $_GET['cod'];
+    $action = "../alt_cliente.php?cod=" . $_GET['cod'];
     $tipo = "Alteração";
     include_once("../conexao.php");
     $query = "SELECT * FROM cliente where cod=$cod";
