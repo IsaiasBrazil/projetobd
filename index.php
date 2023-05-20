@@ -11,10 +11,13 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
     <style>
         .left-box {
             background-color: white;
-            margin-bottom: 10px;
+            width: 100px;
+            height: fit-content;
+            margin-top: -1px;
             float: left;
             visibility: hidden;
             z-index: 1;
+            margin-right: 1px;
         }
 
         .left-box-visible {
@@ -23,8 +26,9 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
             position: relative;
             z-index: 1;
             float: left;
-            width: fit-content;
-            margin-right: 20px;
+            width: 100px;
+            margin-right: 1px;
+            height: fit-content;
         }
 
         .box {
@@ -34,45 +38,55 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
             margin-bottom: 0px;
             clear: left;
         }
+
+        #titulo {
+            background-color: lightblue;
+            width: 100%;
+            text-align: center;
+            height: 20px;
+            font-weight: bold;
+            font-size: 20px;
+            z-index: 1;
+        }
     </style>
 
 </head>
 
 <body style="background-color: yellow;" id="corpo">
 
-    <div id='titulo'
-        style="background-color: lightblue;width: 100%;text-align: center;height:20px;font-weight: bold;font-size: 20px;">
+    <div id='titulo'>
         ATIVIDADE LOJA
     </div>
     <div id="divmenu" class="box">
-        <div class="left-box-visible">
-            <a onmouseover="document.getElementById('menuClientes').style.visibility='visible';divtela.style.zIndex=-1;divmenu.style.zIndex = 1;"
-                onmouseout="document.getElementById('menuClientes').style.visibility='hidden';" href="#">Clientes</a>
-            </div>
+        <div class="left-box-visible" onmouseover="document.getElementById('menuClientes').style.visibility='visible';divtela.style.zIndex=-1;divmenu.style.zIndex = 1;"
+                onmouseleave="document.getElementById('menuClientes').style.visibility='hidden';">
+            <a  href="#">Clientes</a>
+        </div>
         <div class="left-box-visible">
 
             <a onmouseover="document.getElementById('menuVendedores').style.visibility='visible';divtela.style.zIndex=-1;divmenu.style.zIndex = 1;"
-                onmouseout="document.getElementById('menuVendedores').style.visibility='hidden';"
+                onmouseleave="document.getElementById('menuVendedores').style.visibility='hidden';"
                 href="#">Vendedores</a>&Tab;
         </div>
         <div class="left-box-visible">
 
             <a onmouseover="document.getElementById('menuCategorias').style.visibility='visible';divtela.style.zIndex=-1;divmenu.style.zIndex = 1;"
-                onmouseout="document.getElementById('menuCategorias').style.visibility='hidden';"
+                onmouseleave="document.getElementById('menuCategorias').style.visibility='hidden';"
                 href="#">Categorias</a>&Tab;
         </div>
         <div class="left-box-visible">
             <a onmouseover="document.getElementById('menuProdutos').style.visibility='visible';divtela.style.zIndex=-1;divmenu.style.zIndex = 1;"
-                onmouseout="document.getElementById('menuProdutos').style.visibility='hidden';" href="#">Produtos</a>&Tab;
+                onmouseleave="document.getElementById('menuProdutos').style.visibility='hidden';"
+                href="#">Produtos</a>&Tab;
         </div>
         <div class="left-box-visible">
 
             <a onmouseover="document.getElementById('menuVendas').style.visibility='visible';divtela.style.zIndex=-1;divmenu.style.zIndex = 1;"
-                onmouseout="document.getElementById('menuVendas').style.visibility='hidden';" href="#">Vendas</a>
+                onmouseleave="document.getElementById('menuVendas').style.visibility='hidden';" href="#">Vendas</a>
         </div>
     </div>
 
-    <div class="left-box" onmouseout="this.style.visibility='hidden';" onmouseover="this.style.visibility='visible';"
+    <div class="left-box" onmouseleave="this.style.visibility='hidden';" onmouseover="this.style.visibility='visible';"
         id="menuClientes">
         <a target="tela" style="background-color:white" href="cad_alt/cad_alt_cliente.php">Cadastrar</a>
         <br>
@@ -84,8 +98,8 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
     </div>
 
 
-    <div onmouseout="this.style.visibility='hidden';" onmouseover="this.style.visibility='visible';" id="menuVendedores"
-        class="left-box">
+    <div onmouseleave="this.style.visibility='hidden';" onmouseover="this.style.visibility='visible';"
+        id="menuVendedores" class="left-box">
         <a target="tela" style="background-color:white" href="cad_alt/cad_alt_vendedor.php">Cadastrar</a>
         <br>
         <a target="tela" style="background-color:white" href="lista/lista_vendedor.php">Alterar </a>
@@ -95,8 +109,8 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
         <a target="tela" style="background-color:white" href="lista/lista_vendedor.php">Consultar</a>
     </div>
 
-    <div onmouseout="this.style.visibility='hidden';" onmouseover="this.style.visibility='visible';" id="menuCategorias"
-        class="left-box">
+    <div onmouseleave="this.style.visibility='hidden';" onmouseover="this.style.visibility='visible';"
+        id="menuCategorias" class="left-box">
         <a target="tela" style="background-color:white" href="cad_alt/cad_alt_categoria.php">Cadastrar</a>
         <br>
         <a target="tela" style="background-color:white" href="lista/lista_categoria.php">Alterar </a>
@@ -106,7 +120,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
         <a target="tela" style="background-color:white" href="lista/lista_categoria.php">Consultar</a>
     </div>
 
-    <div onmouseout="this.style.visibility='hidden';" onmouseover="this.style.visibility='visible';" id="menuProdutos"
+    <div onmouseleave="this.style.visibility='hidden';" onmouseover="this.style.visibility='visible';" id="menuProdutos"
         class="left-box">
         <a target="tela" style="background-color:white" href="cad_alt/cad_alt_produto.php">Cadastrar</a>
         <br>
@@ -116,7 +130,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
         <br>
         <a target="tela" style="background-color:white" href="lista/lista_produto.php">Consultar</a>
     </div>
-    <div onmouseout="this.style.visibility='hidden';" onmouseover="this.style.visibility='visible';" id="menuVendas"
+    <div onmouseleave="this.style.visibility='hidden';" onmouseover="this.style.visibility='visible';" id="menuVendas"
         class="left-box">
         <a href="cad_alt/cad_alt_venda.php" target="tela">Vender</a>
         <br>
@@ -127,28 +141,27 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 
 
 
-    <div id="divtela"
-        style="background-color:yellow; position:relative; z-index: -1;margin-top: -75px;width:100%; height:800px;">
-        <iframe name="tela" id="tela" scrolling="auto" frameborder="0" width="100%" height="100%" allowfullscreen>
+    <div id="divtela" style="background-color:yellow;position:absolute; z-index: -1;top:50px;width:100%; height:80vh;">
+        <iframe name="tela" id="tela" style="scroll-behavior: auto;border:0px;width:100%;height:80vh" allowfullscreen>
             Conteudo
         </iframe>
     </div>
     <script>
-        divtela.addEventListener("mouseout", function () {
-            divtela.style.zIndex = -1;
-            divmenu.style.zIndex = 1;
-        });
-
-
         function divTela() {
             divtela.style.zIndex = 1;
+        }
+
+        function setDivTela() {
+            divTela();
         }
 
         menuClientes.addEventListener("click", divTela);
         menuVendedores.addEventListener("click", divTela);
         menuCategorias.addEventListener("click", divTela);
         menuProdutos.addEventListener("click", divTela);
-        document.body.addEventListener("click", divTela);
+        divtela.addEventListener("mouseleave", function () {
+            divtela.style.zIndex = -1;
+        });
     </script>
 
 </body>
