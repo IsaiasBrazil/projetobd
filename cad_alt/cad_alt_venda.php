@@ -362,7 +362,7 @@ if (!isset($_SESSION['qtd'])) {
                                                 $color = $color == "yellow" ? "lightgreen" : "yellow";
                                                 echo "<tr style=\"background-color:$color\">";
                                                 echo '<td>' . $item[0] . '</td>' . '<td>' . $item[1] . '</td>' . '<td>' . $item[2] . '</td>';
-                                                echo "<td><a href='../del_produto_venda.php?key=$key' target='tela'>excluir</a></td>";
+                                                echo "<td><a href='../del/del_produto_venda.php?key=$key' target='tela'>excluir</a></td>";
                                                 echo '</tr>';
                                             }
                                         } else {

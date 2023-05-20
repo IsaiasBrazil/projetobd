@@ -13,15 +13,12 @@ $result = mysqli_query($con, $query);
 ?>
 </head>
 <body>
+<div style="overflow:auto">
     <?php
-    if (isset($_SESSION['msg'])) {
-        echo $_SESSION['msg'];
-        unset($_SESSION['msg']);
-    };
     require_once("../gridgenerico.php");
     grid($result,"VENDAS");
     ?>
-
+</div>
 </body>
 
 </html>

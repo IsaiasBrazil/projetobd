@@ -18,7 +18,6 @@ if (mysqli_affected_rows($con)) {
     $_SESSION['msg'] = "<p style='color:red;'> Erro ao excluir venda!</p>";
     
 }
-echo "<style>p.{text-align: right;}</style>";
 $query = "DELETE FROM itens_venda WHERE fk_vendas_numero = $cod";
 $resu = mysqli_query($con, $query);
 

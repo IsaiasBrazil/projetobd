@@ -13,8 +13,11 @@
         unset($_SESSION['msg']);
     }
     include_once("../conexao.php");
-    if (isset($_GET['cod']))
+    if (isset($_GET['cod'])){
         $query = "SELECT * FROM produto p INNER JOIN itens_venda i where i.fk_produtos_cod = p.cod and i.fk_vendas_numero ='" . $_GET['cod'] . "' ";
+        unset($_GET['cod']);
+        $_SESSION['lista_produtos_venda']=1;
+    }
     else
         $query = "SELECT * FROM produto";
     $result = mysqli_query($con, $query);

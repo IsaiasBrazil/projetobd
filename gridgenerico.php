@@ -26,7 +26,13 @@ function grid($result, $tipo)
     </style>
     <table>
         <tr>
-            <th colspan="<?=count($fields)+2;?>">
+            <th colspan="<?= count($fields) + 2; ?>">
+                <?php
+                if (isset($_SESSION['msg'])) {
+                    echo $_SESSION['msg'];
+                    unset($_SESSION['msg']);
+                }
+                ?>
                 <p>
                 <h3>
                     LISTA DE
@@ -57,9 +63,12 @@ function grid($result, $tipo)
                 </th>
                 <?php
             }
-            echo "  <th>opções</th>";
+            if (!isset($_SESSION['lista_produtos_venda'])) {
 
-            echo "<th>opções</th>";
+                echo "  <th>opções</th>";
+
+                echo "<th>opções</th>";
+            }
             ?>
         </tr>
         <?php
@@ -79,23 +88,30 @@ function grid($result, $tipo)
                     }
                     ?>
                     <td>
-                        <input type="text" value="<?= $valor ?>" readonly >
+                        <input type="text" value="<?= $valor ?>" readonly>
                     </td>
                     <?php
                 }
-                if ($nometabela !== 'venda')
-                    echo "<td><a href='../cad_alt/cad_alt_" . $nometabela . ".php?cod=$cod'>Alterar</a></td>";
-                else
-                    echo "<td><a href='../lista/lista_produto.php?cod=$cod'>Listar produtos da venda</a></td>";
-                echo " <td><a href='../del/del_" . $nometabela . ".php?cod=$cod'>Excluir</a></td>";
+                if (!isset($_SESSION['lista_produtos_venda'])) {
+                    if ($nometabela !== 'venda')
+                        echo "<td><a href='../cad_alt/cad_alt_" . $nometabela . ".php?cod=$cod'>Alterar</a></td>";
+                    else
+                        echo "<td><a href='../lista/lista_produto.php?cod=$cod'>Listar produtos da venda</a></td>";
+                    echo " <td><a href='../del/del_" . $nometabela . ".php?cod=$cod'>Excluir</a></td>";
+                }
                 ?>
             </tr>
             <?php
         }
         ?>
     </table>
-    <a href="<?= $_SERVER['HTTP_REFERER'] ?>">Voltar</a></td>
     <?php
+    if (!isset($_SESSION['lista_produtos_venda']))
+        echo "<a href='lista_" . $nometabela . ".php'>Voltar</a></td>";
+    else {
+        echo "<a href='" . $_SERVER['HTTP_REFERER'] . "'>Voltar</a></td>";
+        unset($_SESSION['lista_produtos_venda']);
+    }
     return $cod;
 }
 ?>
