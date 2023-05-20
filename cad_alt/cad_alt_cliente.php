@@ -94,28 +94,27 @@ if (isset($_GET['cod'])) {
                     <form action='<?= $action ?>' method="POST">
                         <p style="margin-top:10px;"> Nome:<input style="border-width: 3px;margin-left: 21px;" type="text" value='<?=$nome?>' name="nome" id="nome" size="80" maxlength="100" required>
                         </p>
-                        <P> CPF:<input value='<?=$cpf?>' style="border-width: 3px; margin-left: 32px;" type="text" name="cpf" size="14" minlength="14" maxlength="14" placeholder="xxx.xxx.xxx-xx" onkeyup="mascara_cpf(this)" required></P>
-                        <P> Telefone:<input value='<?=$telefone?>' onkeyup="mascara_telefone(this)" style="border-width: 3px;margin-left: 5px;" type="tel" name="telefone" size="14" minlength="14" maxlength="14" placeholder="(xx)xxxxx-xxxx" required></P>
-                        <P> Email:<input value='<?=$email?>' style="border-width: 3px;margin-left: 23px;" type="email" name="email" size="14" maxlength="100" required></P>
-                        <P> Limite:<input value='<?=$limite?>' style="border-width: 3px;margin-left: 19px;" type="text" placeholder="R$ 0.00" name="limite" size="14" oninput="mascara_numeros_positivos(this)" required></P>
+                        <p> CPF:<input value='<?=$cpf?>' style="border-width: 3px; margin-left: 32px;" type="text" name="cpf" size="14" minlength="14" maxlength="14" placeholder="xxx.xxx.xxx-xx" onkeyup="mascara_cpf(this)" required></p>
+                        <p> Telefone:<input value='<?=$telefone?>' onkeyup="mascara_telefone(this)" style="border-width: 3px;margin-left: 5px;" type="tel" name="telefone" size="14" minlength="14" maxlength="14" placeholder="(xx)xxxxx-xxxx" required></p>
+                        <p> Email:<input value='<?=$email?>' style="border-width: 3px;margin-left: 23px;" type="email" name="email" size="14" maxlength="100" required></p>
+                        <p> Limite:<input value='<?=$limite?>' style="border-width: 3px;margin-left: 19px;" type="text" placeholder="R$ 0.00" name="limite" size="14" oninput="mascara_numeros_positivos(this)" required></p>
                         Estado:
                         <select style="border-width: 3px;margin-left: 14px;" name="estado" id="estado">
                             <?php
                             $cidades = file_get_contents("../estados-cidades.json");
                             $decode = json_decode($cidades, TRUE);
                             foreach ($decode["estados"] as $valor) {
-                                $selected = $valor["sigla"]==$estado?"selected":"";
+                                $selected = $valor["sigla"] == $estado ? "selected" : "";
                                 echo "<option value='" . $valor["sigla"] . "' $selected>".$valor["nome"]."</option>";
                             }
                             ?>
                         </select>
-                        <p> Cidade:<input value='<?=$cidade?>' style="border-width: 3px;margin-left: 21px;" type="text" size="80"
-                                maxlength="80" name="cidade" required></p>
-                        <p> Endereço:<input value='<?=$endereco?>' style="border-width: 3px;margin-left: 2px;" type="text" size="80"
-                                maxlength="100" name="endereco" required></p>
-                        <p> <input style="border-width: 3px;margin-left: 0px;" type="submit" value="Enviar">
+                        <p> Cidade:<input value='<?=$cidade?>' style="border-width: 3px;margin-left: 21px;" type="text" size="80" maxlength="80" name="cidade" required></p>
+                        <p> Endereço:<input value='<?=$endereco?>' style="border-width: 3px;margin-left: 2px;" type="text" size="80" maxlength="100" name="endereco" required></p>
+                        <p> 
+                            <input style="border-width: 3px;margin-left: 0px;" type="submit" value="Enviar">
                             <input style="border-width: 3px;margin-left: 10px;" type="reset" value="<?=$botaoreset?>">
-                                 </p>
+                        </p>
                     </form>
                 </td>
             </tr>

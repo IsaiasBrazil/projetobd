@@ -33,6 +33,16 @@ if (isset($_GET['cod'])) {
 <head>
     <meta charset="UTF-8">
     <title> <?= $tipo ?> de produtos </title>
+    <script>
+            function mascara_numeros_positivos(elem) {
+                elem.value = elem.value.replace(/[^\d.]/g, '');
+
+                var numero = parseFloat(elem.value);
+                if (isNaN(numero) || numero < 0) {
+                    elem.value = '';
+                }
+            }
+    </script>
 </head>
 
 <body>
@@ -61,9 +71,9 @@ if (isset($_GET['cod'])) {
                         <p style="margin-top:10px;"> Nome:<input style="border-width: 3px;margin-left: 21px;"
                                 type="text" value='<?=$nome?>' name="nome" id="nome" size="80" maxlength="100" required>
                         </p>
-                        <P> Preço:<input value='<?=$preco?>' style="border-width: 3px;margin-left: 5px;" type="text" name="preco" size="14" maxlength="14" required></P>
-                        <P> Quantidade em estoque:<input value='<?=$qtd_estoque?>' style="border-width: 3px;margin-left: 5px;" type="text" name="qtd_estoque"
-                        size="14" maxlength="14" required></P>
+                        <p> Preço:<input value='<?=$preco?>' style="border-width: 3px;margin-left: 5px;" type="text" name="preco" size="14" maxlength="14" oninput="mascara_numeros_positivos(this)" required></p>
+                        <p> Quantidade em estoque:<input value='<?=$qtd_estoque?>' style="border-width: 3px;margin-left: 5px;" type="text" name="qtd_estoque"
+                        size="14" maxlength="14" required></p>
                         <p> Unidade de medida:<input value='<?=$unidade_medida?>' style="border-width: 3px;margin-left: 21px;" type="text" size="80"
                                 maxlength="2" name="unidade_medida" required></p>
                         <p> Categoria: 
