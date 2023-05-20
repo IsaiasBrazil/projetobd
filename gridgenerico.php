@@ -57,7 +57,6 @@ function grid($result, $tipo)
                 </th>
                 <?php
             }
-            // if($nometabela!=='venda')
             echo "  <th>opções</th>";
 
             echo "<th>opções</th>";
@@ -80,7 +79,7 @@ function grid($result, $tipo)
                     }
                     ?>
                     <td>
-                        <input type="text" value="<?= $valor ?>">
+                        <input type="text" value="<?= $valor ?>" readonly >
                     </td>
                     <?php
                 }
@@ -96,7 +95,6 @@ function grid($result, $tipo)
         ?>
     </table>
     <a href="<?= $_SERVER['HTTP_REFERER'] ?>">Voltar</a></td>
-
     <?php
     return $cod;
 }
