@@ -20,7 +20,7 @@ function grid($result, $tipo)
         }
 
         h3 {
-            width: 100%;
+            width: 80vh;
             text-align: center;
         }
     </style>

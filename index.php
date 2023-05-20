@@ -135,14 +135,10 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
         <a href="cad_alt/cad_alt_venda.php" target="tela">Vender</a>
         <br>
         <a href="lista/lista_venda.php" target="tela">Listar vendas</a>
-
     </div>
 
-
-
-
-    <div id="divtela" style="background-color:yellow;position:absolute; z-index: -1;top:50px;width:100%; height:80vh;">
-        <iframe name="tela" id="tela" style="scroll-behavior: auto;border:0px;width:90%;height:80vh" allowfullscreen>
+    <div id="divtela" style="background-color:yellow;position:absolute; z-index: -1;top:50px;width:100%; height:60vh;">
+        <iframe name="tela" id="tela" style="scroll-behavior: auto;border:0px;width:90%;height:100vh" allowfullscreen>
             Conteudo
         </iframe>
     </div>

@@ -316,7 +316,7 @@ if (!isset($_SESSION['qtd'])) {
                 </tr>
                 <tr>
                     <td style="width: auto;" colspan="3">
-                        <div id="scroll_produtos" style="overflow:auto;height:300px">
+                        <div id="scroll_produtos" style="overflow:auto;height:200px">
                             <table width="auto" id="tabela_produtos" style="background-color:white;">
                                 <thead>
                                     <tr style="background-color:black;color:white;">

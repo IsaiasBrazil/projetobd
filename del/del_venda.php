@@ -18,15 +18,15 @@ if (mysqli_affected_rows($con)) {
     $_SESSION['msg'] = "<p style='color:red;'> Erro ao excluir venda!</p>";
     
 }
-
+echo "<style>p.{text-align: right;}</style>";
 $query = "DELETE FROM itens_venda WHERE fk_vendas_numero = $cod";
 $resu = mysqli_query($con, $query);
 
 if (mysqli_affected_rows($con)) {
-    $_SESSION['msg'] = $_SESSION['msg']."<br><p style='color:blue;'> produto excluído com sucesso!</p>";
+    $_SESSION['msg'] = $_SESSION['msg']."<p style='color:blue;> produto excluído com sucesso!</p>";
     
 } else {
-    $_SESSION['msg'] = $_SESSION['msg']."<br><p style='color:red;'> Erro ao excluir produto!</p>";
+    $_SESSION['msg'] = $_SESSION['msg']."<p style='color:red;'> Erro ao excluir produto!</p>";
     
 }
 mysqli_close($con);

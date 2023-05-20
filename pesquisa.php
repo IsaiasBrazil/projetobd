@@ -46,7 +46,7 @@ function grid($result, $tipo)
             //border-collapse: collapse;
         }
     </style>
-    <th id="selecao" rowspan='15' style="width:600px;">
+    <th id="selecao" rowspan='17' style="width:600px;">
         <h2 style="text-align: center;">
             SELEÇÃO DE
             <?= $tipo ?>
