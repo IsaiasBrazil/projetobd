@@ -62,7 +62,7 @@ if (isset($_GET['cod'])) {
                         unset($_SESSION['msg']);
                     }
                     ?>
-                    <form action='<?= $action ?>' method="POST">
+                    <form action='<?= $action; ?>' method="POST">
                         <p style="margin-top:10px;"> Nome:<input style="border-width: 3px;margin-left: 21px;"
                                 type="text" value='<?=$nome?>' name="nome" id="nome" size="80" maxlength="100" required>
                         </p>
