@@ -20,7 +20,7 @@ function grid($result, $tipo)
         }
 
         h3 {
-            width: 80vh;
+            width: fit-content;
             text-align: center;
         }
     </style>
@@ -29,7 +29,7 @@ function grid($result, $tipo)
             <th colspan="<?= count($fields) + 2; ?>">
                 <?php
                 if (isset($_SESSION['msg'])) {
-                    echo $_SESSION['msg'];
+                    echo $_SESSION['msg']."<br>";
                     unset($_SESSION['msg']);
                 }
                 ?>

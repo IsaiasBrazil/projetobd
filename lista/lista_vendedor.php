@@ -21,9 +21,11 @@
 </head>
 
 <body>
-    <?php
-    grid($result, "VENDEDORES");
-    ?>
+    <div style="overflow: auto;">
+        <?php
+        grid($result, "VENDEDORES");
+        ?>
+    </div>
 </body>
 
 </html>

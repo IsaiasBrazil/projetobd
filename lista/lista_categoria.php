@@ -20,9 +20,11 @@
     ?>
 
 <body>
-    <?php
-    grid($result, "CATEGORIAS");
-    ?>
+    <div style="overflow:auto">
+        <?php
+        grid($result, "CATEGORIAS");
+        ?>
+    </div>
 </body>
 
 </html>

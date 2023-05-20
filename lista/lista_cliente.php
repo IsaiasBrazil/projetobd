@@ -13,19 +13,17 @@
     include_once("../gridgenerico.php");
     ?>
 </head>
-
 <body>
-    <?php
-    grid($result, "CLIENTES");
-
-
-    if (isset($_SESSION['msg'])) {
-        $msg = $_SESSION['msg'];
-        echo $msg;
-        unset($_SESSION['msg']);
-    }
-
-    ?>
+    <div style="overflow:auto;">
+        <?php
+        grid($result, "CLIENTES");
+        if (isset($_SESSION['msg'])) {
+            $msg = $_SESSION['msg'];
+            echo $msg;
+            unset($_SESSION['msg']);
+        }
+        ?>
+    </div>
 </body>
 
 </html>
