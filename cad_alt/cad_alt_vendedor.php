@@ -38,6 +38,14 @@ if (isset($_GET['cod'])) {
 <head>
     <meta charset="UTF-8">
     <title> <?= $tipo ?> de vendedores </title>
+    <script>
+            function mascara_telefone(elem) {
+                if (!elem.value) return elem.value = "";
+                elem.value = elem.value.replace(/\D/g, '')
+                elem.value = elem.value.replace(/(\d{2})(\d)/, "($1)$2")
+                elem.value = elem.value.replace(/(\d)(\d{4})$/, "$1-$2")
+            }
+    </script>
 </head>
 
 <body>
@@ -63,13 +71,10 @@ if (isset($_GET['cod'])) {
                     }
                     ?>
                     <form action='<?= $action; ?>' method="POST">
-                        <p style="margin-top:10px;"> Nome:<input style="border-width: 3px;margin-left: 21px;"
-                                type="text" value='<?=$nome?>' name="nome" id="nome" size="80" maxlength="100" required>
+                        <p style="margin-top:10px;"> Nome:<input style="border-width: 3px;margin-left: 21px;" type="text" value='<?=$nome?>' name="nome" id="nome" size="80" maxlength="100" required>
                         </p>
-                        <P> Telefone:<input value='<?=$telefone?>' style="border-width: 3px;margin-left: 5px;" type="text" name="telefone"
-                                size="14" maxlength="14" required></P>
-                        <P> Comissão (%):<input value='<?=$porc_comissao?>' style="border-width: 3px;margin-left: 5px;" type="text" name="porc_comissao"
-                        size="14" maxlength="14" required></P>
+                        <p> Telefone:<input value='<?=$telefone?>' style="border-width: 3px;margin-left: 5px;" type="text" name="telefone" size="14" maxlength="14" onkeyup="mascara_telefone(this)" placeholder="(xx)xxxxx-xxxx" required></p>
+                        <p> Comissão (%):<input value='<?=$porc_comissao?>' style="border-width: 3px;margin-left: 5px;" type="text" name="porc_comissao" size="14" maxlength="14" required></p>
                         Estado:
                         <select style="border-width: 3px;margin-left: 14px;" name="estado" id="estado">
                             <?php
@@ -81,11 +86,10 @@ if (isset($_GET['cod'])) {
                             }
                             ?>
                         </select>
-                        <p> Cidade<input value='<?=$cidade?>' style="border-width: 3px;margin-left: 21px;" type="text" size="80"
-                                maxlength="80" name="cidade" required></p>
-                        <p> Endereço:<input value='<?=$endereco?>' style="border-width: 3px;margin-left: 2px;" type="text" size="80"
-                                maxlength="100" name="endereco" required></p>
-                        <p> <input style="border-width: 3px;margin-left: 0px;" type="submit" value="Enviar">
+                        <p> Cidade<input value='<?=$cidade?>' style="border-width: 3px;margin-left: 21px;" type="text" size="80" maxlength="80" name="cidade" required></p>
+                        <p> Endereço:<input value='<?=$endereco?>' style="border-width: 3px;margin-left: 2px;" type="text" size="80" maxlength="100" name="endereco" required></p>
+                        <p> 
+                            <input style="border-width: 3px;margin-left: 0px;" type="submit" value="Enviar">
                             <input style="border-width: 3px;margin-left: 10px;" type="reset" value="Limpar">
                             <button  type="button" style="border-width: 3px;margin-left: 10px;"
                                 onclick="window.location.href='../index.php'">Ir para Home</button>

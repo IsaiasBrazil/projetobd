@@ -56,6 +56,15 @@ if (!isset($_SESSION['qtd'])) {
             s.style.visibility = 'hidden';
             s = null;
         }
+
+        function mascara_numeros_positivos(elem) {
+            elem.value = elem.value.replace(/[^\d.]/g, '');
+
+            var numero = parseFloat(elem.value);
+            if (isNaN(numero) || numero < 0) {
+                elem.value = '';
+            }
+        }
     </script>
 
 </head>
@@ -232,7 +241,7 @@ if (!isset($_SESSION['qtd'])) {
                     <td>Prazo de entrega:</td>
                     <td colspan="2">
                         <input style="width:97%" id="prazo_entrega" name="prazo_entrega" type="text"
-                            value='<?=$_SESSION['prazo_entrega'];?>' placeholder="Exemplo: Entregar em x dias...">
+                            value='<?=$_SESSION['prazo_entrega'];?>' placeholder="Exemplo: Entregar em x dias..." oninput="mascara_numeros_positivos(this)">
                         </input>
                     </td>
                 </tr>
