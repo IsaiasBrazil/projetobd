@@ -142,7 +142,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 
 
     <div id="divtela" style="background-color:yellow;position:absolute; z-index: -1;top:50px;width:100%; height:80vh;">
-        <iframe name="tela" id="tela" style="scroll-behavior: auto;border:0px;width:100%;height:80vh" allowfullscreen>
+        <iframe name="tela" id="tela" style="scroll-behavior: auto;border:0px;width:90%;height:80vh" allowfullscreen>
             Conteudo
         </iframe>
     </div>
