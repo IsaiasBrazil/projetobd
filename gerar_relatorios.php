@@ -1,10 +1,12 @@
 <?php
+    $data_inicial = $_POST['data_inicial'];
+    $data_final = $_POST['data_final'];
     require('fpdf185/fpdf.php');
     $tabelas = array('produto', 'venda');
 
     function gerar_relatorios($lista_tabelas) {
+        global $data_inicial, $data_final;
         require('conexao.php');
-
         foreach ($lista_tabelas as $tabela) {
             $nome_arq_relatorio;
             $pdf = new FPDF('L', 'mm', 'A4');
@@ -45,7 +47,7 @@
 
             elseif ($tabela == 'venda') {
                 $nome_arq_relatorio = 'relatorio_vendas.pdf';
-                $query = 'SELECT v.numero, v.data, v.prazo_entrega, v.cond_pagto, v.fk_cliente_cod, v.fk_vendedor_cod, p.cod, p.nome FROM venda v INNER JOIN itens_venda iv ON v.numero = iv.fk_vendas_numero INNER JOIN produto p ON iv.fk_produtos_cod = p.cod';
+                $query = "SELECT v.numero, v.data, v.prazo_entrega, v.cond_pagto, v.fk_cliente_cod, v.fk_vendedor_cod, p.cod, p.nome FROM venda v INNER JOIN itens_venda iv ON v.numero = iv.fk_vendas_numero INNER JOIN produto p ON iv.fk_produtos_cod = p.cod WHERE v.data BETWEEN '$data_inicial' AND '$data_final'";
                 $resu = mysqli_query($con, $query);
                 $qt_registros = mysqli_num_rows($resu);
 
