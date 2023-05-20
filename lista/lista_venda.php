@@ -37,7 +37,7 @@
         $_SESSION['filtro_data_ini'] = $data_ini;
         $_SESSION['filtro_data_fin'] = $data_fin;
         if ($data_ini != "" && $data_fin != "") {
-            $query = "SELECT * FROM venda WHERE DATE(data)>='$data_ini' and data<='$data_fin'";
+            $query = "SELECT v.numero AS 'Codigo(venda)',v.data,v.prazo_entrega AS 'prazo de entrega',v.cond_pagto AS 'forma de pagamento',v.fk_cliente_cod AS 'codigo(cliente)',c.nome AS cliente,v.fk_vendedor_cod AS 'codigo(vendedor)' ,ve.nome AS vendedor FROM venda v INNER JOIN vendedor ve ON ve.cod = v.fk_vendedor_cod INNER JOIN cliente c ON c.cod=v.fk_cliente_cod WHERE DATE(v.data) >= '$data_ini' AND v.data <= '$data_fin'";
         } else
             $query = "SELECT * FROM venda";
         $result = mysqli_query($con, $query);
