@@ -29,7 +29,7 @@ function grid($result, $tipo)
             <th colspan="<?= count($fields) + 2; ?>">
                 <?php
                 if (isset($_SESSION['msg'])) {
-                    echo $_SESSION['msg']."<br>";
+                    echo $_SESSION['msg'] . "<br>";
                     unset($_SESSION['msg']);
                 }
                 ?>
@@ -57,6 +57,8 @@ function grid($result, $tipo)
                     $nomecampo = "unidade de medida";
                 if ($nomecampo == "porc_comissao")
                     $nomecampo = "percentual de comissão";
+                if ($nomecampo == "descricao")
+                    $nomecampo = "categoria";
                 ?>
                 <th>
                     <?php echo $nomecampo; ?>
