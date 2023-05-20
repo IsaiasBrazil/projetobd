@@ -63,6 +63,7 @@
                 $pdf->Ln();
 
                 $i = 0;
+
                 while ($linha = mysqli_fetch_assoc($resu)) {
                     $pdf->Cell(25, 6, $linha['numero'], 1, 0, 'C');
                     $pdf->Cell(30, 6, $linha['data'], 1, 0, 'C');
@@ -73,7 +74,6 @@
                     $pdf->Cell(34, 6, $linha['cod'], 1, 0, 'C');
                     $pdf->Cell(48, 6, $linha['nome'], 1, 0, 'C');
                     $pdf->Ln();
-
                     $i++;
                 }
             }

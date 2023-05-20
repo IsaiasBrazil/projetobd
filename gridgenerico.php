@@ -29,7 +29,7 @@ function grid($result, $tipo)
             <th colspan="<?= count($fields) + 2; ?>">
                 <?php
                 if (isset($_SESSION['msg'])) {
-                    echo $_SESSION['msg'] . "<br>";
+                    echo $_SESSION['msg']."<br>";
                     unset($_SESSION['msg']);
                 }
                 ?>
@@ -57,7 +57,7 @@ function grid($result, $tipo)
                     $nomecampo = "unidade de medida";
                 if ($nomecampo == "porc_comissao")
                     $nomecampo = "percentual de comissão";
-                if ($nomecampo == "descricao")
+                    if ($nomecampo == "descricao")
                     $nomecampo = "categoria";
                 ?>
                 <th>
@@ -95,7 +95,7 @@ function grid($result, $tipo)
                     <?php
                 }
                 if (!isset($_SESSION['lista_produtos_venda'])) {
-                    if ($nometabela !== 'venda')
+                    if ($tipo !== 'VENDAS')
                         echo "<td><a href='../cad_alt/cad_alt_" . $nometabela . ".php?cod=$cod'>Alterar</a></td>";
                     else
                         echo "<td><a href='../lista/lista_produto.php?cod=$cod'>Listar produtos da venda</a></td>";
