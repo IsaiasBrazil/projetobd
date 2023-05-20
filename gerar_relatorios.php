@@ -1,12 +1,12 @@
 <?php
     require('fpdf185/fpdf.php');
-    $tabelas = array('produto');
+    $tabelas = array('produto', 'venda');
 
     function gerar_relatorios($lista_tabelas) {
-        $nome_arq_relatorio;
         require('conexao.php');
 
         foreach ($lista_tabelas as $tabela) {
+            $nome_arq_relatorio;
             $pdf = new FPDF('L', 'mm', 'A4');
             $pdf->AddPage();
             $pdf->SetFont('Arial', 'B', 14);
@@ -42,9 +42,41 @@
                     $i++;
                 }
             }
-        } 
 
-        $pdf->Output($nome_arq_relatorio, 'F');
+            elseif ($tabela == 'venda') {
+                $nome_arq_relatorio = 'relatorio_vendas.pdf';
+                $query = 'SELECT v.numero, v.data, v.prazo_entrega, v.cond_pagto, v.fk_cliente_cod, v.fk_vendedor_cod, p.cod, p.nome FROM venda v INNER JOIN itens_venda iv ON v.numero = iv.fk_vendas_numero INNER JOIN produto p ON iv.fk_produtos_cod = p.cod';
+                $resu = mysqli_query($con, $query);
+                $qt_registros = mysqli_num_rows($resu);
+
+                // Criando os nomes das colunas
+                $pdf->Cell(25, 6, 'numero', 1, 0, 'C');
+                $pdf->Cell(30, 6, 'data', 1, 0, 'C');
+                $pdf->Cell(40, 6, 'prazo_entrega', 1, 0, 'C');
+                $pdf->Cell(35, 6, 'cond_pagto', 1, 0, 'C');
+                $pdf->Cell(34, 6, 'cod_cliente', 1, 0, 'C');
+                $pdf->Cell(36, 6, 'cod_vendedor', 1, 0, 'C');
+                $pdf->Cell(34, 6, 'cod_produto', 1, 0, 'C');
+                $pdf->Cell(48, 6, 'produto', 1, 0, 'C');
+                $pdf->Ln();
+
+                $i = 0;
+                while ($linha = mysqli_fetch_assoc($resu)) {
+                    $pdf->Cell(25, 6, $linha['numero'], 1, 0, 'C');
+                    $pdf->Cell(30, 6, $linha['data'], 1, 0, 'C');
+                    $pdf->Cell(40, 6, $linha['prazo_entrega'], 1, 0, 'C');
+                    $pdf->Cell(35, 6, $linha['cond_pagto'], 1, 0, 'C');
+                    $pdf->Cell(34, 6, $linha['fk_cliente_cod'], 1, 0, 'C');
+                    $pdf->Cell(36, 6, $linha['fk_vendedor_cod'], 1, 0, 'C');
+                    $pdf->Cell(34, 6, $linha['cod'], 1, 0, 'C');
+                    $pdf->Cell(48, 6, $linha['nome'], 1, 0, 'C');
+                    $pdf->Ln();
+
+                    $i++;
+                }
+            }
+            $pdf->Output($nome_arq_relatorio, 'F');
+        } 
     }
 
     gerar_relatorios($tabelas);
