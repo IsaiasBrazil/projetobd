@@ -100,6 +100,6 @@ gerar_relatorios($tabelas);
 ?>
 <!DOCTYPE html>
 <p>Relatórios gerados:</p><br>
-<a href='relatorio_produtos.pdf'>relatorio_produtos.pdf</a>
+<a href='relatorio_produtos.pdf' target="_blank">relatorio_produtos.pdf</a>
 <br>
-<a href='relatorio_vendas.pdf'>relatorio_vendas.pdf</a>
+<a href='relatorio_vendas.pdf' target="_blank">relatorio_vendas.pdf</a>
