@@ -39,7 +39,7 @@ CREATE TABLE venda (
     fk_vendedor_cod INTEGER REFERENCES vendedor (cod)
 );
 CREATE TABLE itens_venda (
-    fk_produtos_cod INTEGER NOT NULL REFERENCES produtos (cod),
+    fk_produtos_cod INTEGER NOT NULL REFERENCES produto (cod),
     fk_vendas_numero INTEGER NOT NULL REFERENCES vendas (numero),
     quant_vendida INTEGER
 );

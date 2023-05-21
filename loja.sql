@@ -44,7 +44,7 @@ CREATE TABLE venda (
 );
 
 CREATE TABLE itens_venda (
-    fk_produtos_cod INTEGER NOT NULL REFERENCES produtos (cod),
+    fk_produtos_cod INTEGER NOT NULL REFERENCES produto (cod),
     fk_vendas_numero INTEGER NOT NULL REFERENCES vendas (numero),
     quant_vendida INTEGER,
     PRIMARY KEY(fk_produtos_cod,fk_vendas_numero)
