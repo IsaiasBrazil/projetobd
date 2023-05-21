@@ -37,9 +37,10 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 
         .menu-dropdown {
             position: absolute;
-            top: 20px;
+            top: 22px;
             left: 10px;
             display: none;
+            font-size: 20px;
             z-index: 2;
             background-color: lightblue;
             padding: 10px;
@@ -51,10 +52,11 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
             visibility: visible;
             position: relative;
             float: left;
-            top:-20px;
+            top:-22px;
             width: 100px;
             margin-right: 10px;
-            height: 20px;
+            height: 22px;
+            font-size: 20px;
         }
 
         .menu-opts:hover {
