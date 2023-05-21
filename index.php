@@ -10,7 +10,6 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
     <title>LOJA FATEC ADS NOITE</title>
     <style>
         .sep {
-            /* background-color: lightblue; */
             visibility: visible;
             position: relative;
             z-index: 1;
@@ -19,20 +18,6 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
             top: -3px;
             margin-right: 10px;
             height: 20px;
-        }
-
-        .left-box {
-            position: relative;
-            background-color: white;
-            width: 100px;
-            height: fit-content;
-            margin-top: -1px;
-            padding-top: 8px;
-            float: left;
-            display: none;
-            z-index: 1;
-            margin-right: 10px;
-            font-size: 20px;
         }
 
         .menu-dropdown {
@@ -44,7 +29,10 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
             z-index: 2;
             background-color: lightblue;
             padding: 10px;
-           // box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 3px 4px 2px 1px rgba(200, 200, 200, 0.8);
+        }
+        .menu-dropdown a:hover{
+            background-color: aquamarine;
         }
 
         .menu-opts {
@@ -59,35 +47,34 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
             font-size: 20px;
         }
 
-        .menu-opts:hover {
-            background-color: aquamarine;
-        }
-
-        .menu-opts:hover .menu-dropdown {
+        .menu-opts:hover .menu-dropdown{
             display: block;
             z-index: 2;
         }
 
         .report {
             background-color: lightblue;
-            visibility: visible;
             position: absolute;
-            overflow: hidden;
             width: 200px;
-            top: 13px;
+            top: 35px;
             right: 20px;
             height: 30px;
             text-align: right;
             font-size: 20px;
+        } 
+        .report a:hover{
+            //background-color: rgba(240, 240, 240, 0.5);
+            color: red;
         }
 
-        .box {
-            width: 100%;
-            height: 20px;
-            background-color: lightblue;
-            margin-bottom: 0px;
-            clear: left;
-            font-size: 20px;
+        img{
+            opacity: 0.8;
+        }
+
+        .report a:hover img{
+            opacity: 1;
+            background-color: rgba(200, 200, 200, 0.8);
+            transform: scale(1.2);
         }
 
         #titulo {
@@ -99,17 +86,12 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
             font-size: 20px;
         }
 
-        a:hover {
-            background-color: aquamarine;
-        }
-
         #divtela {
             background-color: yellow;
             position: absolute;
             top: 70px;
             width: 1400px;
             height: 600px;
-
         }
     </style>
 
@@ -187,7 +169,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
     <div class="menu-opts">
 
         <a href="#">Vendas</a>
-        <div class="menu-dropdown" style="width:90px">
+        <div class="menu-dropdown" style="width:110px">
             <a href="cad_alt/cad_alt_venda.php" target="tela">Vender</a>
             <br>
             <a href="lista/lista_venda.php" target="tela">Listar vendas</a>
@@ -195,8 +177,8 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 
     </div>
     <div class="report">
-        <a target="tela" href="tela_relatorio.php">Gerar Relatórios: <img src="relatorio_ifm.png" alt="Relatórios"
-                style="height:30px" title="Gerar Relatórios"></a>
+        <a id="linkreport" target="tela" href="tela_relatorio.php">Gerar Relatórios <img src="relatorio_ifm.png" alt="Relatórios"
+                style="height:30px;" title="Gerar Relatórios"></a>
     </div>
     </div>
 
@@ -206,24 +188,6 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
             Conteudo
         </iframe>
     </div>
-    <script>
-        function divTela() {
-            divtela.style.zIndex = 1;
-        }
-
-        function setDivTela() {
-            divTela();
-        }
-
-        menuClientes.addEventListener("click", divTela);
-        menuVendedores.addEventListener("click", divTela);
-        menuCategorias.addEventListener("click", divTela);
-        menuProdutos.addEventListener("click", divTela);
-        divtela.addEventListener("mouseleave", function () {
-            divtela.style.zIndex = -1;
-        });
-    </script>
-
 </body>
 
 </html>
