@@ -10,7 +10,8 @@ function verificaDisponibilidade($cod):int{
     $qtd = $row['qtd_estoque'];
     file_put_contents('log.txt',$qtd.PHP_EOL,FILE_APPEND);
     mysqli_close($con);
-    $qtd -= $_SESSION['itens_venda'][1][$cod]??$qtd;
+    $sqtd =  $_SESSION['itens_venda'][1][$cod]??0;
+    $qtd -= $sqtd;
     return $qtd;
    }
 function pesquisar($botao, $nome_tabela, $metodo)
@@ -126,12 +127,12 @@ function grid($result, $tipo)
                         if ($nomecampo == 'produto') {
                             $prod = $nome;
                         }
-
+                        $qtd=verificaDisponibilidade($cod);
                         if ($tipo == 'PRODUTO') {
                             ?>
                             <td>
                                 <form method="POST">
-                                    <input type="number" id="qtd" name="qtd" value="0" max="<?=verificaDisponibilidade($cod);?>" min="0">
+                                    <input type="number" id="qtd" name="qtd" value="<?=$qtd?>" max="<?=$qtd?>" min="0">
                                     <input type="hidden" name="vendedor" value="<?= $vendedor ?>" />
                                     <input type="hidden" name="cliente" value="<?= $cliente ?>" />
                                     <input type="hidden" name="prod" value="<?= $prod ?>" />

@@ -29,7 +29,7 @@ function grid($result, $tipo)
             <th colspan="<?= count($fields) + 2; ?>">
                 <?php
                 if (isset($_SESSION['msg'])) {
-                    echo $_SESSION['msg']."<br>";
+                    echo $_SESSION['msg'] . "<br>";
                     unset($_SESSION['msg']);
                 }
                 ?>
@@ -45,7 +45,7 @@ function grid($result, $tipo)
             <?php
             foreach ($fields as $field) {
                 $nomecampo = $field->name;
-                $nometabela = $field->table;
+                $nometabela = $field->orgtable;
                 //aqui substitui alguns nomes de campo do bd como exemplo fk_categoria_id para código de categoria
                 if ($nomecampo == "fk_categoria_id")
                     $nomecampo = "código de categoria";
@@ -57,13 +57,10 @@ function grid($result, $tipo)
                     $nomecampo = "unidade de medida";
                 if ($nomecampo == "porc_comissao")
                     $nomecampo = "percentual de comissão";
-                    if ($nomecampo == "descricao")
+                if ($nomecampo == "descricao")
                     $nomecampo = "categoria";
-                ?>
-                <th>
-                    <?php echo $nomecampo; ?>
-                </th>
-                <?php
+
+                echo "<th>" . $nomecampo . "</th>";
             }
             if (!isset($_SESSION['lista_produtos_venda'])) {
 
