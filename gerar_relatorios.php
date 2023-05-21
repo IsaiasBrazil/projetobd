@@ -59,7 +59,7 @@ function gerar_relatorios($lista_tabelas)
             }
         } elseif ($tabela == 'venda') {
             $nome_arq_relatorio = 'relatorio_vendas.pdf';
-            $query = "SELECT v.numero, v.data, v.prazo_entrega, v.cond_pagto, v.fk_cliente_cod, v.fk_vendedor_cod, p.cod, p.nome FROM venda v INNER JOIN itens_venda iv ON v.numero = iv.fk_vendas_numero INNER JOIN produto p ON iv.fk_produtos_cod = p.cod WHERE v.data BETWEEN '$data_inicial' AND '$data_final'";
+            $query = "SELECT v.numero, v.data, v.prazo_entrega, v.cond_pagto, v.fk_cliente_cod, v.fk_vendedor_cod, p.cod, p.nome FROM venda v INNER JOIN itens_venda iv ON v.numero = iv.fk_vendas_numero INNER JOIN produto p ON iv.fk_produtos_cod = p.cod WHERE DATE(v.data) BETWEEN '$data_inicial' AND '$data_final'";
             $resu = mysqli_query($con, $query);
             $qt_registros = mysqli_num_rows($resu);
 

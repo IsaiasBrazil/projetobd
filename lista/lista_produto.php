@@ -33,7 +33,7 @@
         </div>
         <?php
          $categoria = $_POST['filtro']??"";
-         $query = "SELECT * FROM produto p INNER JOIN categoria c where p.fk_categoria_id=c.cod and c.descricao like '%$categoria%'";
+         $query = "SELECT * FROM categoria c INNER JOIN produto p where p.fk_categoria_id=c.cod and c.descricao like '%$categoria%'";
     }
     ?>
     <div style="overflow:auto">

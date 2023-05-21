@@ -15,8 +15,8 @@
      if (session_status() !== PHP_SESSION_ACTIVE) {
         session_start();
     }
-    $data_inicial = $_SESSION['data_inicial'] ?? date('yyyy-MM-dd');
-    $data_final = $_SESSION['data_final'] ?? date('yyyy-MM-dd');
+    $data_inicial = $_SESSION['data_inicial'] ?? "20".date('y-m-d');
+    $data_final = $_SESSION['data_final'] ?? "20".date('y-m-d');
     ?>
 </head>
 

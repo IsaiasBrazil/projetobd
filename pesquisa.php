@@ -7,7 +7,7 @@ function verificaDisponibilidade($cod):int{
     $query = "SELECT qtd_estoque FROM produto WHERE cod='$cod'";
     $result = mysqli_query($con, $query);
     $row = mysqli_fetch_assoc($result);
-    $qtd = $row['qtd_estoque'];
+    $qtd = $row['qtd_estoque']??0;
     file_put_contents('log.txt',$qtd.PHP_EOL,FILE_APPEND);
     mysqli_close($con);
     $sqtd =  $_SESSION['itens_venda'][1][$cod]??0;
