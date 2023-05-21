@@ -86,7 +86,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
                 onmouseleave="document.getElementById('menuVendas').style.visibility='hidden';" href="#">Vendas</a>
         </div>
         <div class="left-box-visible">
-            <a target="tela" href="tela_relatorio.php">Vendas</a>
+            <a target="tela" href="tela_relatorio.php">Relatórios</a>
         </div>
     </div>
 

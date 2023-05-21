@@ -36,19 +36,22 @@ function gerar_relatorios($lista_tabelas)
             while ($linha = mysqli_fetch_assoc($resu)) {
                 $temp = 0;
                 foreach ($linha as $key => &$elem) {
-                    $valor = $valor = mb_convert_encoding(($linha[$key]),"UTF-8");
-                    if ($key == 'nome'){
+                    $encode = mb_detect_encoding($linha[$key]);
+                    $valor = mb_convert_encoding(($linha[$key]), 'utf-8', $encode);
+                    if ($key == 'nome') {
                         $valor = str_replace('”', '"', $valor);
+                    } elseif ($key == 'descricao') {
+                        $encode = mb_detect_encoding($linha[$key]);
+                        $valor=utf8_decode($valor);
+                        //$valor =  mb_convert_encoding(($linha[$key]),"utf-8","auto");
                     }
-                    elseif ($key == 'descricao')
-                        $valor = utf8_decode($linha[$key]);
                     $tamanho = strlen($valor);
-                    $fonte = intval(intval($tamanhos[$temp])*5/$tamanho);
+                    $fonte = intval(intval($tamanhos[$temp]) * 5 / $tamanho);
                     $fonte = ($fonte <= 20 && $fonte > 0) ? $fonte : 16;
                     $pdf->SetFont('Arial', 'B', $fonte);
                     $pdf->Cell($tamanhos[$temp], 6, $valor, 1, 0, 'C');
-                    $temp+=1;
-                   
+                    $temp += 1;
+
                 }
                 $pdf->Ln();
             }
@@ -72,18 +75,17 @@ function gerar_relatorios($lista_tabelas)
             while ($linha = mysqli_fetch_assoc($resu)) {
                 $temp = 0;
                 foreach ($linha as $key => &$elem) {
-                    $valor = $valor = mb_convert_encoding(($linha[$key]),"UTF-8");
-                    if ($key == 'produto'){
+                    $valor = $valor = mb_convert_encoding(($linha[$key]), "UTF-8");
+                    if ($key == 'produto') {
                         $valor = str_replace('”', '"', $valor);
-                    }
-                    elseif ($key == 'descricao')
-                        $valor = utf8_decode($linha[$key]);
+                    } elseif ($key == 'descricao')
+                        $valor = mb_convert_encoding(($linha[$key]), "UTF-8");
                     $tamanho = strlen($valor);
-                    $fonte = intval(intval($tamanhos2[$temp])*5/$tamanho);
+                    $fonte = intval(intval($tamanhos2[$temp]) * 5 / $tamanho);
                     $fonte = ($fonte <= 20 && $fonte > 0) ? $fonte : 16;
                     $pdf->SetFont('Arial', 'B', $fonte);
                     $pdf->Cell($tamanhos2[$temp], 6, $valor, 1, 0, 'C');
-                    $temp+=1;      
+                    $temp += 1;
                 }
                 $pdf->Ln();
             }
@@ -92,5 +94,5 @@ function gerar_relatorios($lista_tabelas)
     }
 }
 gerar_relatorios($tabelas);
-//header('Location:'.$_SERVER['HTTP_REFERER']);
+header('Location:relatorio_produtos.pdf');
 ?>
