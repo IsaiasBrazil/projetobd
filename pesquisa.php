@@ -2,7 +2,17 @@
 if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
 }
-
+function verificaDisponibilidade($cod):int{
+    require('conexao.php');
+    $query = "SELECT qtd_estoque FROM produto WHERE cod='$cod'";
+    $result = mysqli_query($con, $query);
+    $row = mysqli_fetch_assoc($result);
+    $qtd = $row['qtd_estoque'];
+    file_put_contents('log.txt',$qtd.PHP_EOL,FILE_APPEND);
+    mysqli_close($con);
+    $qtd -= $_SESSION['itens_venda'][1][$cod]??$qtd;
+    return $qtd;
+   }
 function pesquisar($botao, $nome_tabela, $metodo)
 {
     global $codigo;
@@ -85,6 +95,11 @@ function grid($result, $tipo)
                                 $nome = $row[$field->name];
                                 $nome = $row['nome'];
                             }
+
+                            if ($field->name == "qtd_estoque") {
+                                $qtd = $row[$field->name];
+                                $qtd = $row['qtd_estoque'];
+                            }
                             ?>
                             <td>
                                 <input size="<?= strlen($row[$field->name]); ?>" type="text" value="<?= $row[$field->name]; ?>">
@@ -112,13 +127,11 @@ function grid($result, $tipo)
                             $prod = $nome;
                         }
 
-                       
                         if ($tipo == 'PRODUTO') {
                             ?>
                             <td>
                                 <form method="POST">
-                                    <input type="number" id="qtd" name="qtd" value="1" min="1"
-                                        onchange="verificaDisponibilidade(this);">
+                                    <input type="number" id="qtd" name="qtd" value="0" max="<?=verificaDisponibilidade($cod);?>" min="0">
                                     <input type="hidden" name="vendedor" value="<?= $vendedor ?>" />
                                     <input type="hidden" name="cliente" value="<?= $cliente ?>" />
                                     <input type="hidden" name="prod" value="<?= $prod ?>" />

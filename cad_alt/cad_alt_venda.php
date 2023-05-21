@@ -101,8 +101,6 @@ if (!isset($_SESSION['qtd'])) {
                                 unset($_GET['cod_vendedor']);
                             else
                                 $_SESSION['cod_vendedor'] = $_GET['cod_vendedor'];                
-                        // file_put_contents('log.txt', $_SESSION['cod_cliente'] . PHP_EOL, FILE_APPEND);
-                        // file_put_contents('log.txt', $_SESSION['cod_vendedor'] . PHP_EOL, FILE_APPEND);
                         pesquisar('botao_pesquisa_produto', 'produto', 'metodo_pesquisa_produto');
                         ?>
                     </th>
