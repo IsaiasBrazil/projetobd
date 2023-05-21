@@ -9,27 +9,61 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 <head>
     <title>LOJA FATEC ADS NOITE</title>
     <style>
-        .left-box {
-            background-color: white;
-            width: 120px;
-            height: fit-content;
-            margin-top: -1px;
-            float: left;
-            visibility: hidden;
-            z-index: 1;
-            margin-right: 1px;
-        }
-
-        .left-box-visible {
-            background-color: lightblue;
+        .sep {
+            /* background-color: lightblue; */
             visibility: visible;
             position: relative;
             z-index: 1;
             float: left;
-            width: 120px;
-            margin-right: 1px;
+            width: 5px;
+            top: -3px;
+            margin-right: 10px;
             height: 20px;
-            text-align: center;
+        }
+
+        .left-box {
+            position: relative;
+            background-color: white;
+            width: 100px;
+            height: fit-content;
+            margin-top: -1px;
+            padding-top: 8px;
+            float: left;
+            display: none;
+            z-index: 1;
+            margin-right: 10px;
+            font-size: 20px;
+        }
+
+        .menu-dropdown {
+            position: absolute;
+            top: 20px;
+            left: 10px;
+            display: none;
+            z-index: 2;
+            background-color: lightblue;
+            padding: 10px;
+           // box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-opts {
+            background-color: lightblue;
+            visibility: visible;
+            position: relative;
+            float: left;
+            top:-20px;
+            width: 100px;
+            margin-right: 10px;
+            height: 20px;
+        }
+
+        .menu-opts:hover {
+            background-color: aquamarine;
+        }
+
+        .menu-opts:hover .menu-dropdown {
+            display: block;
+            z-index: 2;
         }
 
         .report {
@@ -37,7 +71,6 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
             visibility: visible;
             position: absolute;
             overflow: hidden;
-            z-index: 1;
             width: 200px;
             top: 13px;
             right: 20px;
@@ -59,10 +92,22 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
             background-color: lightblue;
             width: 100%;
             text-align: center;
-            height: 18px;
+            height: 60px;
             font-weight: bold;
             font-size: 20px;
-            z-index: 1;
+        }
+
+        a:hover {
+            background-color: aquamarine;
+        }
+
+        #divtela {
+            background-color: yellow;
+            position: absolute;
+            top: 70px;
+            width: 1400px;
+            height: 600px;
+
         }
     </style>
 
@@ -73,92 +118,88 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
     <div id='titulo'>
         ATIVIDADE LOJA
     </div>
-    <div id="divmenu" class="box">
-        <div class="left-box-visible"
-            onmouseover="document.getElementById('menuClientes').style.visibility='visible';divtela.style.zIndex=-1;divmenu.style.zIndex = 1;"
-            onmouseleave="document.getElementById('menuClientes').style.visibility='hidden';">
-            <a href="#">Clientes</a>
-        </div>
-        <div class="left-box-visible">
 
-            <a onmouseover="document.getElementById('menuVendedores').style.visibility='visible';divtela.style.zIndex=-1;divmenu.style.zIndex = 1;"
-                onmouseleave="document.getElementById('menuVendedores').style.visibility='hidden';"
-                href="#">Vendedores</a>&Tab;
+    <div id="divmenu" class="menu-opts">
+        <a href="#">Clientes</a>
+        <div class="menu-dropdown" id="menuClientes">
+            <a target="tela" href="cad_alt/cad_alt_cliente.php">Cadastrar</a>
+            <br>
+            <a target="tela" href="lista/lista_cliente.php">Alterar </a>
+            <br>
+            <a target="tela" href="lista/lista_cliente.php">Excluir </a>
+            <br>
+            <a target="tela" href="lista/lista_cliente.php">Consultar</a>
         </div>
-        <div class="left-box-visible">
 
-            <a onmouseover="document.getElementById('menuCategorias').style.visibility='visible';divtela.style.zIndex=-1;divmenu.style.zIndex = 1;"
-                onmouseleave="document.getElementById('menuCategorias').style.visibility='hidden';"
-                href="#">Categorias</a>&Tab;
-        </div>
-        <div class="left-box-visible">
-            <a onmouseover="document.getElementById('menuProdutos').style.visibility='visible';divtela.style.zIndex=-1;divmenu.style.zIndex = 1;"
-                onmouseleave="document.getElementById('menuProdutos').style.visibility='hidden';"
-                href="#">Produtos</a>&Tab;
-        </div>
-        <div class="left-box-visible">
-
-            <a onmouseover="document.getElementById('menuVendas').style.visibility='visible';divtela.style.zIndex=-1;divmenu.style.zIndex = 1;"
-                onmouseleave="document.getElementById('menuVendas').style.visibility='hidden';" href="#">Vendas</a>
-        </div>
-        <div class="report">
-            <a target="tela" href="tela_relatorio.php">Gerar Relatórios: <img src="relatorio_ifm.png" alt="Relatórios" style="height:30px" title="Gerar Relatórios"></a>
-        </div>
+    </div>
+    <div class="sep">
     </div>
 
-    <div class="left-box" onmouseleave="this.style.visibility='hidden';" onmouseover="this.style.visibility='visible';"
-        id="menuClientes">
-        <a target="tela" style="background-color:white" href="cad_alt/cad_alt_cliente.php">Cadastrar</a>
-        <br>
-        <a target="tela" style="background-color:white" href="lista/lista_cliente.php">Alterar </a>
-        <br>
-        <a target="tela" style="background-color:white" href="lista/lista_cliente.php">Excluir </a>
-        <br>
-        <a target="tela" style="background-color:white" href="lista/lista_cliente.php">Consultar</a>
+    <div class="menu-opts">
+        <a href="#">Vendedores</a>
+        <div class="menu-dropdown">
+            <a target="tela" href="cad_alt/cad_alt_vendedor.php">Cadastrar</a>
+            <br>
+            <a target="tela" href="lista/lista_vendedor.php">Alterar </a>
+            <br>
+            <a target="tela" href="lista/lista_vendedor.php">Excluir </a>
+            <br>
+            <a target="tela" href="lista/lista_vendedor.php">Consultar</a>
+        </div>
+
+    </div>
+    <div class="sep">
+    </div>
+
+    <div class="menu-opts">
+        <a href="#">Categorias</a>
+        <div class="menu-dropdown">
+            <a target="tela" href="cad_alt/cad_alt_categoria.php">Cadastrar</a>
+            <br>
+            <a target="tela" href="lista/lista_categoria.php">Alterar </a>
+            <br>
+            <a target="tela" href="lista/lista_categoria.php">Excluir </a>
+            <br>
+            <a target="tela" href="lista/lista_categoria.php">Consultar</a>
+        </div>
+
+    </div>
+    <div class="sep">
+    </div>
+
+    <div class="menu-opts">
+        <a href="#">Produtos</a>
+        <div id="menuProdutos" class="menu-dropdown">
+            <a target="tela" href="cad_alt/cad_alt_produto.php">Cadastrar</a>
+            <br>
+            <a target="tela" href="lista/lista_produto.php">Alterar </a>
+            <br>
+            <a target="tela" href="lista/lista_produto.php">Excluir </a>
+            <br>
+            <a target="tela" href="lista/lista_produto.php">Consultar</a>
+        </div>
+
+    </div>
+    <div class="sep">
+    </div>
+    <div class="menu-opts">
+
+        <a href="#">Vendas</a>
+        <div class="menu-dropdown" style="width:90px">
+            <a href="cad_alt/cad_alt_venda.php" target="tela">Vender</a>
+            <br>
+            <a href="lista/lista_venda.php" target="tela">Listar vendas</a>
+        </div>
+
+    </div>
+    <div class="report">
+        <a target="tela" href="tela_relatorio.php">Gerar Relatórios: <img src="relatorio_ifm.png" alt="Relatórios"
+                style="height:30px" title="Gerar Relatórios"></a>
+    </div>
     </div>
 
 
-    <div onmouseleave="this.style.visibility='hidden';" onmouseover="this.style.visibility='visible';"
-        id="menuVendedores" class="left-box">
-        <a target="tela" style="background-color:white" href="cad_alt/cad_alt_vendedor.php">Cadastrar</a>
-        <br>
-        <a target="tela" style="background-color:white" href="lista/lista_vendedor.php">Alterar </a>
-        <br>
-        <a target="tela" style="background-color:white" href="lista/lista_vendedor.php">Excluir </a>
-        <br>
-        <a target="tela" style="background-color:white" href="lista/lista_vendedor.php">Consultar</a>
-    </div>
-
-    <div onmouseleave="this.style.visibility='hidden';" onmouseover="this.style.visibility='visible';"
-        id="menuCategorias" class="left-box">
-        <a target="tela" style="background-color:white" href="cad_alt/cad_alt_categoria.php">Cadastrar</a>
-        <br>
-        <a target="tela" style="background-color:white" href="lista/lista_categoria.php">Alterar </a>
-        <br>
-        <a target="tela" style="background-color:white" href="lista/lista_categoria.php">Excluir </a>
-        <br>
-        <a target="tela" style="background-color:white" href="lista/lista_categoria.php">Consultar</a>
-    </div>
-
-    <div onmouseleave="this.style.visibility='hidden';" onmouseover="this.style.visibility='visible';" id="menuProdutos"
-        class="left-box">
-        <a target="tela" style="background-color:white" href="cad_alt/cad_alt_produto.php">Cadastrar</a>
-        <br>
-        <a target="tela" style="background-color:white" href="lista/lista_produto.php">Alterar </a>
-        <br>
-        <a target="tela" style="background-color:white" href="lista/lista_produto.php">Excluir </a>
-        <br>
-        <a target="tela" style="background-color:white" href="lista/lista_produto.php">Consultar</a>
-    </div>
-    <div onmouseleave="this.style.visibility='hidden';" onmouseover="this.style.visibility='visible';" id="menuVendas"
-        class="left-box">
-        <a href="cad_alt/cad_alt_venda.php" target="tela">Vender</a>
-        <br>
-        <a href="lista/lista_venda.php" target="tela">Listar vendas</a>
-    </div>
-
-    <div id="divtela"
-        style="background-color:yellow;position:absolute; z-index: -1;top:50px;width:1400px;height:600px;">
+    <div id="divtela">
         <iframe name="tela" id="tela" style="border:0px;width:1300px;height:550px;">
             Conteudo
         </iframe>
