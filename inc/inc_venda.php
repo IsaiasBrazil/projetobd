@@ -16,14 +16,11 @@ $query = "INSERT INTO venda (data, prazo_entrega, cond_pagto,fk_cliente_cod,fk_v
           VALUES ('$data', '$prazo_entrega', '$cond_pagto','$cod_cliente','$cod_vendedor')";
 $resu = mysqli_query($con, $query);
 
+
 if ($cod_venda = mysqli_insert_id($con)) {
     $_SESSION['msg'] = "<p style='color:blue;'> Venda ".$cod_venda." cadastrada com sucesso!!</p>";
     $_SESSION['cod_venda'] = $cod_venda;
-    //include_once('inc_itens_venda.php');
-    //echo "<script>alert('" .$cod_cliente. "');</script>";
-    //file_put_contents('log.txt', "cod_venda = ".$cod_venda . PHP_EOL, FILE_APPEND);
-    // file_put_contents('log.txt', $cod_vendedor . PHP_EOL, FILE_APPEND);
-    //echo "<script>alert('" .$cod_vendedor. "');</script>";
+
 }
 else {
     $_SESSION['msg'] = "<p style='color:red;'> Venda não foi cadastrada!</p>";
