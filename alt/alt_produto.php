@@ -11,7 +11,7 @@ $cod_categoria = $_POST["fk_categoria_id"];
 $unidade_medida = $_POST["unidade_medida"];
 echo "<script>alert('".$cod_categoria."');</script>";
 
-include('conexao.php');
+include('../conexao.php');
 
 $query = "UPDATE produto SET nome = '$nome', preco='$preco', qtd_estoque='$qtd_estoque', fk_categoria_id='$cod_categoria', unidade_medida='$unidade_medida' WHERE cod = $cod";
 

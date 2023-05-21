@@ -17,7 +17,7 @@ $qtd;
 
 if (isset($_GET['cod'])) {
     $cod = $_GET['cod'];
-    $action = "../alt_venda.php?cod=" . $_GET['cod'];
+    $action = "../alt/alt_venda.php?cod=" . $_GET['cod'];
     $tipo = "Alteração";
     require_once("conexao.php");
     $query = "SELECT * FROM venda where cod=$cod";

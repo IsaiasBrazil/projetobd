@@ -17,7 +17,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 }
 if (isset($_GET['cod'])) {
     $cod = $_GET['cod'];
-    $action = "../alt_vendedor.php?cod=" . $_GET['cod'];
+    $action = "../alt/alt_vendedor.php?cod=" . $_GET['cod'];
     $tipo = "Alteração";
     include_once("../conexao.php");
     $query = "SELECT * FROM vendedor where cod = $cod";
