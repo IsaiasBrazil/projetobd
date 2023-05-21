@@ -13,7 +13,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 }
 if (isset($_GET['cod'])) {
     $cod = $_GET['cod'];
-    $action = "../alt_produto.php?cod=" . $_GET['cod'];
+    $action = "../alt/alt_produto.php?cod=" . $_GET['cod'];
     $tipo = "Alteração";
     include_once("../conexao.php");
     $query = "SELECT * FROM produto where cod=$cod";
@@ -72,8 +72,7 @@ if (isset($_GET['cod'])) {
                                 type="text" value='<?=$nome?>' name="nome" id="nome" size="80" maxlength="100" required>
                         </p>
                         <p> Preço:<input value='<?=$preco?>' style="border-width: 3px;margin-left: 5px;" type="text" name="preco" size="14" maxlength="14" oninput="mascara_numeros_positivos(this)" required></p>
-                        <p> Quantidade em estoque:<input value='<?=$qtd_estoque?>' style="border-width: 3px;margin-left: 5px;" type="text" name="qtd_estoque"
-                        size="14" maxlength="14" required></p>
+                        <p> Quantidade em estoque:<input value='<?=$qtd_estoque?>' style="border-width: 3px;margin-left: 5px;" type="text" name="qtd_estoque" size="14" maxlength="14" oninput="mascara_numeros_positivos(this)" required></p>
                         <p> Unidade de medida:<input value='<?=$unidade_medida?>' style="border-width: 3px;margin-left: 21px;" type="text" size="80"
                                 maxlength="2" name="unidade_medida" required></p>
                         <p> Categoria: 

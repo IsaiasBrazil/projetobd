@@ -8,7 +8,7 @@ $data = $_POST["data"];
 $prazo_entrega = $_POST["prazo_entrega"];
 $cond_pagto = $_POST["cond_pagto"];
 
-include('conexao.php');
+include('../conexao.php');
 
 $query = "UPDATE venda SET data = '$data', prazo_entrega='$prazo_entrega', cond_pagto='$cond_pagto' WHERE cod = $cod";
 
