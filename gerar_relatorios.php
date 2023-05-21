@@ -55,8 +55,10 @@ function gerar_relatorios($lista_tabelas)
         } elseif ($tabela == 'venda') {
             $nome_arq_relatorio = 'relatorio_vendas.pdf';
             $query = "SELECT v.numero, v.data, v.prazo_entrega, v.cond_pagto, v.fk_cliente_cod, v.fk_vendedor_cod, p.cod, p.nome FROM venda v INNER JOIN itens_venda iv ON v.numero = iv.fk_vendas_numero INNER JOIN produto p ON iv.fk_produtos_cod = p.cod WHERE v.data BETWEEN '$data_inicial' AND '$data_final'";
+            // $query = "SELECT v.numero, v.data, v.prazo_entrega, v.cond_pagto, v.fk_cliente_cod, v.fk_vendedor_cod, p.cod, p.nome FROM venda v INNER JOIN itens_venda iv ON v.numero = iv.fk_vendas_numero INNER JOIN produto p ON iv.fk_produtos_cod = p.cod WHERE DATE(v.data) >= '$data_inicial' AND DATE(v.data) <= '$data_final'";
             $resu = mysqli_query($con, $query);
             $qt_registros = mysqli_num_rows($resu);
+            var_dump($resu);
 
             // Criando os nomes das colunas
             $pdf->Cell($tamanhos2[0], 6, 'numero', 1, 0, 'C');
@@ -69,30 +71,53 @@ function gerar_relatorios($lista_tabelas)
             $pdf->Cell($tamanhos2[7], 6, 'produto', 1, 0, 'C');
             $pdf->Ln();
 
+            // while ($linha = mysqli_fetch_assoc($resu)) {
+            //     $temp = 0;
+            //     foreach ($linha as $key => &$elem) {
+            //         $valor = mb_convert_encoding(($linha[$key]), "utf-8", "auto");
+            //         if ($key == 'venda') {
+            //             $valor = str_replace('”', '"', $valor);
+            //         } elseif ($key == 'descricao') {
+            //             $valor = mb_convert_encoding(($linha[$key]), "utf-8", "auto");
+            //         }
+            //         $valor = utf8_decode($valor);
+            //         $tamanho = strlen($valor);
+            //         $fonte = intval(intval($tamanhos[$temp]) * 5 / $tamanho);
+            //         $fonte = ($fonte <= 20 && $fonte > 0) ? $fonte : 16;
+            //         $pdf->SetFont('Arial', 'B', $fonte);
+            //         $pdf->Cell($tamanhos2[$temp], 6, $valor, 1, 0, 'C');
+            //         $temp += 1;
+            //     }
+            //     $pdf->Ln();
+            // }
             while ($linha = mysqli_fetch_assoc($resu)) {
                 $temp = 0;
                 foreach ($linha as $key => &$elem) {
-                    $valor = mb_convert_encoding(($linha[$key]), "utf-8", "auto");
+                    $valor = mb_convert_encoding(($linha[$key]), "UTF-8");
                     if ($key == 'produto') {
                         $valor = str_replace('”', '"', $valor);
-                    } elseif ($key == 'descricao') {
-                        $valor = mb_convert_encoding(($linha[$key]), "utf-8", "auto");
-                    }
-                    $valor = utf8_decode($valor);
-                    $tamanho = strlen($valor);
-                    $fonte = intval(intval($tamanhos[$temp]) * 5 / $tamanho);
+                    } elseif ($key == 'descricao')
+                        $valor = mb_convert_encoding(($linha[$key]), "UTF-8");
+                    $tamanho = strlen($valor)>0?strlen($valor):1;
+                    $fonte = intval(intval($tamanhos2[$temp]) * 5 / $tamanho);
                     $fonte = ($fonte <= 20 && $fonte > 0) ? $fonte : 16;
                     $pdf->SetFont('Arial', 'B', $fonte);
-                    $pdf->Cell($tamanhos[$temp], 6, $valor, 1, 0, 'C');
+                    $pdf->Cell($tamanhos2[$temp], 6, $valor, 1, 0, 'C');
                     $temp += 1;
                 }
                 $pdf->Ln();
             }
-
         }
         $pdf->Output($nome_arq_relatorio, 'F');
+
     }
 }
 gerar_relatorios($tabelas);
-header('Location:relatorio_produtos.pdf');
+// header('Location:relatorio_produtos.pdf');
+// header('Location:relatorio_vendas.pdf');
 ?>
+<!DOCTYPE html>
+<p>Relatórios gerados:</p><br>
+<a href='relatorio_produtos.pdf'>relatorio_produtos.pdf</a>
+<br>
+<a href='relatorio_vendas.pdf'>relatorio_vendas.pdf</a>
