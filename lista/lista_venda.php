@@ -52,7 +52,7 @@
                 elementoData = new Date;
                 elementoData.setHours(new Date().getHours() - 3);
                 if (e.name == "filtro_data_ini")
-                    elementoData.setDate(new Date().getDate() - 30);
+                    elementoData.setDate(new Date().getDate() - 30); //atualiza data inicial do filtro para 30 dias antes na consulta
                 var hoje = elementoData.toISOString().split('T')[0];
                 e.value = hoje;
             };

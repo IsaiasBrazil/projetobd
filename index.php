@@ -11,7 +11,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
     <style>
         .left-box {
             background-color: white;
-            width: 100px;
+            width: 120px;
             height: fit-content;
             margin-top: -1px;
             float: left;
@@ -26,9 +26,24 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
             position: relative;
             z-index: 1;
             float: left;
-            width: 100px;
+            width: 120px;
             margin-right: 1px;
-            height: fit-content;
+            height: 20px;
+            text-align: center;
+        }
+
+        .report {
+            background-color: lightblue;
+            visibility: visible;
+            position: absolute;
+            overflow: hidden;
+            z-index: 1;
+            width: 200px;
+            top: 13px;
+            right: 20px;
+            height: 30px;
+            text-align: right;
+            font-size: 20px;
         }
 
         .box {
@@ -37,13 +52,14 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
             background-color: lightblue;
             margin-bottom: 0px;
             clear: left;
+            font-size: 20px;
         }
 
         #titulo {
             background-color: lightblue;
             width: 100%;
             text-align: center;
-            height: 20px;
+            height: 18px;
             font-weight: bold;
             font-size: 20px;
             z-index: 1;
@@ -85,8 +101,8 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
             <a onmouseover="document.getElementById('menuVendas').style.visibility='visible';divtela.style.zIndex=-1;divmenu.style.zIndex = 1;"
                 onmouseleave="document.getElementById('menuVendas').style.visibility='hidden';" href="#">Vendas</a>
         </div>
-        <div class="left-box-visible">
-            <a target="tela" href="tela_relatorio.php">Relatórios</a>
+        <div class="report">
+            <a target="tela" href="tela_relatorio.php">Gerar Relatórios: <img src="relatorio_ifm.png" alt="Relatórios" style="height:30px" title="Gerar Relatórios"></a>
         </div>
     </div>
 
