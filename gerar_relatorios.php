@@ -36,22 +36,20 @@ function gerar_relatorios($lista_tabelas)
             while ($linha = mysqli_fetch_assoc($resu)) {
                 $temp = 0;
                 foreach ($linha as $key => &$elem) {
-                    $encode = mb_detect_encoding($linha[$key]);
-                    $valor = mb_convert_encoding(($linha[$key]), 'utf-8', $encode);
+                    $valor = mb_convert_encoding(($linha[$key]), "utf-8", "auto");
                     if ($key == 'nome') {
                         $valor = str_replace('”', '"', $valor);
                     } elseif ($key == 'descricao') {
-                        $encode = mb_detect_encoding($linha[$key]);
-                        $valor=utf8_decode($valor);
-                        //$valor =  mb_convert_encoding(($linha[$key]),"utf-8","auto");
+                        $valor =  mb_convert_encoding(($linha[$key]),"utf-8","auto");
                     }
+                    $valor=utf8_decode($valor);
+                    //$valor= mb_convert_encoding($valor,"utf-8","auto");
                     $tamanho = strlen($valor);
                     $fonte = intval(intval($tamanhos[$temp]) * 5 / $tamanho);
                     $fonte = ($fonte <= 20 && $fonte > 0) ? $fonte : 16;
                     $pdf->SetFont('Arial', 'B', $fonte);
                     $pdf->Cell($tamanhos[$temp], 6, $valor, 1, 0, 'C');
                     $temp += 1;
-
                 }
                 $pdf->Ln();
             }
