@@ -58,9 +58,10 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
         ATIVIDADE LOJA
     </div>
     <div id="divmenu" class="box">
-        <div class="left-box-visible" onmouseover="document.getElementById('menuClientes').style.visibility='visible';divtela.style.zIndex=-1;divmenu.style.zIndex = 1;"
-                onmouseleave="document.getElementById('menuClientes').style.visibility='hidden';">
-            <a  href="#">Clientes</a>
+        <div class="left-box-visible"
+            onmouseover="document.getElementById('menuClientes').style.visibility='visible';divtela.style.zIndex=-1;divmenu.style.zIndex = 1;"
+            onmouseleave="document.getElementById('menuClientes').style.visibility='hidden';">
+            <a href="#">Clientes</a>
         </div>
         <div class="left-box-visible">
 
@@ -83,6 +84,9 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 
             <a onmouseover="document.getElementById('menuVendas').style.visibility='visible';divtela.style.zIndex=-1;divmenu.style.zIndex = 1;"
                 onmouseleave="document.getElementById('menuVendas').style.visibility='hidden';" href="#">Vendas</a>
+        </div>
+        <div class="left-box-visible">
+            <a target="tela" href="tela_relatorio.php">Vendas</a>
         </div>
     </div>
 
@@ -137,7 +141,8 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
         <a href="lista/lista_venda.php" target="tela">Listar vendas</a>
     </div>
 
-    <div id="divtela" style="background-color:yellow;position:absolute; z-index: -1;top:50px;width:1400px;height:600px;">
+    <div id="divtela"
+        style="background-color:yellow;position:absolute; z-index: -1;top:50px;width:1400px;height:600px;">
         <iframe name="tela" id="tela" style="border:0px;width:1300px;height:550px;">
             Conteudo
         </iframe>
