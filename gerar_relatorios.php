@@ -93,7 +93,24 @@ function gerar_relatorios($lista_tabelas)
 gerar_relatorios($tabelas);
 ?>
 <!DOCTYPE html>
-<p>Relatórios gerados:</p><br>
-<a href='relatorio_produtos.pdf' target="_blank">relatorio_produtos.pdf</a>
-<br>
-<a href='relatorio_vendas.pdf' target="_blank">relatorio_vendas.pdf</a>
+<style>
+    a:hover {
+        background-color: aquamarine;
+    }
+
+    a {
+        font-size: 20px;
+    }
+
+    p {
+        font-size: 22px;
+        color: red;
+    }
+</style>
+<p>Relatórios gerados:</p>
+<p>
+    <a href='relatorio_produtos.pdf' target="_blank">relatorio_produtos.pdf</a>
+</p>
+<p>
+    <a href='relatorio_vendas.pdf' target="_blank">relatorio_vendas.pdf</a>
+</p>
