@@ -50,7 +50,7 @@ function gerar_relatorios($lista_tabelas)
                     $valor = utf8_decode($valor);
                     $tamanho = strlen($valor);
                     $fonte = intval(intval($tamanhos[$temp]) * 5 / $tamanho);
-                    $fonte = ($fonte <= 20 && $fonte > 0) ? $fonte : 16;
+                    $fonte = ($fonte <= 16 && $fonte > 0) ? $fonte : 16;
                     $pdf->SetFont('Arial', 'B', $fonte);
                     $pdf->Cell($tamanhos[$temp], 6, $valor, 1, 0, 'C');
                     $temp += 1;
@@ -84,7 +84,7 @@ function gerar_relatorios($lista_tabelas)
                         $valor = mb_convert_encoding(($linha[$key]), "UTF-8");
                     $tamanho = strlen($valor) > 0 ? strlen($valor) : 1;
                     $fonte = intval(intval($tamanhos2[$temp]) * 5 / $tamanho);
-                    $fonte = ($fonte <= 20 && $fonte > 0) ? $fonte : 16;
+                    $fonte = ($fonte <= 16 && $fonte > 0) ? $fonte : 16;
                     $pdf->SetFont('Arial', 'B', $fonte);
                     $pdf->Cell($tamanhos2[$temp], 6, $valor, 1, 0, 'C');
                     $temp += 1;
