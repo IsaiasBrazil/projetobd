@@ -146,7 +146,6 @@ function grid($result, $tipo)
                         $qtd = verificaDisponibilidade($cod);
                         if ($tipo == 'PRODUTO') {
                             ?>
-
                             <td>
                                 <form method="POST">
                                     <input type="number" id="qtd" name="qtd" value="<?= $qtd ?>" max="<?= $qtd ?>" min="0">
@@ -156,11 +155,10 @@ function grid($result, $tipo)
                                     <input type="hidden" name="prod_codigo" value="<?= $cod ?>" />
                             </td>
                             <td>
-                                <input type='submit' value='Selecionar produto'>
+                                <input name="sel_produto" type='submit' value='Selecionar produto'>
                             </td>
                             </form>
                             <?php
-                            //unset($_POST);
                         } else {
                             $prod = isset($_GET['produto']) ? $_GET['produto'] : "";
                             echo "<td><a href=\"cad_alt_venda.php?vendedor=$vendedor&cliente=$cliente&cod_vendedor=$cod_vendedor&cod_cliente=$cod_cliente\" onclick=\"sumir('" . $nome . "','" . $nomecampo . "');\">Selecionar</a></td>";

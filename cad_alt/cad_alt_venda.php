@@ -298,7 +298,7 @@ if (!isset($_SESSION['qtd'])) {
                     <td colspan="3" style="color:red">
                         <label id="lblproduto" style="color:red">
                             <?php
-                            if (isset($_POST['prod']) && isset($_POST['qtd']) && isset($_POST['prod_codigo'])) {
+                            if (isset($_POST['prod']) && isset($_POST['qtd']) && isset($_POST['prod_codigo'])&&isset($_POST['sel_produto'])) {
                                 $qtd = $_POST['qtd'];
                                 $produto = $_POST['prod'];
                                 $codigo = $_POST['prod_codigo'];
