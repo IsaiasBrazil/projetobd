@@ -1,5 +1,5 @@
 <?php
- if (session_status() !== PHP_SESSION_ACTIVE) {
+if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
 }
 $data_inicial = $_POST['data_inicial'];
@@ -42,11 +42,7 @@ function gerar_relatorios($lista_tabelas)
                 $temp = 0;
                 foreach ($linha as $key => &$elem) {
                     $valor = mb_convert_encoding(($linha[$key]), "utf-8", "auto");
-                    if ($key == 'nome') {
-                        $valor = str_replace('”', '"', $valor);
-                    } elseif ($key == 'descricao') {
-                        $valor = mb_convert_encoding(($linha[$key]), "utf-8", "auto");
-                    }
+                    $valor = str_replace('”', '"', $valor);
                     $valor = utf8_decode($valor);
                     $tamanho = strlen($valor);
                     $fonte = intval(intval($tamanhos[$temp]) * 5 / $tamanho);
@@ -77,11 +73,9 @@ function gerar_relatorios($lista_tabelas)
             while ($linha = mysqli_fetch_assoc($resu)) {
                 $temp = 0;
                 foreach ($linha as $key => &$elem) {
-                    $valor = mb_convert_encoding(($linha[$key]), "UTF-8");
-                    if ($key == 'produto') {
-                        $valor = str_replace('”', '"', $valor);
-                    } elseif ($key == 'descricao')
-                        $valor = mb_convert_encoding(($linha[$key]), "UTF-8");
+                    $valor = mb_convert_encoding(($linha[$key]), "UTF-8", "auto");
+                    $valor = str_replace('”', '"', $valor);
+                    $valor = utf8_decode($valor);
                     $tamanho = strlen($valor) > 0 ? strlen($valor) : 1;
                     $fonte = intval(intval($tamanhos2[$temp]) * 5 / $tamanho);
                     $fonte = ($fonte <= 16 && $fonte > 0) ? $fonte : 16;
