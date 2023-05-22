@@ -109,8 +109,13 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
             background-color: yellow;
             position: absolute;
             top: 70px;
-            width: 1400px;
-            height: 600px;
+            width: 1200px;
+            height: 700px;
+        }
+        #tela{
+            border:0px;
+            width:1200px;
+            height:700px;"
         }
     </style>
 
@@ -203,7 +208,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 
 
     <div id="divtela">
-        <iframe name="tela" id="tela" style="border:0px;width:1300px;height:550px;">
+        <iframe name="tela" id="tela">
             Conteudo
         </iframe>
     </div>

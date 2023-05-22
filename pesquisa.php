@@ -2,18 +2,19 @@
 if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
 }
-function verificaDisponibilidade($cod):int{
+function verificaDisponibilidade($cod): int
+{
     require('conexao.php');
     $query = "SELECT qtd_estoque FROM produto WHERE cod='$cod'";
     $result = mysqli_query($con, $query);
     $row = mysqli_fetch_assoc($result);
-    $qtd = $row['qtd_estoque']??0;
-    file_put_contents('log.txt',$qtd.PHP_EOL,FILE_APPEND);
+    $qtd = $row['qtd_estoque'] ?? 0;
+    file_put_contents('log.txt', $qtd . PHP_EOL, FILE_APPEND);
     mysqli_close($con);
-    $sqtd =  $_SESSION['itens_venda'][1][$cod]??0;
+    $sqtd = $_SESSION['itens_venda'][1][$cod] ?? 0;
     $qtd -= $sqtd;
     return $qtd;
-   }
+}
 function pesquisar($botao, $nome_tabela, $metodo)
 {
     global $codigo;
@@ -45,26 +46,40 @@ function grid($result, $tipo)
     global $cod_vendedor;
     ?>
     <style>
-        .tabela_branca {
+        .tabela_ltblue {
             border-collapse: collapse;
 
         }
 
-        .tabela_branca td,
+        .tabela_ltblue td,
         th {
             border: 3px solid grey;
             background-color: lightstellblue;
-            //border-collapse: collapse;
+            text-overflow: clip;
+            }
+
+        #divselecao {
+            overflow: auto;
+            background-color: lightstellblue;
+            height: 500px;
+            width: 670px;
+
+        }
+        input[type='number'] {
+            width: 80px;
+        }
+        input[type='text'] {
+            width: fit-content;
         }
     </style>
-    <th id="selecao" rowspan='17' style="width:600px;">
+    <th id="selecao" rowspan='16'>
         <h2 style="text-align: center;">
             SELEÇÃO DE
             <?= $tipo ?>
         </h2>
-        <div style="overflow-y: auto; background-color: lightstellblue;height: 500px;width: auto;">
+        <div id="divselecao">
 
-            <table class="tabela_branca">
+            <table class="tabela_ltblue">
                 <tr>
                     <?php
                     foreach ($fields as $field) {
@@ -81,7 +96,7 @@ function grid($result, $tipo)
                     ?>
                     <tr>
                         <?php
-                        foreach ($fields as $field) {                            
+                        foreach ($fields as $field) {
                             if ($field->name == "numero") {
                                 $cod = $row[$field->name];
                                 $cod = $row['numero'];
@@ -102,8 +117,8 @@ function grid($result, $tipo)
                                 $qtd = $row['qtd_estoque'];
                             }
                             ?>
-                            <td>
-                                <input size="<?= strlen($row[$field->name]); ?>" type="text" value="<?= $row[$field->name]; ?>">
+                            <td >
+                                <input  type="text" value="<?= $row[$field->name]; ?>" readonly>
                             </td>
                             <?php
                         }
@@ -127,12 +142,13 @@ function grid($result, $tipo)
                         if ($nomecampo == 'produto') {
                             $prod = $nome;
                         }
-                        $qtd=verificaDisponibilidade($cod);
+                        $qtd = verificaDisponibilidade($cod);
                         if ($tipo == 'PRODUTO') {
                             ?>
+
                             <td>
                                 <form method="POST">
-                                    <input type="number" id="qtd" name="qtd" value="<?=$qtd?>" max="<?=$qtd?>" min="0">
+                                    <input type="number" id="qtd" name="qtd" value="<?= $qtd ?>" max="<?= $qtd ?>" min="0">
                                     <input type="hidden" name="vendedor" value="<?= $vendedor ?>" />
                                     <input type="hidden" name="cliente" value="<?= $cliente ?>" />
                                     <input type="hidden" name="prod" value="<?= $prod ?>" />
@@ -166,10 +182,10 @@ function grid($result, $tipo)
 
         </div>
     </th>
-    <?php 
-      file_put_contents('log.txt', $cod . PHP_EOL, FILE_APPEND);             
+    <?php
+    file_put_contents('log.txt', $cod . PHP_EOL, FILE_APPEND);
     return $cod;
-} 
+}
 if (isset($_POST['data'])) {
     $_SESSION['data'] = $_POST['data'];
 }
