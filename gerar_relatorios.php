@@ -2,8 +2,9 @@
 if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
 }
-$data_inicial = $_POST['data_inicial'];
-$data_final = $_POST['data_final'];
+
+$data_inicial = $_POST['data_inicial'] ?? $_SESSION['data_inicial'];
+$data_final = $_POST['data_final'] ?? $_SESSION['data_final'];
 $_SESSION['data_inicial'] = $data_inicial;
 $_SESSION['data_final'] = $data_final;
 require('fpdf185/fpdf.php');
