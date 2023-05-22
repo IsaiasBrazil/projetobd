@@ -9,15 +9,38 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 <head>
     <title>LOJA FATEC ADS NOITE</title>
     <style>
-        .sep {
+
+        a:any-link{
+            color: black;
+        }
+
+        .menu-opts {
+            background-color: lightblue;
             visibility: visible;
             position: relative;
-            z-index: 1;
             float: left;
-            width: 5px;
-            top: -3px;
+            top: -22px;
+            width: 100px;
             margin-right: 10px;
-            height: 20px;
+            height: 22px;
+            font-size: 20px;
+        }
+
+        .menu-opts:hover .menu-dropdown {
+            display: block;
+            z-index: 2;
+        }
+
+        .menu-opts:hover .menu-dropdown a{
+            color:black;
+        }
+
+        .menu-opts:hover a:hover{
+            color: red;
+        }
+
+        .menu-opts:hover a{
+            color: red;
         }
 
         .menu-dropdown {
@@ -31,26 +54,11 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
             padding: 10px;
             box-shadow: 3px 4px 2px 1px rgba(200, 200, 200, 0.8);
         }
-        .menu-dropdown a:hover{
+        
+        .menu-dropdown:hover a:hover {
             background-color: aquamarine;
         }
 
-        .menu-opts {
-            background-color: lightblue;
-            visibility: visible;
-            position: relative;
-            float: left;
-            top:-22px;
-            width: 100px;
-            margin-right: 10px;
-            height: 22px;
-            font-size: 20px;
-        }
-
-        .menu-opts:hover .menu-dropdown{
-            display: block;
-            z-index: 2;
-        }
 
         .report {
             background-color: lightblue;
@@ -61,20 +69,20 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
             height: 30px;
             text-align: right;
             font-size: 20px;
-        } 
-        .report a:hover{
-            //background-color: rgba(240, 240, 240, 0.5);
+        }
+
+        .report a:hover {
             color: red;
         }
 
-        img{
-            opacity: 0.8;
-        }
-
-        .report a:hover img{
+        .report a:hover img {
             opacity: 1;
             background-color: rgba(200, 200, 200, 0.8);
             transform: scale(1.2);
+        }
+
+        img {
+            opacity: 0.8;
         }
 
         #titulo {
@@ -84,6 +92,17 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
             height: 60px;
             font-weight: bold;
             font-size: 20px;
+        }
+
+        .sep {
+            visibility: visible;
+            position: relative;
+            z-index: 1;
+            float: left;
+            width: 5px;
+            top: -3px;
+            margin-right: 10px;
+            height: 20px;
         }
 
         #divtela {
@@ -177,8 +196,8 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 
     </div>
     <div class="report">
-        <a id="linkreport" target="tela" href="tela_relatorio.php">Gerar Relatórios <img src="relatorio_ifm.png" alt="Relatórios"
-                style="height:30px;" title="Gerar Relatórios"></a>
+        <a id="linkreport" target="tela" href="tela_relatorio.php">Gerar Relatórios <img src="relatorio_ifm.png"
+                alt="Relatórios" style="height:30px;" title="Gerar Relatórios"></a>
     </div>
     </div>
 
