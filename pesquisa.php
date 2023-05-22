@@ -9,7 +9,6 @@ function verificaDisponibilidade($cod): int
     $result = mysqli_query($con, $query);
     $row = mysqli_fetch_assoc($result);
     $qtd = $row['qtd_estoque'] ?? 0;
-    file_put_contents('log.txt', $qtd . PHP_EOL, FILE_APPEND);
     mysqli_close($con);
     $sqtd = $_SESSION['itens_venda'][1][$cod] ?? 0;
     $qtd -= $sqtd;
@@ -56,7 +55,7 @@ function grid($result, $tipo)
             border: 3px solid grey;
             background-color: lightstellblue;
             text-overflow: clip;
-            }
+        }
 
         #divselecao {
             overflow: auto;
@@ -65,9 +64,11 @@ function grid($result, $tipo)
             width: 670px;
 
         }
+
         input[type='number'] {
             width: 80px;
         }
+
         input[type='text'] {
             width: fit-content;
         }
@@ -117,8 +118,8 @@ function grid($result, $tipo)
                                 $qtd = $row['qtd_estoque'];
                             }
                             ?>
-                            <td >
-                                <input  type="text" value="<?= $row[$field->name]; ?>" readonly>
+                            <td>
+                                <input type="text" value="<?= $row[$field->name]; ?>" readonly>
                             </td>
                             <?php
                         }
@@ -183,7 +184,7 @@ function grid($result, $tipo)
         </div>
     </th>
     <?php
-    file_put_contents('log.txt', $cod . PHP_EOL, FILE_APPEND);
+
     return $cod;
 }
 if (isset($_POST['data'])) {
