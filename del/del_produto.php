@@ -9,13 +9,13 @@ include('../conexao.php');
 
 $query = "DELETE FROM produto WHERE cod = $cod";
 
-$resu = mysqli_query($con, $query);
 
-if (mysqli_affected_rows($con)) {
+try{
+    $resu = mysqli_query($con, $query);
     $_SESSION['msg'] = "<p style='color:blue;'> Produto excluído com sucesso!</p>";
     header('Location: ../lista/lista_produto.php');
-} else {
-    $_SESSION['msg'] = "<p style='color:red;'> Erro ao excluir produto!</p>";
+} catch(mysqli_sql_exception) {
+    $_SESSION['msg'] = "<p style='color:red;'> Erro ao excluir produto! Verifique se não existem vendas cadastradas com este produto antes de tentar excluí-lo.</p>";
     header('Location: ../lista/lista_produto.php');
 }
 mysqli_close($con);

@@ -8,7 +8,7 @@ $cod_vendedor = $_SESSION['cod_vendedor'];
 $data = $_SESSION['data'];
 $prazo_entrega = $_SESSION['prazo_entrega'];
 $cond_pagto = $_SESSION['cond_pagto'];
-$produtos = $_SESSION['itens_venda'];
+$produtos = $_SESSION['itens_venda']??array();
 
 include_once('../conexao.php');
 
@@ -17,7 +17,7 @@ $query = "INSERT INTO venda (data, prazo_entrega, cond_pagto,fk_cliente_cod,fk_v
 $resu = mysqli_query($con, $query);
 
 
-if ($cod_venda = mysqli_insert_id($con)) {
+if ($cod_venda = mysqli_insert_id($con)&&count($produtos)>0) {
     $_SESSION['msg'] = "<p style='color:blue;'> Venda ".$cod_venda." cadastrada com sucesso!!</p>";
     $_SESSION['cod_venda'] = $cod_venda;
 

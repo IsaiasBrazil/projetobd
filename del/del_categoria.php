@@ -17,7 +17,7 @@ try{
     $_SESSION['msg'] = "<p style='color:blue; font-size: 22px; font-weight: bold;'> Categoria <font color='red'>".$nome."</font> excluída com sucesso!</p>";
     header('Location: ../lista/lista_categoria.php');
 } catch (mysqli_sql_exception){
-    $_SESSION['msg'] = "<p style='color:red;'> Erro ao excluir categoria!</p>";
+    $_SESSION['msg'] = "<p style='color:red;'> Erro ao excluir categoria! Verifique se não existe produto cadastrado com esta categoria antes de tentar excluí-la.</p>";
     header('Location: ../lista/lista_categoria.php');
 }
 mysqli_close($con);
