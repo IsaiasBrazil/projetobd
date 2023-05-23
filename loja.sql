@@ -55,6 +55,5 @@ CREATE TABLE itens_venda (
     fk_vendas_numero INT NOT NULL,
     quant_vendida INT,
     FOREIGN KEY (fk_produtos_cod) REFERENCES produto (cod),
-    FOREIGN KEY (fk_vendas_numero) REFERENCES venda (numero),
-    PRIMARY KEY(fk_produtos_cod,fk_vendas_numero)
+    FOREIGN KEY (fk_vendas_numero) REFERENCES venda (numero)
 );
