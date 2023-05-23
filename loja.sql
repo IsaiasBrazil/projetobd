@@ -1,19 +1,24 @@
+drop database loja;
+create database loja;
+
+
 CREATE TABLE categoria (
-    cod SERIAL PRIMARY KEY,
+    cod INT AUTO_INCREMENT PRIMARY KEY,
     descricao VARCHAR(100)
 );
 
 CREATE TABLE produto (
-    cod SERIAL PRIMARY KEY,
+    cod INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100),
     preco NUMERIC(12, 2),
-    qtd_estoque INTEGER,
+    qtd_estoque INT,
     unidade_medida CHAR(2),
-    fk_categoria_id INTEGER REFERENCES categoria (cod)
+    fk_categoria_id INT NOT NULL,
+    FOREIGN KEY (fk_categoria_id) REFERENCES categoria (cod)
 );
 
 CREATE TABLE vendedor (
-    cod SERIAL PRIMARY KEY,
+    cod INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100),
     endereco VARCHAR(100),
     cidade VARCHAR(50),
@@ -23,7 +28,7 @@ CREATE TABLE vendedor (
 );
 
 CREATE TABLE cliente (
-    cod SERIAL PRIMARY KEY,
+    cod INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100),
     endereco VARCHAR(100),
     telefone VARCHAR(15),
@@ -35,17 +40,21 @@ CREATE TABLE cliente (
 );
 
 CREATE TABLE venda (
-    numero SERIAL PRIMARY KEY,
+    numero INT AUTO_INCREMENT PRIMARY KEY,
     data DATE,
     prazo_entrega VARCHAR(10),
     cond_pagto VARCHAR(50),
-    fk_cliente_cod INTEGER REFERENCES cliente (cod),
-    fk_vendedor_cod INTEGER REFERENCES vendedor (cod)
+    fk_cliente_cod INT,
+    fk_vendedor_cod INT,
+    FOREIGN KEY (fk_cliente_cod) REFERENCES cliente (cod),
+    FOREIGN KEY (fk_vendedor_cod) REFERENCES vendedor (cod)
 );
 
 CREATE TABLE itens_venda (
-    fk_produtos_cod INTEGER NOT NULL REFERENCES produto (cod),
-    fk_vendas_numero INTEGER NOT NULL REFERENCES vendas (numero),
-    quant_vendida INTEGER,
+    fk_produtos_cod INT NOT NULL,
+    fk_vendas_numero INT NOT NULL,
+    quant_vendida INT,
+    FOREIGN KEY (fk_produtos_cod) REFERENCES produto (cod),
+    FOREIGN KEY (fk_vendas_numero) REFERENCES venda (numero),
     PRIMARY KEY(fk_produtos_cod,fk_vendas_numero)
 );

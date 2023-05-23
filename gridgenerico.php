@@ -77,6 +77,7 @@ function grid($result, $tipo)
                 <?php
                 foreach ($fields as $field) {
                     $cod;
+                    $nome = "";
                     $nomecampo = $field->name;
                     $valor = $row[$nomecampo];
                     if ($nomecampo == "cod") {
@@ -85,6 +86,12 @@ function grid($result, $tipo)
                     if ($nomecampo == "numero") {
                         $cod = $valor;
                     }
+                    if ($nomecampo == "nome") {
+                        $nome = $valor;
+                    }
+                    if ($nomecampo == "descricao") {
+                        $nome = $valor;
+                    }
                     ?>
                     <td>
                         <input type="text" value="<?= $valor ?>" readonly>
@@ -92,11 +99,12 @@ function grid($result, $tipo)
                     <?php
                 }
                 if (!isset($_SESSION['lista_produtos_venda'])) {
-                    if ($tipo !== 'VENDAS')
-                        echo "<td><a href='../cad_alt/cad_alt_" . $nometabela . ".php?cod=$cod'>Alterar</a></td>";
-                    else
+                    if ($tipo !== 'VENDAS') {
+                        echo "<td><a href='../cad_alt/cad_alt_" . $nometabela . ".php?cod=$cod&nome=$nome'>Alterar</a></td>";
+                        // echo "<td><a target='_blank' href='../cad_alt/cad_alt_" . $nometabela . ".php?cod=$cod&nome=".strval($nome)."'>Alterar</a></td>";
+                    }else
                         echo "<td><a href='../lista/lista_produto.php?cod=$cod'>Listar produtos da venda</a></td>";
-                    echo " <td><a href='../del/del_" . $nometabela . ".php?cod=$cod'>Excluir</a></td>";
+                    echo " <td><a href='../del/del_" . $nometabela . ".php?cod=$cod&nome=$nome'>Excluir</a></td>";
                 }
                 ?>
             </tr>

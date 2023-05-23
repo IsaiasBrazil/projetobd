@@ -9,7 +9,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 }
 if (isset($_GET['cod'])) {
     $cod = $_GET['cod'];
-    $action = "../alt/alt_categoria.php?cod=" . $_GET['cod'];
+    $action = "../alt/alt_categoria.php?cod=" . $_GET['cod']."&nome=".$_GET["nome"];
     $tipo = "Alteração";
     include_once("../conexao.php");
     $query = "SELECT * FROM categoria where cod=$cod";

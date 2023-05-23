@@ -4,6 +4,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 }
 
 $cod = $_GET["cod"];
+$nome_antigo = $_GET["nome"];
 $nome = $_POST["nome"];
 $endereco = $_POST["endereco"];
 $telefone = $_POST["telefone"];
@@ -18,7 +19,7 @@ $query = "UPDATE vendedor SET nome = '$nome', telefone = '$telefone', endereco =
 $resu = mysqli_query($con, $query);
 
 if (mysqli_affected_rows($con)) {
-    $_SESSION['msg'] = "<p style='color:blue;'> Vendedor alterado com sucesso!</p>";
+    $_SESSION['msg'] = "<p style='color:blue; font-size: 22px; font-weight: bold;'> Vendedor(a) <font color='red'>".$nome_antigo."</font> alterado(a) com sucesso!</p>";
     header('Location: ../lista/lista_vendedor.php');
 } else {
     $_SESSION['msg'] = "<p style='color:red;'> Erro ao alterar vendedor!</p>";

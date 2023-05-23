@@ -4,6 +4,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 }
 
 $cod = $_GET["cod"];
+$nome_antigo = $_GET["nome"];
 $nome = $_POST["nome"];
 $endereco = $_POST["endereco"];
 $cpf = $_POST["cpf"];
@@ -20,7 +21,7 @@ $query = "UPDATE cliente SET nome = '$nome',cpf = '$cpf', telefone = '$telefone'
 $resu = mysqli_query($con, $query);
 
 if (mysqli_affected_rows($con)) {
-    $_SESSION['msg'] = "<p style='color:blue;font-weight:bold;font-size:20px'> Cliente alterado com sucesso!</p>";
+    $_SESSION['msg'] = "<p style='color:blue;font-weight:bold;font-size:20px'> Cliente <font color='red'>".$nome_antigo."</font> alterado(a) com sucesso!</p>";
     header('Location: ../lista/lista_cliente.php');
 } else {
     $_SESSION['msg'] = "<p style='color:red;font-weight:bold;font-size:20px'> Erro ao alterar cliente!</p>";
