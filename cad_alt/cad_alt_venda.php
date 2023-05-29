@@ -239,7 +239,7 @@ if (!isset($_SESSION['qtd'])) {
                     <td>Prazo de entrega:</td>
                     <td colspan="2">
                         <input style="width:97%" id="prazo_entrega" name="prazo_entrega" type="text"
-                            value='<?=$_SESSION['prazo_entrega'];?>' placeholder="Exemplo: Entregar em x dias..." oninput="mascara_numeros_positivos(this)">
+                            value='<?=$_SESSION['prazo_entrega'];?>' placeholder="Exemplo: Entregar em x dias...">
                         </input>
                     </td>
                 </tr>

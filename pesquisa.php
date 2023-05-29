@@ -148,7 +148,7 @@ function grid($result, $tipo)
                             ?>
                             <td>
                                 <form method="POST">
-                                    <input type="number" id="qtd" name="qtd" value="<?= $qtd ?>" max="<?= $qtd ?>" min="0">
+                                    <input type="number" id="qtd" name="qtd" value="0" max="<?= $qtd ?>" min="0">
                                     <input type="hidden" name="vendedor" value="<?= $vendedor ?>" />
                                     <input type="hidden" name="cliente" value="<?= $cliente ?>" />
                                     <input type="hidden" name="prod" value="<?= $prod ?>" />
