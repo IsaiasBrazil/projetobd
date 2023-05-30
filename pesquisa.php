@@ -10,7 +10,13 @@ function verificaDisponibilidade($cod): int
     $row = mysqli_fetch_assoc($result);
     $qtd = $row['qtd_estoque'] ?? 0;
     mysqli_close($con);
-    $sqtd = $_SESSION['itens_venda'][1][$cod] ?? 0;
+    $sqtd = 0;
+    if(!($_SESSION['itens_venda'])==null)
+    foreach($_SESSION['itens_venda'] as $elemento){
+        if ($elemento[2]==$cod){
+            $sqtd += $elemento[1]; 
+        }
+    }
     $qtd -= $sqtd;
     return $qtd;
 }
@@ -148,7 +154,7 @@ function grid($result, $tipo)
                             ?>
                             <td>
                                 <form method="POST">
-                                    <input type="number" id="qtd" name="qtd" value="0" max="<?= $qtd ?>" min="0">
+                                    <input type="number" id="qtd" name="qtd" value="0" max="<?=$qtd;?>" min="0">
                                     <input type="hidden" name="vendedor" value="<?= $vendedor ?>" />
                                     <input type="hidden" name="cliente" value="<?= $cliente ?>" />
                                     <input type="hidden" name="prod" value="<?= $prod ?>" />

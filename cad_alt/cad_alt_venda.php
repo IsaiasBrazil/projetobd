@@ -305,7 +305,7 @@ if (!isset($_SESSION['qtd'])) {
                                 unset($_POST['qtd']);
                                 unset($_POST['prod']);
                                 unset($_POST['prod_codigo']);
-                                $mensa = $qtd . " [" . $produto . "] adicionado!";
+                                $mensa = $qtd>0?$qtd . " unidades de [" . $produto . "] adicionado!":"Quantidade tem de ser maior que zero!";
                                 echo $mensa;
                                 $mensa = null;
                                 unset($_GET['mensa']);
@@ -345,7 +345,7 @@ if (!isset($_SESSION['qtd'])) {
                                     <tr>
 
                                         <?php
-                                        if (isset($codigo) && isset($produto) && isset($qtd)) {
+                                        if (isset($codigo) && isset($produto) && isset($qtd)&&$qtd>0) {
                                             if (!isset($_SESSION['itens_venda'])) {
                                                 $_SESSION['itens_venda'] = array();
                                             }
