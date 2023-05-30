@@ -11,7 +11,7 @@ function verificaDisponibilidade($cod): int
     $qtd = $row['qtd_estoque'] ?? 0;
     mysqli_close($con);
     $sqtd = 0;
-    if(!($_SESSION['itens_venda'])==null)
+    if(isset($_SESSION['itens_venda']))
     foreach($_SESSION['itens_venda'] as $elemento){
         if ($elemento[2]==$cod){
             $sqtd += $elemento[1]; 
