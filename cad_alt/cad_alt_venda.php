@@ -71,7 +71,7 @@ if (!isset($_SESSION['qtd'])) {
 
 <body>
     <form method="POST" action="../controle_form.php">
-        <table id="tabela" style="background-color: lightsteelblue; border:1px solid black">
+        <table id="tabela" style="background-color: gainsboro; border:1px solid black">
             <tbody>
                 <tr>
                     <th colspan="4" style="border:1px solid black">

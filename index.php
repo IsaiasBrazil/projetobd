@@ -11,15 +11,17 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
     <style>
 
         a:any-link{
-            color: black;
+            color: white;
+            font-size: 22px;
         }
 
         .menu-opts {
-            background-color: lightblue;
+            background-color: black;
+            color: white;
             visibility: visible;
             position: relative;
             float: left;
-            top: -22px;
+            top: -24px;
             width: 100px;
             margin-right: 10px;
             height: 22px;
@@ -50,7 +52,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
             display: none;
             font-size: 20px;
             z-index: 2;
-            background-color: lightblue;
+            background-color: lightgray;
             padding: 10px;
             box-shadow: 3px 4px 2px 1px rgba(200, 200, 200, 0.8);
         }
@@ -61,14 +63,19 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 
 
         .report {
-            background-color: lightblue;
+            background-color: black;
+            color:white;
             position: absolute;
             width: 200px;
-            top: 35px;
+            top: 20px;
             right: 20px;
-            height: 30px;
+            height: 38px;
             text-align: right;
             font-size: 20px;
+        }
+
+        .report a{
+            color: white;
         }
 
         .report a:hover {
@@ -86,10 +93,13 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
         }
 
         #titulo {
-            background-color: lightblue;
+            color: white;
+            background-color: black;
             width: 100%;
             text-align: center;
-            height: 60px;
+            padding-top: 10px;
+            margin-top: 0px;
+            height: 40px;
             font-weight: bold;
             font-size: 20px;
         }
@@ -106,7 +116,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
         }
 
         #divtela {
-            background-color: yellow;
+            background-color: grey;
             position: absolute;
             top: 70px;
             width: 1200px;
@@ -121,7 +131,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 
 </head>
 
-<body style="background-color: yellow;" id="corpo">
+<body style="background-color: grey;" id="corpo">
 
     <div id='titulo'>
         ATIVIDADE LOJA

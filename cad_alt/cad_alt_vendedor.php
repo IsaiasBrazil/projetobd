@@ -49,7 +49,7 @@ if (isset($_GET['cod'])) {
 </head>
 
 <body>
-    <table style="background-color: lightsteelblue; border:1px solid black">
+    <table style="background-color: gainsboro; border:1px solid black">
         <thead>
             <tr>
                 <td style="border:1px solid black">
