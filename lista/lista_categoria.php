@@ -22,7 +22,7 @@
 <body>
     <div style="overflow:auto">
         <?php
-        grid($result, "CATEGORIAS");
+        grid($result, "CATEGORIAS",$_GET['tipo']);
         ?>
     </div>
 </body>

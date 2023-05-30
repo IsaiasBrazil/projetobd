@@ -1,5 +1,5 @@
 <?php
-function grid($result, $tipo)
+function grid($result, $tipo,$transacao)
 {
     global $cod;
     $fields = mysqli_fetch_fields($result);
@@ -62,9 +62,7 @@ function grid($result, $tipo)
 
                 echo "<th>" . $nomecampo . "</th>";
             }
-            if (!isset($_SESSION['lista_produtos_venda'])) {
-
-                echo "  <th>opções</th>";
+            if (!isset($_SESSION['lista_produtos_venda'])&&$transacao!=='lista') {
 
                 echo "<th>opções</th>";
             }
@@ -98,13 +96,14 @@ function grid($result, $tipo)
                     </td>
                     <?php
                 }
-                if (!isset($_SESSION['lista_produtos_venda'])) {
+                if (!isset($_SESSION['lista_produtos_venda'])&&$transacao!=='lista') {
                     if ($tipo !== 'VENDAS') {
+                        if($transacao=='altera'){
                         echo "<td><a href='../cad_alt/cad_alt_" . $nometabela . ".php?cod=$cod&nome=$nome'>Alterar</a></td>";
-                        // echo "<td><a target='_blank' href='../cad_alt/cad_alt_" . $nometabela . ".php?cod=$cod&nome=$nome'>Alterar</a></td>";
+                        }else
+                        echo " <td><a href='../del/del_" . $nometabela . ".php?cod=$cod&nome=$nome'>Excluir</a></td>";
                     }else
-                        echo "<td><a href='../lista/lista_produto.php?cod=$cod'>Listar produtos da venda</a></td>";
-                    echo " <td><a href='../del/del_" . $nometabela . ".php?cod=$cod&nome=$nome'>Excluir</a></td>";
+                        echo "<td><a href='../lista/lista_produto.php?cod=$cod'>Listar produtos da venda</a></td>";                
                 }
                 ?>
             </tr>

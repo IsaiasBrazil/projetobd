@@ -31,7 +31,7 @@
     </div>
     <div style="overflow: auto;">
         <?php
-        grid($result, "VENDEDORES");
+        grid($result, "VENDEDORES",$_GET['tipo']);
         ?>
     </div>
 </body>

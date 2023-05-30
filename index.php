@@ -142,11 +142,11 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
         <div class="menu-dropdown" id="menuClientes">
             <a target="tela" href="cad_alt/cad_alt_cliente.php">Cadastrar</a>
             <br>
-            <a target="tela" href="lista/lista_cliente.php">Alterar </a>
+            <a target="tela" href="lista/lista_cliente.php?tipo=altera">Alterar </a>
             <br>
-            <a target="tela" href="lista/lista_cliente.php">Excluir </a>
+            <a target="tela" href="lista/lista_cliente.php?tipo=exclui">Excluir </a>
             <br>
-            <a target="tela" href="lista/lista_cliente.php">Consultar</a>
+            <a target="tela" href="lista/lista_cliente.php?tipo=lista">Consultar</a>
         </div>
 
     </div>
@@ -158,11 +158,11 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
         <div class="menu-dropdown">
             <a target="tela" href="cad_alt/cad_alt_vendedor.php">Cadastrar</a>
             <br>
-            <a target="tela" href="lista/lista_vendedor.php">Alterar </a>
+            <a target="tela" href="lista/lista_vendedor.php?tipo=altera">Alterar </a>
             <br>
-            <a target="tela" href="lista/lista_vendedor.php">Excluir </a>
+            <a target="tela" href="lista/lista_vendedor.php?tipo=exclui">Excluir </a>
             <br>
-            <a target="tela" href="lista/lista_vendedor.php">Consultar</a>
+            <a target="tela" href="lista/lista_vendedor.php?tipo=lista">Consultar</a>
         </div>
 
     </div>
@@ -174,11 +174,11 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
         <div class="menu-dropdown">
             <a target="tela" href="cad_alt/cad_alt_categoria.php">Cadastrar</a>
             <br>
-            <a target="tela" href="lista/lista_categoria.php">Alterar </a>
+            <a target="tela" href="lista/lista_categoria.php?tipo=altera">Alterar </a>
             <br>
-            <a target="tela" href="lista/lista_categoria.php">Excluir </a>
+            <a target="tela" href="lista/lista_categoria.php?tipo=exclui">Excluir </a>
             <br>
-            <a target="tela" href="lista/lista_categoria.php">Consultar</a>
+            <a target="tela" href="lista/lista_categoria.php?tipo=lista">Consultar</a>
         </div>
 
     </div>
@@ -190,11 +190,11 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
         <div id="menuProdutos" class="menu-dropdown">
             <a target="tela" href="cad_alt/cad_alt_produto.php">Cadastrar</a>
             <br>
-            <a target="tela" href="lista/lista_produto.php">Alterar </a>
+            <a target="tela" href="lista/lista_produto.php?tipo=altera">Alterar </a>
             <br>
-            <a target="tela" href="lista/lista_produto.php">Excluir </a>
+            <a target="tela" href="lista/lista_produto.php?tipo=exclui">Excluir </a>
             <br>
-            <a target="tela" href="lista/lista_produto.php">Consultar</a>
+            <a target="tela" href="lista/lista_produto.php?tipo=lista">Consultar</a>
         </div>
 
     </div>

@@ -25,7 +25,7 @@
         $nome = $_POST['filtro']??"";
         $query = "SELECT * FROM cliente c where c.nome like '%$nome%'";
         $result = mysqli_query($con, $query);
-        grid($result, "CLIENTES");
+        grid($result, "CLIENTES",$_GET['tipo']);
         if (isset($_SESSION['msg'])) {
             $msg = $_SESSION['msg'];
             echo $msg;
