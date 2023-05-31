@@ -43,7 +43,7 @@
             $query = "SELECT * FROM venda";
             unset($_SESSION['lista_produtos_venda']);
         $result = mysqli_query($con, $query);
-        grid($result, "VENDAS");
+        grid($result, "VENDAS",$_GET['tipo']);
         ?>
     </div>
     <script>

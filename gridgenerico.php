@@ -62,8 +62,11 @@ function grid($result, $tipo,$transacao)
 
                 echo "<th>" . $nomecampo . "</th>";
             }
-            if (!isset($_SESSION['lista_produtos_venda'])&&$transacao!=='lista') {
-
+            if (!isset($_SESSION['lista_produtos_venda'])) {
+                if($transacao!=='lista')
+                echo "<th>opções</th>";
+            }else{
+                echo "<th>opções</th>";
                 echo "<th>opções</th>";
             }
             ?>
@@ -102,8 +105,10 @@ function grid($result, $tipo,$transacao)
                         echo "<td><a href='../cad_alt/cad_alt_" . $nometabela . ".php?cod=$cod&nome=$nome'>Alterar</a></td>";
                         }else
                         echo " <td><a href='../del/del_" . $nometabela . ".php?cod=$cod&nome=$nome'>Excluir</a></td>";
-                    }else
-                        echo "<td><a href='../lista/lista_produto.php?cod=$cod'>Listar produtos da venda</a></td>";                
+                    }else{
+                        echo "<td><a href='../lista/lista_produto.php?cod=$cod'>Listar produtos da venda</a></td><br>";   
+                        echo " <td><a href='../del/del_" . $nometabela . ".php?cod=$cod&nome=$nome'>Excluir</a></td>";
+                    }
                 }
                 ?>
             </tr>

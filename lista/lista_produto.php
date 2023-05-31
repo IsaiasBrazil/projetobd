@@ -39,7 +39,7 @@
     <div style="overflow:auto">
         <?php
         $result = mysqli_query($con, $query);
-        grid($result, "PRODUTOS");
+        grid($result, "PRODUTOS",$_GET['tipo']);
         ?>
     </div>
 </body>
