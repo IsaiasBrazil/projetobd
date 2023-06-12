@@ -23,7 +23,7 @@ if (count($produtos) > 0) {
 
     } else {
         $_SESSION['msg'] = "<p style='color:red;'> Venda não foi  cadastrada!</p>";
-        header("Location: ../../lista/lista_venda.php");
+        header("Location: ../../lista/lista_venda.php?tipo=consulta");
         mysqli_close($con);
     }
 } else {

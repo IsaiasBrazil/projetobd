@@ -27,6 +27,6 @@ foreach ($produtos as $produto) {
     }
 }
 mysqli_close($con);
-header("Location: ../lista/lista_venda.php");
+header("Location: ../lista/lista_venda.php?tipo=consulta");
 exit();
 ?>
