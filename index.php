@@ -203,7 +203,7 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
     <div class="menu-opts">
 
         <a href="#">Vendas</a>
-        <div class="menu-dropdown" style="width:110px">
+        <div class="menu-dropdown" style="width:140px">
             <a href="cad_alt/cad_alt_venda.php" target="tela">Vender</a>
             <br>
             <a href="lista/lista_venda.php?tipo=lista" target="tela">Listar vendas</a>
