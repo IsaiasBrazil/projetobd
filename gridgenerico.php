@@ -118,9 +118,9 @@ function grid($result, $tipo,$transacao)
     </table>
     <?php
     if (!isset($_SESSION['lista_produtos_venda']))
-        echo "<a href='lista_" . $nometabela . ".php'>Voltar</a></td>";
+        echo "<a href='lista_" . $nometabela . ".php?tipo=consulta'>Voltar</a></td>";
     else {
-        echo "<a href='" . $_SERVER['HTTP_REFERER'] . "'>Voltar</a></td>";
+        echo "<a href='" . $_SERVER['HTTP_REFERER'] . "?tipo=consulta'>Voltar</a></td>";
         unset($_SESSION['lista_produtos_venda']);
     }
     return $cod;
