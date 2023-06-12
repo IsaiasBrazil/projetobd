@@ -106,7 +106,7 @@ function grid($result, $tipo,$transacao)
                         }else
                         echo " <td><a href='../del/del_" . $nometabela . ".php?cod=$cod&nome=$nome'>Excluir</a></td>";
                     }else{
-                        echo "<td><a href='../lista/lista_produto.php?cod=$cod'>Listar produtos da venda</a></td><br>";   
+                        echo "<td><a href='../lista/lista_produto.php?cod=$cod&tipo=consulta'>Listar produtos da venda</a></td><br>";   
                         echo " <td><a href='../del/del_" . $nometabela . ".php?cod=$cod&nome=$nome'>Excluir</a></td>";
                     }
                 }
